@@ -3,32 +3,33 @@ package com.example.springboot.Models;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Reservation {
 
     @Id
-    private String id;
+    private Long id;
     private String reservation_name;
     private String reservation_lname;
-    private LocalDate date;
-    private LocalTime time;
+    private LocalDateTime reservation_time;
     private String reservation_restouran;
+    private  LocalDate today_date;
 
-    public Reservation (String id, String reservation_name, String reservation_lname, LocalDate date, LocalTime time, String reservation_restouran) {
+    public Reservation (Long id, String reservation_name, String reservation_lname, LocalDateTime reservation_time, String reservation_restouran, LocalDate today_date) {
         this.id = id;
         this.reservation_name = reservation_name;
         this.reservation_lname = reservation_lname;
-        this.date = date;
-        this.time = time;
+        this.reservation_time = reservation_time;
         this.reservation_restouran = reservation_restouran;
+        this.today_date = today_date;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,20 +49,12 @@ public class Reservation {
         this.reservation_lname = reservation_lname;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getReservation_time() {
+        return reservation_time;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setReservation_time(LocalDateTime reservation_time) {
+        this.reservation_time = reservation_time;
     }
 
     public String getReservation_restouran() {
@@ -70,5 +63,13 @@ public class Reservation {
 
     public void setReservation_restouran(String reservation_restouran) {
         this.reservation_restouran = reservation_restouran;
+    }
+
+    public LocalDate getToday_date() {
+        return today_date;
+    }
+
+    public void setToday_date(LocalDate today_date) {
+        this.today_date = today_date;
     }
 }

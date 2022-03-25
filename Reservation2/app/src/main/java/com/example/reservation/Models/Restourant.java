@@ -88,15 +88,12 @@ public class Restourant {
 
     @Override
     public String toString() {
-        return "Restourant{" +
-                "id=" + id +
-                ", restourantName='" + restourantName + '\'' +
-                ", summary='" + summary + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", jobTime='" + jobTime + '\'' +
-                ", category='" + category + '\'' +
-                '}';
+        return "Restourant" + "\n" +
+                "Restouran name='" + restourantName + "\n" + '\'' +
+                "address='" + address + "\n" + '\'' +
+                "phone='"  + phone + "\n" + '\'' +
+                "email='"  + email + "\n" + '\'' +
+                "jobTime='"  + jobTime + "\n" + '\'' +
+                "category='"  + category +"\n" + '\'';
     }
 }

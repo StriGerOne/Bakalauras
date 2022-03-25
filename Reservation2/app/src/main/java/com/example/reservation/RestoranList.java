@@ -49,8 +49,8 @@ public class RestoranList extends AppCompatActivity{
                         Type RestouranListType = new TypeToken<List<Restourant>>() {
                         }.getType();
                         final List<Restourant> restoranListFromJson = builder.fromJson(response, RestouranListType);
-                        List<String> resList = new ArrayList<>();
-                        restoranListFromJson.forEach(r->resList.add(r.getPhone() + " " + r.getEmail()));
+//                        List<String> resList = new ArrayList<>();
+//                        restoranListFromJson.forEach(r->resList.add(r.getPhone() + " " + r.getEmail()));
 
                         ListView Restoran_List = findViewById(R.id.restlist);
 

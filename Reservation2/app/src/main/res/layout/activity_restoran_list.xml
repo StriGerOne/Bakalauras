@@ -9,19 +9,26 @@
 
 
     <ListView
-            android:layout_width="408dp"
-            android:layout_height="428dp"
+            android:layout_width="414dp"
+            android:layout_height="606dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:id="@+id/restlist"
             android:layout_alignParentTop="true" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="4dp" android:layout_marginTop="4dp"/>
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="16dp" android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0"/>
     <Button
-            android:text="Reservation"
+            android:text="Reservate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/Reservate"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="572dp"
-            app:layout_constraintHorizontal_bias="0.498"/>
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="676dp"
+    />
+    <Button
+            android:text="Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:id="@+id/btn_back" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,6 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        EditText Id = findViewById(R.id.id);
         EditText FirstName = findViewById(R.id.FName);
         EditText LastName = findViewById(R.id.LName);
         EditText UserName = findViewById(R.id.UserName);
@@ -36,7 +35,6 @@ public class Register extends AppCompatActivity {
 
         Registration.setOnClickListener(v -> {
 
-            String id = Id.getText().toString();
         String firstname = FirstName.getText().toString();
         String lastname = LastName.getText().toString();
         String username = UserName.getText().toString();
@@ -44,7 +42,7 @@ public class Register extends AppCompatActivity {
         String phone = Phone.getText().toString();
         String email = Email.getText().toString();
 
-        String json = "{\"id\":\"" + id + "\",\"firstname\":\"" + firstname + "\", \"lastname\":\"" + lastname + "\", \"username\":\"" + username
+        String json = "{\"firstname\":\"" + firstname + "\", \"lastname\":\"" + lastname + "\", \"username\":\"" + username
                 + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
 
             //String data = "{\"login\":\"" + login.getText().toString() + "\", \"psw\": \"" + psw.getText().toString() + "\", \"type\":\"" + type + "\"}";
@@ -102,7 +100,6 @@ public class Register extends AppCompatActivity {
 
           */
 
-            System.out.println(id);
             System.out.println(firstname);
             System.out.println(lastname);
             System.out.println(username);
