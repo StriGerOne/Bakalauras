@@ -35,12 +35,6 @@ public class RestouranController {
     @DeleteMapping("/deleteRestauran/{id}")
     public String deleteRestouran(@PathVariable Long id) {
         restourantRepository.deleteById(id);
-        return "Restouran with id " + id + " deleted";
-        // Labas vakaras
-
-
-
-        //
+            return "Restouran with id " + id + " deleted";
     }
-
     }
