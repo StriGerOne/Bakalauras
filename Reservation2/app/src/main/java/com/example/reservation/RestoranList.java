@@ -9,28 +9,30 @@ import android.widget.Button;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
+import com.example.reservation.Models.Restourant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import static com.example.reservation.Constants.RESTLIST;
 
-public class Restoran_list extends AppCompatActivity{
+public class RestoranList extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restoran_list);//bfdhgdsgf
+        setContentView(R.layout.activity_restoran_list);
 
         Button pick_date_time = findViewById(R.id.Reservate);
 
-        pick_date_time.setOnClickListener(v -> startActivity(new Intent(Restoran_list.this, ReservationForm.class)));
+        pick_date_time.setOnClickListener(v -> startActivity(new Intent(RestoranList.this, ReservationForm.class)));
 
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
@@ -44,13 +46,15 @@ public class Restoran_list extends AppCompatActivity{
 
                         Gson builder = new GsonBuilder().create();
 
-                        Type RestouranListType = new TypeToken<List<Restoran_list>>() {
+                        Type RestouranListType = new TypeToken<List<Restourant>>() {
                         }.getType();
-                        final List<Restoran_list> restoranListFromJson = builder.fromJson(response, RestouranListType);
+                        final List<Restourant> restoranListFromJson = builder.fromJson(response, RestouranListType);
+                        List<String> resList = new ArrayList<>();
+                        restoranListFromJson.forEach(r->resList.add(r.getPhone() + " " + r.getEmail()));
 
                         ListView Restoran_List = findViewById(R.id.restlist);
 
-                        ArrayAdapter<Restoran_list> arrayAdapter = new ArrayAdapter<>(Restoran_list.this, android.R.layout.simple_list_item_1, restoranListFromJson);
+                        ArrayAdapter<Restourant> arrayAdapter = new ArrayAdapter<>(RestoranList.this, android.R.layout.simple_list_item_1, restoranListFromJson);
                         Restoran_List.setAdapter(arrayAdapter);
 
                     }

@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
+import com.example.reservation.Models.User;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;
@@ -57,6 +59,11 @@ public class Login extends AppCompatActivity {
                         if (!response.equals("Error") && !response.equals("")) {
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Login.this, MainWindow.class);
+                            //Kadangi json formatu apir useri info, galit is karto issiparsinti login ar id ir tik ji perduoti
+                            //Galima ir visa useri
+                            Gson gson = new Gson();
+                            User user = gson.fromJson(response, User.class);
+                            intent.putExtra("UserInfo", user.getId());
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "Bad login or password", Toast.LENGTH_SHORT).show();

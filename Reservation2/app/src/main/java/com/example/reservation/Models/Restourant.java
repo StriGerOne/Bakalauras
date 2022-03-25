@@ -85,4 +85,18 @@ public class Restourant {
     public void setCategory(String category) {
         category = category;
     }
+
+    @Override
+    public String toString() {
+        return "Restourant{" +
+                "id=" + id +
+                ", restourantName='" + restourantName + '\'' +
+                ", summary='" + summary + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", jobTime='" + jobTime + '\'' +
+                ", category='" + category + '\'' +
+                '}';
+    }
 }

@@ -18,7 +18,7 @@
             android:name=".ReservationForm"
             android:exported="true" />
         <activity
-            android:name=".Restoran_list"
+            android:name=".RestoranList"
             android:exported="false" />
         <activity android:name=".Login" >
         </activity>

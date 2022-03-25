@@ -38,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reservation2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -139,7 +139,9 @@
       <workItem from="1648076393852" duration="87000" />
       <workItem from="1648076901704" duration="1877000" />
       <workItem from="1648150792824" duration="2310000" />
-      <workItem from="1648219815420" duration="2011000" />
+      <workItem from="1648219815420" duration="2249000" />
+      <workItem from="1648222297001" duration="63000" />
+      <workItem from="1648222749473" duration="1922000" />
     </task>
     <servers />
   </component>
