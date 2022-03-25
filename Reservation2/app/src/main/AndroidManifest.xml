@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Reservation"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name=".ReservationForm"
+            android:exported="true" />
+        <activity
             android:name=".Restoran_list"
             android:exported="false" />
         <activity android:name=".Login" >

@@ -7,13 +7,13 @@
     tools:context=".MainWindow">
 
     <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="203dp"
-        android:layout_height="32dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="85dp" />
+            android:id="@+id/searchView"
+            android:layout_width="203dp"
+            android:layout_height="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="85dp"/>
 
     <ImageView
         android:id="@+id/logo"
@@ -183,17 +183,16 @@
         android:layout_marginEnd="150dp"
         android:text="Category Search" />
 
+
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="328dp"
-        android:layout_marginEnd="176dp"
-        android:text="Most popular restoran" />
-
-
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="321dp"
+            android:layout_marginEnd="125dp"
+            android:text="Most popular restoran"/>
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -334,22 +333,22 @@
     </HorizontalScrollView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="101dp"
-        android:layout_marginEnd="150dp"
-        android:text="Category Search" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="101dp"
+            android:layout_marginEnd="150dp"
+            android:text="Category Search"/>
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="178dp"
-        android:layout_height="108dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="587dp"
-        android:layout_marginEnd="124dp"
-        android:text="Button" />
+            android:id="@+id/list"
+            android:layout_width="178dp"
+            android:layout_height="108dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="587dp"
+            android:layout_marginEnd="124dp"
+            android:text="Button"/>
 
 </RelativeLayout>

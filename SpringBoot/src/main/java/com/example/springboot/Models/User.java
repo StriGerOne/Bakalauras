@@ -11,9 +11,9 @@ public class User {
     @Id
     @Field(name = "id")
     private String id;
-    @Field(name = "FirstName")          // Pavadinimas duomenų bazėje
+    @Field(name = "firstName")          // Pavadinimas duomenų bazėje
     private String fname;
-    @Field(name = "LastName")
+    @Field(name = "lastName")
     private String lname;
     @Indexed(unique = true)             // Unikalus
     private String username;            // User name gali ir nereikėti, jungti galima per El.paštą.

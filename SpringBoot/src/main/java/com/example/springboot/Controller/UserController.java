@@ -38,12 +38,12 @@ public class UserController {
     }
 
     @GetMapping("/Usersby/{id}")
-    public Optional<User> getUser(@PathVariable int id) {
+    public Optional<User> getUser(@PathVariable Long id) {
         return userRepo.findById(id);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable int id) {
+    @DeleteMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable Long id) {
         userRepo.deleteById(id);
         return "User" + id + " deleted";
     }

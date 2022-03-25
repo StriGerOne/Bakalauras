@@ -15,6 +15,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static com.example.reservation.Constants.USERAUTH;
+
 
 public class Login extends AppCompatActivity {
 
@@ -34,17 +36,24 @@ public class Login extends AppCompatActivity {
 
             String json = "{\"login\":\"" + username + "\", \"psw\":\"" + password + "\"}";
 
-            if (username.equals("") || password.equals(""))
-                Toast.makeText(Login.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
+            if (username.isEmpty()) {
+                LoginUser.setError("Username is required");
+                LoginUser.requestFocus();
+                return;
+            }
+            if (password.isEmpty()) {
+                LoginPass.setError("Password is required");
+                LoginPass.requestFocus();
+                return;
+            }
 
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
             executor.execute(() -> {
-                String url = "http://192.168.1.181:8080/authenticate";
+                String url = USERAUTH;
                 try {
                     String response = RESTController.sendPost(url, json);
                     handler.post(() -> {
-                        System.out.println("OK2" + response);
                         if (!response.equals("Error") && !response.equals("")) {
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Login.this, MainWindow.class);

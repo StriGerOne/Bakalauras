@@ -4,37 +4,142 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df3baa06-292c-45e2-8fd8-c32d5572457a" name="Changes" comment="" />
+    <list default="true" id="544b9ac8-c746-487a-bc80-685da0fdc596" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectId" id="26smmjeZzFsEHJzBcdhwk4qk4cB" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="20Pq2FCzkNw9AdRZwQIhO9McEJF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reservation2" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.springboot.Models" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.springboot" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.springboot.Repositories" />
+      <recent name="com.example.springboot.Models" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application">
+    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="SpringBoot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springboot.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.All in generated-requests" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="df3baa06-292c-45e2-8fd8-c32d5572457a" name="Changes" comment="" />
-      <created>1648220830845</created>
+      <changelist id="544b9ac8-c746-487a-bc80-685da0fdc596" name="Changes" comment="" />
+      <created>1635956364893</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1648220830845</updated>
-      <workItem from="1648220832250" duration="3000" />
-      <workItem from="1648220859139" duration="11000" />
-      <workItem from="1648220924302" duration="580000" />
+      <updated>1635956364893</updated>
+      <workItem from="1635956366746" duration="948000" />
+      <workItem from="1635957429592" duration="2002000" />
+      <workItem from="1635959660696" duration="8611000" />
+      <workItem from="1636060634639" duration="605000" />
+      <workItem from="1636187124457" duration="7889000" />
+      <workItem from="1636395139524" duration="840000" />
+      <workItem from="1636396599885" duration="1958000" />
+      <workItem from="1636561207060" duration="3620000" />
+      <workItem from="1636566777741" duration="611000" />
+      <workItem from="1636654591210" duration="3065000" />
+      <workItem from="1637426613489" duration="588000" />
+      <workItem from="1637491477825" duration="2887000" />
+      <workItem from="1637503018294" duration="910000" />
+      <workItem from="1637512507572" duration="7049000" />
+      <workItem from="1637609169000" duration="2164000" />
+      <workItem from="1637690643276" duration="624000" />
+      <workItem from="1637692797941" duration="418000" />
+      <workItem from="1638902509351" duration="1010000" />
+      <workItem from="1640200533994" duration="592000" />
+      <workItem from="1641325939173" duration="1094000" />
+      <workItem from="1641328986986" duration="1401000" />
+      <workItem from="1642531599066" duration="696000" />
+      <workItem from="1642537199592" duration="867000" />
+      <workItem from="1643545644509" duration="137000" />
+      <workItem from="1643545892183" duration="101000" />
+      <workItem from="1643546369585" duration="4012000" />
+      <workItem from="1643741705620" duration="7059000" />
+      <workItem from="1644007239334" duration="232000" />
+      <workItem from="1644007523469" duration="22000" />
+      <workItem from="1645642443099" duration="3318000" />
+      <workItem from="1645807146032" duration="540000" />
+      <workItem from="1645807741650" duration="511000" />
+      <workItem from="1646676785894" duration="4084000" />
+      <workItem from="1646841138119" duration="1750000" />
+      <workItem from="1646930153429" duration="5980000" />
+      <workItem from="1646938625224" duration="492000" />
+      <workItem from="1646939276504" duration="94000" />
+      <workItem from="1646939423095" duration="355000" />
+      <workItem from="1646939868262" duration="350000" />
+      <workItem from="1646940440394" duration="6837000" />
+      <workItem from="1647035111644" duration="1544000" />
+      <workItem from="1647089609649" duration="106000" />
+      <workItem from="1647089742390" duration="1127000" />
+      <workItem from="1647091455673" duration="923000" />
+      <workItem from="1647118301916" duration="1207000" />
+      <workItem from="1647278636124" duration="8658000" />
+      <workItem from="1647373591026" duration="2076000" />
+      <workItem from="1647882442572" duration="4855000" />
+      <workItem from="1647901838739" duration="2624000" />
+      <workItem from="1647977733512" duration="2273000" />
+      <workItem from="1647982579370" duration="598000" />
+      <workItem from="1648065834161" duration="2894000" />
+      <workItem from="1648073261358" duration="20000" />
+      <workItem from="1648073411222" duration="799000" />
+      <workItem from="1648074442465" duration="352000" />
+      <workItem from="1648074836221" duration="1008000" />
+      <workItem from="1648076393852" duration="87000" />
+      <workItem from="1648076901704" duration="1877000" />
+      <workItem from="1648150792824" duration="2310000" />
+      <workItem from="1648219815420" duration="2011000" />
     </task>
     <servers />
   </component>

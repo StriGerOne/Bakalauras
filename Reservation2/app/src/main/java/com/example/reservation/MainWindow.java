@@ -11,21 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainWindow extends AppCompatActivity {
 
-    ImageButton Login_Userboard;
-    ImageButton Pica_Category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Login_Userboard = (ImageButton) findViewById(R.id.login_userboard);
+        ImageButton Login_Userboard = findViewById(R.id.login_userboard);
 
         Login_Userboard.setOnClickListener(view -> startActivity(new Intent(MainWindow.this, Login.class)));
 
-        Pica_Category = (ImageButton) findViewById(R.id.pica_category);
+        Button RestList = findViewById(R.id.list);
 
-        Pica_Category.setOnClickListener(view -> startActivity(new Intent(MainWindow.this, Restoran_list.class)));
+        RestList.setOnClickListener(view -> startActivity(new Intent(MainWindow.this, Restoran_list.class)));
+
+
     }
 
 }

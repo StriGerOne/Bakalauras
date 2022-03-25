@@ -17,7 +17,6 @@ public class RESTController {
         httpURLConnection.setRequestMethod("GET");
         httpURLConnection.setRequestProperty("Content-type", "application/json; charset=UTF-8");
         int code = httpURLConnection.getResponseCode();
-        //Padariau pakeitima, tik rodau
 
         if (code == HttpURLConnection.HTTP_OK) {
             BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));

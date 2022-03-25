@@ -10,9 +10,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
 
-import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
+import static com.example.reservation.Constants.REGISTER;
 
 public class Register extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        EditText Id = findViewById(R.id.id);
         EditText FirstName = findViewById(R.id.FName);
         EditText LastName = findViewById(R.id.LName);
         EditText UserName = findViewById(R.id.UserName);
@@ -30,66 +32,111 @@ public class Register extends AppCompatActivity {
         Button Registration = findViewById(R.id.btn_register);
         Button Back_ToLogin = findViewById(R.id.btn_reg_back);
 
+        Back_ToLogin.setOnClickListener(v -> startActivity(new Intent(Register.this, Login.class)));
 
         Registration.setOnClickListener(v -> {
-            String firstname = FirstName.getText().toString();
-            String lastname = LastName.getText().toString();
-            String username = UserName.getText().toString();
-            String password = Password.getText().toString();
-            String phone = Phone.getText().toString();
-            String emai = Email.getText().toString();
+
+            String id = Id.getText().toString();
+        String firstname = FirstName.getText().toString();
+        String lastname = LastName.getText().toString();
+        String username = UserName.getText().toString();
+        String password = Password.getText().toString();
+        String phone = Phone.getText().toString();
+        String email = Email.getText().toString();
+
+        String json = "{\"id\":\"" + id + "\",\"firstname\":\"" + firstname + "\", \"lastname\":\"" + lastname + "\", \"username\":\"" + username
+                + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
+
+            //String data = "{\"login\":\"" + login.getText().toString() + "\", \"psw\": \"" + psw.getText().toString() + "\", \"type\":\"" + type + "\"}";
+
+        if (firstname.isEmpty()) {
+            FirstName.setError("First name is required");
+            FirstName.requestFocus();
+            return;
+        }
+        if (lastname.isEmpty()) {
+            LastName.setError("Last name is required");
+            LastName.requestFocus();
+            return;
+        }
+        if (username.isEmpty()) {
+            UserName.setError("Username is required");
+            UserName.requestFocus();
+            return;
+        }
+        if (password.isEmpty()) {
+            Password.setError("Password is required");
+            Password.requestFocus();
+            return;
+        }
+        if (password.length() < 6) {
+            Password.setError("Min password length should be 6 characters!");
+            Password.requestFocus();
+            return;
+        }
+        if (phone.isEmpty()) {
+            Phone.setError("Phone number is required");
+            Phone.requestFocus();
+            return;
+        }
+        if (email.isEmpty()) {
+            Email.setError("Email number is required");
+            Email.requestFocus();
+            return;
+        }
+
+        /** Patikrinti ar email atitinka pasto struktura **/
+     /*   if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Email.setError("Please provide valid email");
+            Email.requestFocus();
+            return;
+        }
+      */
+         /*   System.out.println(Id);
+            System.out.println(FirstName);
+            System.out.println(LastName);
+            System.out.println(UserName);
+            System.out.println(Password);
+            System.out.println(Phone);
+            System.out.println(Email);
+
+          */
+
+            System.out.println(id);
+            System.out.println(firstname);
+            System.out.println(lastname);
+            System.out.println(username);
+            System.out.println(password);
+            System.out.println(phone);
+            System.out.println(email);
 
 
-/*
-            String json = "{\"FirstName\"" + FirstName.getText().toString() + "\", \"LastName\"" + LastName.getText().toString() + "\", \"UserName\"" + UserName.getText().toString()
-                    + "\", \"Password\"" + Password.getText().toString() + "\", \"Phone\"" + Phone.getText().toString() + "\", \"Email\"" + Email.getText().toString() + "\"}";
-*/                  /**
-             Ar užpildyti visi laukai
-             */
-            if (firstname.equals("") || lastname.equals("") || username.equals("") || password.equals("") || phone.equals("") || emai.equals("")) {
-                Toast.makeText(Register.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
-            }
-
-  /*          if( ) {
-
-                 Jei įvesti laukai atitinka laukų tipus -> Įrašas įrašomas į duomenų bazę
-
-                Toast.makeText(Register.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-            }*/
-                    /**
-                     Jei įvesti laukai atitinka laukų tipus -> Įrašas įrašomas į duomenų bazę
-                     */
-                    else{
-                        Toast.makeText(Register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-                    }
+            Executor executor = Executors.newSingleThreadExecutor();
+            Handler handler = new Handler(Looper.getMainLooper());
+            executor.execute(() -> {
+                String url = REGISTER;
+                try {
+                    String response = RESTController.sendPost(url, json);
+                    handler.post(() -> {
+                        if (!response.equals("Error") && !response.equals("")) {
+                            Toast.makeText(getApplicationContext(), "Register Successful", Toast.LENGTH_SHORT).show();
+                           Intent intent = new Intent(Register.this, Login.class);
+                            startActivity(intent);
+                        } else {
+                           Toast.makeText(getApplicationContext(), "Incorrect information", Toast.LENGTH_SHORT).show();
+                            System.out.println(json);
+                        }
+                   });
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           });
 
         });
     }
 }
 
-//            Executor executor = Executors.newSingleThreadExecutor();
-//            Handler handler = new Handler(Looper.getMainLooper());
-//            String[] response = {""};
-//
-//            executor.execute(() -> {
-//                String url = "http://192.168.8.101:8080/addUser";
-//                try {
-//                    response[0] = RESTController.sendPost(url, json);
-//                    System.out.println(response[0]);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            });
-//            handler.post(() -> {
-//                System.out.println(response[0]);
-//                if (response[0] != null) {
-//                    Toast.makeText(getApplicationContext(), "User Registered", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(Register.this, Login.class);
-//                    startActivity(intent);
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "Bad information", Toast.LENGTH_SHORT).show();
-//                }
-//            });
+
+
+
+
