@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -83,30 +84,11 @@ public class Register extends AppCompatActivity {
             return;
         }
 
-        /** Patikrinti ar email atitinka pasto struktura **/
-     /*   if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Email.setError("Please provide valid email");
             Email.requestFocus();
             return;
         }
-      */
-         /*   System.out.println(Id);
-            System.out.println(FirstName);
-            System.out.println(LastName);
-            System.out.println(UserName);
-            System.out.println(Password);
-            System.out.println(Phone);
-            System.out.println(Email);
-
-          */
-
-            System.out.println(firstname);
-            System.out.println(lastname);
-            System.out.println(username);
-            System.out.println(password);
-            System.out.println(phone);
-            System.out.println(email);
-
 
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());

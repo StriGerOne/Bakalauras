@@ -63,8 +63,8 @@ public class Login extends AppCompatActivity {
                             //Galima ir visa useri
                             Gson gson = new Gson();
                             User user = gson.fromJson(response, User.class);
-                            intent.putExtra("UserInfo", user.getId());
-                            startActivity(intent);
+//                            intent.putExtra("UserInfo", user.getId());
+//                            startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "Bad login or password", Toast.LENGTH_SHORT).show();
                         }

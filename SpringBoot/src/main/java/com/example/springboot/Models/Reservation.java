@@ -1,23 +1,26 @@
 package com.example.springboot.Models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 public class Reservation {
 
     @Id
     private Long id;
+    private String people_amount;
     private String reservation_name;
     private String reservation_lname;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime reservation_time;
     private String reservation_restouran;
-    private  LocalDate today_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private  LocalDateTime today_date;
 
-    public Reservation (Long id, String reservation_name, String reservation_lname, LocalDateTime reservation_time, String reservation_restouran, LocalDate today_date) {
+    public Reservation (Long id, String people_amount, String reservation_name, String reservation_lname, LocalDateTime reservation_time, String reservation_restouran, LocalDateTime today_date) {
         this.id = id;
+        this.people_amount = people_amount;
         this.reservation_name = reservation_name;
         this.reservation_lname = reservation_lname;
         this.reservation_time = reservation_time;
@@ -31,6 +34,14 @@ public class Reservation {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPeople_amount() {
+        return people_amount;
+    }
+
+    public void setPeople_amount(String people_amount) {
+        this.people_amount = people_amount;
     }
 
     public String getReservation_name() {
@@ -65,11 +76,11 @@ public class Reservation {
         this.reservation_restouran = reservation_restouran;
     }
 
-    public LocalDate getToday_date() {
+    public LocalDateTime getToday_date() {
         return today_date;
     }
 
-    public void setToday_date(LocalDate today_date) {
+    public void setToday_date(LocalDateTime today_date) {
         this.today_date = today_date;
     }
 }

@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="544b9ac8-c746-487a-bc80-685da0fdc596" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/ReservationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/DatabaseSequence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Repositories/ReservationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/SequenceGeneratorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/UserModelListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Models/Restourant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Models/Restourant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/RestoranList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/RestoranList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_register.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_reservation_form.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_reservation_form.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restoran_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restoran_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/springboot/Models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/springboot/Models/User.class" afterDir="false" />
-    </list>
+    <list default="true" id="544b9ac8-c746-487a-bc80-685da0fdc596" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,6 +147,11 @@
       <workItem from="1648222297001" duration="63000" />
       <workItem from="1648222749473" duration="1922000" />
       <workItem from="1648234276383" duration="5211000" />
+      <workItem from="1648586140567" duration="2085000" />
+      <workItem from="1648836966939" duration="349000" />
+      <workItem from="1648837347900" duration="61000" />
+      <workItem from="1648899890100" duration="3445000" />
+      <workItem from="1649010925803" duration="4410000" />
     </task>
     <servers />
   </component>
