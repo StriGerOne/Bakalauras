@@ -43,7 +43,7 @@ public class Register extends AppCompatActivity {
         String phone = Phone.getText().toString();
         String email = Email.getText().toString();
 
-        String json = "{\"firstname\":\"" + firstname + "\", \"lastname\":\"" + lastname + "\", \"username\":\"" + username
+        String json = "{\"fname\":\"" + firstname + "\", \"lname\":\"" + lastname + "\", \"username\":\"" + username
                 + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
 
             //String data = "{\"login\":\"" + login.getText().toString() + "\", \"psw\": \"" + psw.getText().toString() + "\", \"type\":\"" + type + "\"}";

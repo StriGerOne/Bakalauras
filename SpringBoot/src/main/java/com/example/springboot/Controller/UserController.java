@@ -2,6 +2,7 @@ package com.example.springboot.Controller;
 
 import com.example.springboot.Models.User;
 import com.example.springboot.Repositories.UserRepository;
+import com.example.springboot.AutoID.SequenceGeneratorService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
+
+import static com.example.springboot.Models.User.SEQUENCE_NAME;
 
 
 @RestController
@@ -18,8 +21,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepo;
 
+    @Autowired
+    private SequenceGeneratorService service;
+
     @PostMapping("/addUser")
     public String saveUser(@RequestBody User user) {
+        user.setId((long) service.getSequenceNumber(SEQUENCE_NAME));
         userRepo.save(user);
         return "User saved";
     }

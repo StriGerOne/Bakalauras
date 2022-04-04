@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+
 @Document
 public class User {
 
@@ -13,7 +14,6 @@ public class User {
     public static final String SEQUENCE_NAME = "users_sequence";
 
     @Id
-    @Field(name = "id")
     private Long id;
     @Field(name = "firstName")          // Pavadinimas duomenų bazėje
     private String fname;
