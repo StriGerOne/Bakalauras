@@ -5,21 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="544b9ac8-c746-487a-bc80-685da0fdc596" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/ReservationForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/ReservationForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/background.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/cirkle_btn.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/pica.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/pub.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/sea.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/sushi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/testback.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/user.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_reservation_form.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_reservation_form.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restoran_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restoran_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/values/themes.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/RestouranController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/RestouranController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/DatabaseSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/AutoID/DatabaseSequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/SequenceGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/AutoID/SequenceGeneratorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/UserModelListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/springboot/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/springboot/Controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/springboot/Models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/springboot/Models/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +177,9 @@
       <workItem from="1648837347900" duration="61000" />
       <workItem from="1648899890100" duration="3445000" />
       <workItem from="1649010925803" duration="4596000" />
-      <workItem from="1649091896975" duration="10362000" />
+      <workItem from="1649091896975" duration="11181000" />
+      <workItem from="1649177759613" duration="4055000" />
+      <workItem from="1649193303589" duration="1255000" />
     </task>
     <servers />
   </component>
