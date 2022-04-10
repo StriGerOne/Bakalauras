@@ -15,22 +15,18 @@ public class MainWindow extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        ImageView login = findViewById(R.id.login_userboard);
+        ImageButton Login_Userboard = findViewById(R.id.login_userboard);
 
 
         Picasso.get()
                 .load("https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png")
-                .into(login);
+                .into(Login_Userboard);
 
         Intent currentIntent = getIntent();
         String userId = currentIntent.getStringExtra("UserInfo");
         if(userId != null) {
-
+            System.out.println(userId);
         }
-
-        System.out.println(userId);
-
-        ImageButton Login_Userboard = findViewById(R.id.login_userboard);
 
         Login_Userboard.setOnClickListener(view -> startActivity(new Intent(MainWindow.this, Login.class)));
 

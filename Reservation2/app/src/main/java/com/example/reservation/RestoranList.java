@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Restourant;
@@ -49,20 +47,33 @@ public class RestoranList extends AppCompatActivity{
                         Type RestouranListType = new TypeToken<List<Restourant>>() {
                         }.getType();
                         final List<Restourant> restoranListFromJson = builder.fromJson(response, RestouranListType);
-//                        List<String> resList = new ArrayList<>();
-//                        restoranListFromJson.forEach(r->resList.add(r.getPhone() + " " + r.getEmail()));
+                        /** Spausdina visą info esančią restourant klasėje **/
+                       /* List<String> resList = new ArrayList<>();
+                        restoranListFromJson.forEach(r->resList.add(r.getPhone() + " " + r.getEmail()));
 
                         ListView Restoran_List = findViewById(R.id.restlist);
 
                         ArrayAdapter<Restourant> arrayAdapter = new ArrayAdapter<>(RestoranList.this, android.R.layout.simple_list_item_1, restoranListFromJson);
-                        Restoran_List.setAdapter(arrayAdapter);
+                        Restoran_List.setAdapter(arrayAdapter);*/
+                        /** Spausdina tik nurodytą Stringą **/
 
+                        List<String> resList = new ArrayList<>();
+                        restoranListFromJson.forEach(r->resList.add(r.getPhone()));
+
+                        ListView Restoran_List = findViewById(R.id.restlist);
+                        //TextView test = findViewById(R.id.textView);
+
+                        ListAdapter listAdapter = new ArrayAdapter<>(RestoranList.this, android.R.layout.simple_list_item_1, resList);
+                        Restoran_List.setAdapter(listAdapter);
+                        
                     }
+                    
                 });
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
+      //  Restoran_List.setOnClickListener(v -> startActivity(new Intent(RestoranList.this, ReservationForm.class)));
     }
 }

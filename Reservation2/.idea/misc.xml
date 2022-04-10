@@ -13,6 +13,7 @@
         <entry key="..\:/Users/Gerdas/Documents/GitHub/Bakalauras/Reservation2/app/src/main/res/layout/activity_reservation_form.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Gerdas/Documents/GitHub/Bakalauras/Reservation2/app/src/main/res/layout/activity_restoran_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Gerdas/Documents/GitHub/Bakalauras/Reservation2/app/src/main/res/layout/activity_test.xml" value="0.346875" />
+        <entry key="..\:/Users/Gerdas/Documents/GitHub/Bakalauras/Reservation2/app/src/main/res/layout/list_row.xml" value="0.3458333333333333" />
         <entry key="..\:/Users/Gerdas/Documents/GitHub/Bakalauras/Reservation2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/Gerdas/Documents/GitHub/Bakalauras/Reservation2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/Gerdas/IntelliJIDEAProjects/Reservation2/app/src/main/res/drawable/ic_arrow_back_white_24dp.xml" value="0.2703125" />
@@ -29,7 +30,6 @@
       </map>
     </option>
   </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>

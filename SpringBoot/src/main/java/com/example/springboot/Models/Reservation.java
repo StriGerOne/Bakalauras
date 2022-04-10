@@ -4,26 +4,35 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Reservation {
 
     @Id
     private Long id;
-    private String people_amount;
-    private String name;
-    private String lastname;
-    //@JsonFormat(pattern="yyyy-MM-dd HH:mm")
-    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime reservation_time;
-    private String reservation_restouran;
+    private Long restouranId;
+    private Long userId;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime today = LocalDateTime.now();
+    private int peopleAmount;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime reservationTime;
+    @JsonFormat(pattern="HH:mm")
+    private LocalTime duration;
+    private int freeSpace;
 
-    public Reservation (Long id, String people_amount, String name, String lastname, LocalDateTime reservation_time, String reservation_restouran) {
+
+
+    public Reservation (Long id, Long restouranId, Long userId, int peopleAmount,LocalDateTime reservationTime,LocalTime duration, int  freeSpace) {
         this.id = id;
-        this.people_amount = people_amount;
-        this.name = name;
-        this.lastname = lastname;
-        this.reservation_time = reservation_time;
-        this.reservation_restouran = reservation_restouran;
+        this.restouranId = restouranId;
+        this.userId = userId;
+        this.today = today;
+        this.peopleAmount = peopleAmount;
+        this.reservationTime = reservationTime;
+        this.duration = duration;
+        this.freeSpace = freeSpace;
+
     }
 
     public Long getId() {
@@ -34,44 +43,59 @@ public class Reservation {
         this.id = id;
     }
 
-    public String getPeople_amount() {
-        return people_amount;
+    public Long getRestouranId() {
+        return restouranId;
     }
 
-    public void setPeople_amount(String people_amount) {
-        this.people_amount = people_amount;
+    public void setRestouranId(Long restouranId) {
+        this.restouranId = restouranId;
     }
 
-    public String getName() {
-        return name;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setName(String reservation_name) {
-        this.name = reservation_name;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getLastname() {
-        return lastname;
+    public LocalDateTime getToday() {
+        return today;
     }
 
-    public void setLastname(String reservation_lname) {
-        this.lastname = reservation_lname;
+    public void setToday(LocalDateTime today) {
+        this.today = today;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
-    public LocalDateTime getReservation_time() {
-        return reservation_time;
-    }
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
-    public void setReservation_time(LocalDateTime reservation_time) {
-        this.reservation_time = reservation_time;
+    public int getPeopleAmount() {
+        return peopleAmount;
     }
 
-    public String getReservation_restouran() {
-        return reservation_restouran;
+    public void setPeopleAmount(int peopleAmount) {
+        this.peopleAmount = peopleAmount;
     }
 
-    public void setReservation_restouran(String reservation_restouran) {
-        this.reservation_restouran = reservation_restouran;
+    public LocalDateTime getReservationTime() {
+        return reservationTime;
+    }
+
+    public void setReservationTime(LocalDateTime reservationTime) {
+        this.reservationTime = reservationTime;
+    }
+
+    public LocalTime getDuration() {
+        return duration;
+    }
+
+    public void setDuration(LocalTime duration) {
+        this.duration = duration;
+    }
+
+    public int getFreeSpace() {
+        return freeSpace;
+    }
+
+    public void setFreeSpace(int freeSpace) {
+        this.freeSpace = freeSpace;
     }
 }

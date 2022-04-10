@@ -15,9 +15,9 @@ public class Restourant {
     private String email;
     private String jobTime;
     private String category;
+    private int numberOfSeats;
 
-
-    public Restourant(Long id, String restourantName, String summary, String address, String phone, String email, String jobTime, String category) {
+    public Restourant(Long id, String restourantName, String summary, String address, String phone, String email, String jobTime, String category, int numberOfSeats) {
         this.id = id;
         this.restourantName = restourantName;
         this.summary = summary;
@@ -26,6 +26,7 @@ public class Restourant {
         this.email = email;
         this.jobTime = jobTime;
         this.category = category;
+        this.numberOfSeats = numberOfSeats;
     }
 
     public Long getId() {return id;}
@@ -86,5 +87,13 @@ public class Restourant {
 
     public void setCategory(String category) {
         category = category;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
     }
 }
