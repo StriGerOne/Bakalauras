@@ -52,13 +52,9 @@ import static com.example.springboot.Models.User.SEQUENCE_NAME;
         return reservationRepository.findBypeopleAmount(peopleAmount);
     }
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime reservationTime)
     @GetMapping("/get1/{reservationTime}")
-    public List<Reservation> findByReservationTime(@PathVariable LocalDateTime reservationTime) {
-
-
-
-        return reservationRepository.findByreservationTime(reservationTime);
+    public List<Reservation> findByReservationTime(@PathVariable String reservationTime) {
+        return reservationRepository.findByreservationTime(LocalDateTime.parse(reservationTime));
     }
 
     @GetMapping("/get2/{reservationTime}")
