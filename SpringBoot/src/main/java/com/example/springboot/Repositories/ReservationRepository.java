@@ -11,7 +11,8 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends MongoRepository<Reservation, Long> {
-    List<Reservation> findBypeopleAmount(int peopleAmount);
-    List<Reservation> findByreservationTime(LocalDateTime reservationTime);
-    List<Reservation> findByReservationTimeBetween(LocalDateTime reservationTime);
+    List<Reservation> findByPeopleAmount(int peopleAmount);
+    List<Reservation> findByReservationTime(LocalDateTime reservationTime);
+    //Turi gi 2 datos buti, between reiskia intervala
+    List<Reservation> findByReservationTimeBetween(LocalDateTime reservationTime, LocalDateTime reservationTime2);
 }
