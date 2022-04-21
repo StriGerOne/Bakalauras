@@ -19,7 +19,7 @@ public class Reservation {
     private LocalDateTime reservationTime;
     @JsonFormat(pattern="HH:mm")
     private LocalTime duration;
-    private int freeSpace;
+    //private int freeSpace;
 
 
 
@@ -31,7 +31,7 @@ public class Reservation {
         this.peopleAmount = peopleAmount;
         this.reservationTime = reservationTime;
         this.duration = duration;
-        this.freeSpace = freeSpace;
+       // this.freeSpace = freeSpace;
 
     }
 
@@ -91,11 +91,11 @@ public class Reservation {
         this.duration = duration;
     }
 
-    public int getFreeSpace() {
-        return freeSpace;
-    }
-
-    public void setFreeSpace(int freeSpace) {
-        this.freeSpace = freeSpace;
-    }
+//    public int getFreeSpace() {
+//        return freeSpace;
+//    }
+//
+//    public void setFreeSpace(int freeSpace) {
+//        this.freeSpace = freeSpace;
+//    }
 }
