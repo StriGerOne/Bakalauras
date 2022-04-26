@@ -1,8 +1,6 @@
 package com.example.reservation.Models;
 
 public class User {
-
-
     private String id;
     private String fname;
     private String lname;

@@ -1,7 +1,7 @@
 package com.example.reservation.Models;
 
-
 public class Restourant {
+
 
     private Long id;
     private String restourantName;
@@ -11,9 +11,9 @@ public class Restourant {
     private String email;
     private String jobTime;
     private String category;
+    private int numberOfSeats;
 
-
-    public Restourant(Long id, String restourantName, String summary, String address, String phone, String email, String jobTime, String category) {
+    public Restourant(Long id, String restourantName, String summary, String address, String phone, String email, String jobTime, String category, int numberOfSeats) {
         this.id = id;
         this.restourantName = restourantName;
         this.summary = summary;
@@ -22,11 +22,10 @@ public class Restourant {
         this.email = email;
         this.jobTime = jobTime;
         this.category = category;
+        this.numberOfSeats = numberOfSeats;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() {return id;}
 
     public void setId(Long id) {
         this.id = id;
@@ -86,6 +85,14 @@ public class Restourant {
         category = category;
     }
 
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
     @Override
     public String toString() {
         return "Restourant" + "\n" +
@@ -94,6 +101,7 @@ public class Restourant {
                 "phone='"  + phone + "\n" + '\'' +
                 "email='"  + email + "\n" + '\'' +
                 "jobTime='"  + jobTime + "\n" + '\'' +
+                "FreeSpace='"  + numberOfSeats + "\n" + '\'' +
                 "category='"  + category +"\n" + '\'';
     }
 }

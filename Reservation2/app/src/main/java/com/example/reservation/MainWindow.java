@@ -18,9 +18,9 @@ public class MainWindow extends AppCompatActivity {
         ImageButton Login_Userboard = findViewById(R.id.login_userboard);
 
 
-        Picasso.get()
-                .load("https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png")
-                .into(Login_Userboard);
+//        Picasso.get()
+//                .load("https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png")
+//                .into(Login_Userboard);
 
         Intent currentIntent = getIntent();
         String userId = currentIntent.getStringExtra("UserInfo");

@@ -19,10 +19,10 @@ import java.util.Calendar;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.REGISTER;
 import static com.example.reservation.Constants.RESERVATE;
 
 public class ReservationForm extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +30,8 @@ public class ReservationForm extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_form);
 
         EditText People_amount = findViewById(R.id.amount);
-
         EditText Date_time_in=findViewById(R.id.date_time_input);
-
         Date_time_in.setInputType(InputType.TYPE_NULL);
-
         Date_time_in.setOnClickListener(v -> showDateTimeDialog(Date_time_in));
 
         EditText Name = findViewById(R.id.name);
@@ -50,8 +47,8 @@ public class ReservationForm extends AppCompatActivity {
             String restouran = Restouran.getText().toString();
             String date_time_in = Date_time_in.getText().toString();
 
-            String json = "{\"people_amount\":\"" + people_amount + "\", \"reservation_name\":\"" + name + "\", \"reservation_lname\":\"" + last_name
-                    + "\", \"reservation_restouran\":\"" + restouran + "\", \"reservation_time\":\"" + date_time_in + "\"}";
+            String json = "{\"peopleAmount\":\"" + people_amount + "\", \"reservation_name\":\"" + name + "\", \"reservation_lname\":\"" + last_name
+                    + "\", \"reservation_restouran\":\"" + restouran + "\", \"reservationTime\":\"" + date_time_in + "\"}";
 
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
