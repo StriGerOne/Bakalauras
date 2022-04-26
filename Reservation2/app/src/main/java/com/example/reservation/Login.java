@@ -12,10 +12,9 @@ import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.User;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicReference;
+
 
 import static com.example.reservation.Constants.USERAUTH;
 

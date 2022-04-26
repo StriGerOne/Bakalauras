@@ -92,7 +92,6 @@ public class Restourant {
     public int getNumberOfSeats() {
         return numberOfSeats;
     }
-
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
