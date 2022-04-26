@@ -34,21 +34,23 @@ public class ReservationForm extends AppCompatActivity {
         Date_time_in.setInputType(InputType.TYPE_NULL);
         Date_time_in.setOnClickListener(v -> showDateTimeDialog(Date_time_in));
 
-        EditText Name = findViewById(R.id.name);
-        EditText Last_name = findViewById(R.id.last_name);
-        EditText Restouran = findViewById(R.id.restouran);
-        Button Reservation = findViewById(R.id.btn_reservate);
+        EditText Duration = findViewById(R.id.duration);
+//        EditText Name = findViewById(R.id.name);
+//        EditText Last_name = findViewById(R.id.last_name);
+//        EditText Restouran = findViewById(R.id.restouran);
 
+        Button Reservation = findViewById(R.id.btn_reservate);
         Reservation.setOnClickListener(v -> {
 
             String people_amount = People_amount.getText().toString();
-            String name = Name.getText().toString();
-            String last_name = Last_name.getText().toString();
-            String restouran = Restouran.getText().toString();
             String date_time_in = Date_time_in.getText().toString();
+            String duration = Duration.getText().toString();
+//            String name = Name.getText().toString();
+//            String last_name = Last_name.getText().toString();
+//            String restouran = Restouran.getText().toString();
 
-            String json = "{\"peopleAmount\":\"" + people_amount + "\", \"reservation_name\":\"" + name + "\", \"reservation_lname\":\"" + last_name
-                    + "\", \"reservation_restouran\":\"" + restouran + "\", \"reservationTime\":\"" + date_time_in + "\"}";
+
+            String json = "{\"peopleAmount\":\"" + people_amount + "\", \"reservationTime\":\"" + date_time_in + "\", \"duration\":\"" + duration + "\"}";
 
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());

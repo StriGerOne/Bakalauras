@@ -30,9 +30,6 @@ public class Register extends AppCompatActivity {
         EditText Phone = findViewById(R.id.Phone);
         EditText Email = findViewById(R.id.Email);
         Button Registration = findViewById(R.id.btn_register);
-        Button Back_ToLogin = findViewById(R.id.btn_reg_back);
-
-        Back_ToLogin.setOnClickListener(v -> startActivity(new Intent(Register.this, Login.class)));
 
         Registration.setOnClickListener(v -> {
 
@@ -46,7 +43,6 @@ public class Register extends AppCompatActivity {
         String json = "{\"fname\":\"" + firstname + "\", \"lname\":\"" + lastname + "\", \"username\":\"" + username
                 + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
 
-            //String data = "{\"login\":\"" + login.getText().toString() + "\", \"psw\": \"" + psw.getText().toString() + "\", \"type\":\"" + type + "\"}";
 
         if (firstname.isEmpty()) {
             FirstName.setError("First name is required");

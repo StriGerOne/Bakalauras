@@ -76,7 +76,7 @@ public class MainWindow extends AppCompatActivity {
                                 String userId = currentIntent.getStringExtra("UserInfo");
                                 if(userId != null) {
                                     startActivity(intent);}
-                                else Toast.makeText(getApplicationContext(), "First need to login", Toast.LENGTH_SHORT).show();
+                                else Toast.makeText(getApplicationContext(), "You need to login first", Toast.LENGTH_SHORT).show();
 
                             }
 
