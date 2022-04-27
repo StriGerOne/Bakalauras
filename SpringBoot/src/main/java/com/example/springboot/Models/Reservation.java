@@ -15,7 +15,7 @@ public class Reservation {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime today = LocalDateTime.now();
     private int peopleAmount;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime reservationTime;
     @JsonFormat(pattern="HH:mm")
     private LocalTime duration;

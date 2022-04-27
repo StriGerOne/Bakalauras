@@ -6,5 +6,8 @@ public class Constants {
      public static final String REGISTER = ADRESS + "addUser";
      public static final String RESTLIST = ADRESS + "allRestouran";
      public static final String RESERVATE = ADRESS + "newReservation";
+     public static final String USERINFO = ADRESS + "Usersby/{id}";
+     public static final String RESTORANINFO = ADRESS + "getResbouranby/{id}";
+
 
 }

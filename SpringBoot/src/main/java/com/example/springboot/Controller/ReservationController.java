@@ -32,13 +32,13 @@ public class ReservationController {
 
     @PostMapping("/newReservation")
     public String saveReservation(@RequestBody Reservation reservation) {
-        if (!checkReservationAvailability(reservation.getReservationTime().toString(), reservation.getDuration().toString(), reservation.getRestouranId(), reservation.getPeopleAmount())) {
+      //  if (!checkReservationAvailability(reservation.getReservationTime().toString(), reservation.getDuration().toString(), reservation.getRestouranId(), reservation.getPeopleAmount())) {
             reservation.setId((long) service.getSequenceNumber(SEQUENCE_NAME));
             reservationRepository.save(reservation);
             return "New reservation made";
-        } else {
-            return "Too bad";
-        }
+       // } else {
+       //     return "Too bad";
+       // }
     }
 
     @GetMapping("/allReservations")
