@@ -33,58 +33,58 @@ public class Register extends AppCompatActivity {
 
         Registration.setOnClickListener(v -> {
 
-        String firstname = FirstName.getText().toString();
-        String lastname = LastName.getText().toString();
-        String username = UserName.getText().toString();
-        String password = Password.getText().toString();
-        String phone = Phone.getText().toString();
-        String email = Email.getText().toString();
+            String firstname = FirstName.getText().toString();
+            String lastname = LastName.getText().toString();
+            String username = UserName.getText().toString();
+            String password = Password.getText().toString();
+            String phone = Phone.getText().toString();
+            String email = Email.getText().toString();
 
-        String json = "{\"fname\":\"" + firstname + "\", \"lname\":\"" + lastname + "\", \"username\":\"" + username
-                + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
+            String json = "{\"fname\":\"" + firstname + "\", \"lname\":\"" + lastname + "\", \"username\":\"" + username
+                    + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
 
 
-        if (firstname.isEmpty()) {
-            FirstName.setError("First name is required");
-            FirstName.requestFocus();
-            return;
-        }
-        if (lastname.isEmpty()) {
-            LastName.setError("Last name is required");
-            LastName.requestFocus();
-            return;
-        }
-        if (username.isEmpty()) {
-            UserName.setError("Username is required");
-            UserName.requestFocus();
-            return;
-        }
-        if (password.isEmpty()) {
-            Password.setError("Password is required");
-            Password.requestFocus();
-            return;
-        }
-        if (password.length() < 6) {
-            Password.setError("Min password length should be 6 characters!");
-            Password.requestFocus();
-            return;
-        }
-        if (phone.isEmpty()) {
-            Phone.setError("Phone number is required");
-            Phone.requestFocus();
-            return;
-        }
-        if (email.isEmpty()) {
-            Email.setError("Email number is required");
-            Email.requestFocus();
-            return;
-        }
+            if (firstname.isEmpty()) {
+                FirstName.setError("First name is required");
+                FirstName.requestFocus();
+                return;
+            }
+            if (lastname.isEmpty()) {
+                LastName.setError("Last name is required");
+                LastName.requestFocus();
+                return;
+            }
+            if (username.isEmpty()) {
+                UserName.setError("Username is required");
+                UserName.requestFocus();
+                return;
+            }
+            if (password.isEmpty()) {
+                Password.setError("Password is required");
+                Password.requestFocus();
+                return;
+            }
+            if (password.length() < 6) {
+                Password.setError("Min password length should be 6 characters!");
+                Password.requestFocus();
+                return;
+            }
+            if (phone.isEmpty()) {
+                Phone.setError("Phone number is required");
+                Phone.requestFocus();
+                return;
+            }
+            if (email.isEmpty()) {
+                Email.setError("Email number is required");
+                Email.requestFocus();
+                return;
+            }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Email.setError("Please provide valid email");
-            Email.requestFocus();
-            return;
-        }
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Email.setError("Please provide valid email");
+                Email.requestFocus();
+                return;
+            }
 
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
@@ -95,17 +95,17 @@ public class Register extends AppCompatActivity {
                     handler.post(() -> {
                         if (!response.equals("Error") && !response.equals("")) {
                             Toast.makeText(getApplicationContext(), "Register Successful", Toast.LENGTH_SHORT).show();
-                           Intent intent = new Intent(Register.this, Login.class);
+                            Intent intent = new Intent(Register.this, Login.class);
                             startActivity(intent);
                         } else {
-                           Toast.makeText(getApplicationContext(), "Incorrect information", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Incorrect information", Toast.LENGTH_SHORT).show();
                             System.out.println(json);
                         }
-                   });
-               } catch (Exception e) {
-                   e.printStackTrace();
-               }
-           });
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
 
         });
     }

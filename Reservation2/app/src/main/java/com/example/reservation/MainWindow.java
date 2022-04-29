@@ -24,13 +24,18 @@ import static com.example.reservation.Constants.RESTLIST;
 
 public class MainWindow extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        final String currentUserId = getIntent().getStringExtra("UserId");
+        final String currentUserName = getIntent().getStringExtra("UserName");
+        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton Login_Userboard = findViewById(R.id.login_userboard);
-        Login_Userboard.setOnClickListener(view -> startActivity(new Intent(MainWindow.this, Login.class)));
+        ImageButton loginUserBoard = findViewById(R.id.login_userboard);//ne clean, cammelCasePrasau
+        loginUserBoard.setOnClickListener(view -> startActivity(new Intent(MainWindow.this, Login.class)));
 
 
         Executor executor = Executors.newSingleThreadExecutor();
@@ -45,43 +50,31 @@ public class MainWindow extends AppCompatActivity {
 
                     if (!response.equals("") && !response.equals("Error")) {
                         Toast.makeText(MainWindow.this.getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainWindow.this, ReservationForm.class);
                         Gson builder = new GsonBuilder().create();
-                        Type RestouranListType = new TypeToken<List<Restourant>>() {
+                        Type restaurantListType = new TypeToken<List<Restourant>>() {
                         }.getType();
-                        final List<Restourant> restoranListFromJson = builder.fromJson(response, RestouranListType);
+                        final List<Restourant> restoranListFromJson = builder.fromJson(response, restaurantListType);
                         /** Spausdina visą info esančią restourant klasėje **/
                         List<String> resList = new ArrayList<>();
-                        restoranListFromJson.forEach(r->resList.add(r.getPhone() + " " + r.getEmail()));
+                        restoranListFromJson.forEach(r -> resList.add(r.getPhone() + " " + r.getEmail()));
 
-                        ListView Restoran_List = findViewById(R.id.restlist);
+                        ListView restaurantList = findViewById(R.id.restlist);
 
                         ArrayAdapter<Restourant> arrayAdapter = new ArrayAdapter<>(MainWindow.this, android.R.layout.simple_list_item_1, restoranListFromJson);
-                        Restoran_List.setAdapter(arrayAdapter);
-                        /** Spausdina tik nurodytą Stringą **/
-//                        List<String> resList = new ArrayList<>();
-//                        restoranListFromJson.forEach(r -> resList.add(r.getPhone()));
-//
-//                        ListView Restoran_List = findViewById(R.id.restlist);
-//
-//                        ListAdapter listAdapter = new ArrayAdapter<>(MainWindow.this, android.R.layout.simple_list_item_1, resList);
-//                        Restoran_List.setAdapter(listAdapter);
-
-                        Restoran_List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        restaurantList.setAdapter(arrayAdapter);
+                        restaurantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                 Intent intent = new Intent(MainWindow.this, ReservationForm.class);
-
-                                Intent currentIntent = getIntent();
-                                String userId = currentIntent.getStringExtra("UserInfo");
-                                if(userId != null) {
+                                intent.putExtra("UserId", currentUserId);
+                                intent.putExtra("RestaurantId", restoranListFromJson.get(i).getId());
+                                intent.putExtra("UserName", currentUserName);
+                                intent.putExtra("UserSurname", currentUserSurname);
+                                if (currentUserId != null) {
                                     startActivity(intent);
-                                System.out.println(userId);
-                                }
-                                else Toast.makeText(getApplicationContext(), "You need to login first", Toast.LENGTH_SHORT).show();
-
+                                } else
+                                    Toast.makeText(getApplicationContext(), "You need to login first", Toast.LENGTH_SHORT).show();
                             }
-
                         });
 
                     }
@@ -94,6 +87,6 @@ public class MainWindow extends AppCompatActivity {
 
         });
     }
-    }
+}
 
 

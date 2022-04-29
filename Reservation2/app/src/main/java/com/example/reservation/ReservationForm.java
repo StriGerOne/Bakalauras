@@ -41,6 +41,12 @@ public class ReservationForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_form);
 
+        //code duplication, not optimal
+        final String currentUserId = getIntent().getStringExtra("UserId");
+        final String currentUserName = getIntent().getStringExtra("UserName");
+        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
+        final Long restaurantId = getIntent().getLongExtra("RestaurantId", 0);
+
         EditText peopleAmountText = findViewById(R.id.amount);
         EditText dateTimeInField = findViewById(R.id.date_time_input); //Java kalboje negalima taip kintamuju vadint, nes yra cammelCaseFormatasIrJoReikiaLaikytis
         dateTimeInField.setInputType(InputType.TYPE_NULL); //Kaip konstanta ok TYPE_NULL
@@ -51,8 +57,10 @@ public class ReservationForm extends AppCompatActivity {
         durationField.setOnClickListener(v -> showTimeDialog(durationField));
 
         // EditText Name = findViewById(R.id.name); //kodel kintamieji is didziosios raides?? Kaip planuojate nuo klases atskirti?
+        EditText firstNameField = findViewById(R.id.name);
+        firstNameField.setText(currentUserName);
         EditText lastNameField = findViewById(R.id.last_name);
-        EditText restaurantField = findViewById(R.id.restouran);
+        lastNameField.setText(currentUserSurname);
 
         Button Reservation = findViewById(R.id.btn_reservate);
         Reservation.setOnClickListener(v -> {
@@ -73,7 +81,10 @@ public class ReservationForm extends AppCompatActivity {
             dataToSend.setProperty("peopleAmount", peopleAmount);
             dataToSend.setProperty("reservationTime", LocalDateTime.parse(dateTimeIn, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
             dataToSend.setProperty("duration", duration);
+            dataToSend.setProperty("restouranId", String.valueOf(restaurantId));
+            dataToSend.setProperty("userId", currentUserId);
 
+            System.out.println(gsonBuilder.create().toJson(dataToSend, Properties.class));
             if (peopleAmount.isEmpty()) {
                 peopleAmountText.setError("People amount is required");
                 peopleAmountText.requestFocus();
