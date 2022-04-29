@@ -1,4 +1,4 @@
-package com.example.reservation;
+package com.example.reservation.utils;
 
 import android.os.Build;
 import androidx.annotation.RequiresApi;

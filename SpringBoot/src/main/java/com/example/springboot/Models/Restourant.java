@@ -16,6 +16,7 @@ public class Restourant {
     private String jobTime;
     private String category;
     private int numberOfSeats;
+    private String imageUrl;
 
     public Restourant(Long id, String restourantName, String summary, String address, String phone, String email, String jobTime, String category, int numberOfSeats) {
         this.id = id;
@@ -94,5 +95,13 @@ public class Restourant {
     }
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -11,6 +11,7 @@ public class Restourant {
     private String email;
     private String jobTime;
     private String category;
+    private String imageUrl;
     private int numberOfSeats;
 
     public Restourant(Long id, String restourantName, String summary, String address, String phone, String email, String jobTime, String category, int numberOfSeats) {
@@ -22,6 +23,22 @@ public class Restourant {
         this.email = email;
         this.jobTime = jobTime;
         this.category = category;
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public Restourant() {
+    }
+
+    public Restourant(Long id, String restourantName, String summary, String address, String phone, String email, String jobTime, String category, String imageUrl, int numberOfSeats) {
+        this.id = id;
+        this.restourantName = restourantName;
+        this.summary = summary;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.jobTime = jobTime;
+        this.category = category;
+        this.imageUrl = imageUrl;
         this.numberOfSeats = numberOfSeats;
     }
 
@@ -91,6 +108,14 @@ public class Restourant {
 
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="2dp" >
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_row_selector"
+                android:padding="8dp" >
 
-    <ImageView
-            android:id="@+id/profile_pic"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:contentDescription="desc"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
+    <!-- Thumbnail Image -->
+    <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp" />
 
+    <!-- Movie Title -->
     <TextView
-            android:id="@+id/member_name"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/profile_pic"
-            android:paddingBottom="10dp"
-            android:text="txt"
-            android:textSize="20sp" />
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:textSize="@dimen/title"
+            android:textStyle="bold" tools:ignore="SpUsage"/>
 
+    <!-- Rating -->
     <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
+            android:id="@+id/phoneNum"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/member_name"
-            android:layout_below="@+id/member_name"
-            android:text="txt"
-            android:textSize="16sp" />
+            android:layout_below="@id/title"
+            android:layout_marginTop="1dip"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:textSize="@dimen/rating" tools:ignore="SpUsage"/>
 
+    <!-- Genre -->
     <TextView
-            android:id="@+id/contact_type"
-            android:layout_width="wrap_content"
+            android:id="@+id/address"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/member_name"
-            android:layout_alignBottom="@+id/member_name"
-            android:layout_alignParentRight="true"
-            android:text="txt"
-            android:textSize="16sp" />
+            android:layout_below="@id/phoneNum"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:textColor="@color/restaurantTitle"
+            android:textSize="@dimen/genre" tools:ignore="SpUsage"/>
+
 
 </RelativeLayout>
