@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -18,8 +21,13 @@ import com.example.reservation.Serializer.DataTimeSerializer;
 import com.google.gson.GsonBuilder;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Calendar;
+import java.util.Formatter;
+import java.util.Properties;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -27,30 +35,31 @@ import static com.example.reservation.Constants.RESERVATE;
 
 public class ReservationForm extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_form);
 
-        EditText People_amount = findViewById(R.id.amount);
-        EditText Date_time_in=findViewById(R.id.date_time_input);
-        Date_time_in.setInputType(InputType.TYPE_NULL);
-        Date_time_in.setOnClickListener(v -> showDateTimeDialog(Date_time_in));
+        EditText peopleAmountText = findViewById(R.id.amount);
+        EditText dateTimeInField = findViewById(R.id.date_time_input); //Java kalboje negalima taip kintamuju vadint, nes yra cammelCaseFormatasIrJoReikiaLaikytis
+        dateTimeInField.setInputType(InputType.TYPE_NULL); //Kaip konstanta ok TYPE_NULL
+        dateTimeInField.setOnClickListener(v -> showDateTimeDialog(dateTimeInField));
 
-        EditText Duration = findViewById(R.id.duration);
-        Duration.setInputType(InputType.TYPE_NULL);
-        Duration.setOnClickListener(v -> showTimeDialog(Duration));
+        EditText durationField = findViewById(R.id.duration);
+        durationField.setInputType(InputType.TYPE_NULL);
+        durationField.setOnClickListener(v -> showTimeDialog(durationField));
 
-        EditText Name = findViewById(R.id.name);
-        EditText Last_name = findViewById(R.id.last_name);
-        EditText Restouran = findViewById(R.id.restouran);
+        // EditText Name = findViewById(R.id.name); //kodel kintamieji is didziosios raides?? Kaip planuojate nuo klases atskirti?
+        EditText lastNameField = findViewById(R.id.last_name);
+        EditText restaurantField = findViewById(R.id.restouran);
 
         Button Reservation = findViewById(R.id.btn_reservate);
         Reservation.setOnClickListener(v -> {
 
-            String people_amount = People_amount.getText().toString();
-            String date_time_in = Date_time_in.getText().toString();
-            String duration = Duration.getText().toString();
+            String peopleAmount = peopleAmountText.getText().toString();
+            String dateTimeIn = dateTimeInField.getText().toString();
+            String duration = durationField.getText().toString();
 
             /** I db turetu ikristi UserID bei RestoranID,
              * formoje turetu atvaizduoti Name, Las_name, Restouran**/
@@ -58,22 +67,26 @@ public class ReservationForm extends AppCompatActivity {
 //            String last_name = Last_name.getText().toString();
 //            String restouran = Restouran.getText().toString();
 
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
+            Properties dataToSend = new Properties();
+            dataToSend.setProperty("peopleAmount", peopleAmount);
+            dataToSend.setProperty("reservationTime", LocalDateTime.parse(dateTimeIn, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
+            dataToSend.setProperty("duration", duration);
 
-            String json = "{\"peopleAmount\":\"" + people_amount + "\", \"reservationTime\":\"" + date_time_in + "\", \"duration\":\"" + duration + "\"}";
-
-            if (people_amount.isEmpty()) {
-                People_amount.setError("People amount is required");
-                People_amount.requestFocus();
+            if (peopleAmount.isEmpty()) {
+                peopleAmountText.setError("People amount is required");
+                peopleAmountText.requestFocus();
                 return;
             }
-            if (date_time_in.isEmpty()) {
-                Date_time_in.setError("Starting Date and time is required");
-                Date_time_in.requestFocus();
+            if (dateTimeIn.isEmpty()) {
+                dateTimeInField.setError("Starting Date and time is required");
+                dateTimeInField.requestFocus();
                 return;
             }
             if (duration.isEmpty()) {
-                Duration.setError("End time is required");
-                Duration.requestFocus();
+                durationField.setError("End time is required");
+                durationField.requestFocus();
                 return;
             }
 
@@ -83,7 +96,7 @@ public class ReservationForm extends AppCompatActivity {
             executor.execute(() -> {
                 String url = RESERVATE;
                 try {
-                    String response = RESTController.sendPost(url, json);
+                    String response = RESTController.sendPost(url, gsonBuilder.create().toJson(dataToSend, Properties.class));
                     handler.post(() -> {
                         if (!response.equals("Error") && !response.equals("")) {
                             Toast.makeText(getApplicationContext(), "Reservation successful", Toast.LENGTH_SHORT).show();
@@ -92,13 +105,11 @@ public class ReservationForm extends AppCompatActivity {
                             Intent currentIntent = getIntent();
                             String userId = currentIntent.getStringExtra("UserInfo");
 
-                                startActivity(intent);
-                                System.out.println(userId);
-
-                            // startActivity(intent);
+                            startActivity(intent);
+                            System.out.println(userId);
                         } else {
                             Toast.makeText(getApplicationContext(), "Incorrect information", Toast.LENGTH_SHORT).show();
-                            System.out.println(json);
+                            System.out.println(dataToSend);
                         }
                     });
                 } catch (Exception e) {
@@ -109,43 +120,44 @@ public class ReservationForm extends AppCompatActivity {
         });
 
     }
-    private void showDateTimeDialog(final EditText date_time_in) {
-        final Calendar calendar=Calendar.getInstance();
-        DatePickerDialog.OnDateSetListener dateSetListener= (view, year, month, dayOfMonth) -> {
-            calendar.set(Calendar.YEAR,year);
-            calendar.set(Calendar.MONTH,month);
-            calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
 
-            TimePickerDialog.OnTimeSetListener timeSetListener= (view1, hourOfDay, minute) -> {
-                calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
-                calendar.set(Calendar.MINUTE,minute);
+    private void showDateTimeDialog(final EditText date_time_in) {
+        final Calendar calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dateSetListener = (view, year, month, dayOfMonth) -> {
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+            TimePickerDialog.OnTimeSetListener timeSetListener = (view1, hourOfDay, minute) -> {
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                calendar.set(Calendar.MINUTE, minute);
 
                 GsonBuilder gson = new GsonBuilder();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     gson.registerTypeAdapter(LocalDateTime.class, new DataTimeSerializer());
                 }
 
-                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
                 date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
             };
 
-            new TimePickerDialog(ReservationForm.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false).show();
+            new TimePickerDialog(ReservationForm.this, timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
         };
-        new DatePickerDialog(ReservationForm.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+        new DatePickerDialog(ReservationForm.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     private void showTimeDialog(final EditText Duration) {
-        final Calendar calendar=Calendar.getInstance();
+        final Calendar calendar = Calendar.getInstance();
 
-        TimePickerDialog.OnTimeSetListener timeSetListener= (view, hourOfDay, minute) -> {
-            calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
-            calendar.set(Calendar.MINUTE,minute);
-            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
+        TimePickerDialog.OnTimeSetListener timeSetListener = (view, hourOfDay, minute) -> {
+            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            calendar.set(Calendar.MINUTE, minute);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
             Duration.setText(simpleDateFormat.format(calendar.getTime()));
         };
 
-        new TimePickerDialog(ReservationForm.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false).show();
+        new TimePickerDialog(ReservationForm.this, timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
     }
 
 }
