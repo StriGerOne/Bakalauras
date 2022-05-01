@@ -15,7 +15,7 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
     />
     <TextView
-            android:text="Reservation"
+            android:text="Rezervacija"
             android:id="@+id/Reservation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,10 +29,10 @@
             app:layout_constraintHorizontal_bias="0.0"/>
 
     <EditText
-            android:hint="People amount"
+            android:hint="Žmonių kiekis"
             android:id="@+id/amount"
             android:layout_width="240dp"
-            android:layout_height="60dp"
+            android:layout_height="62dp"
             android:background="#30AA8989"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/Reservation" android:inputType="number"/>
 
     <EditText
-            android:hint="Date and time"
+            android:hint="Data ir laikas"
             android:id="@+id/date_time_input"
             android:inputType="textPersonName"
             android:layout_width="240dp"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/amount" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="76dp"/>
     <EditText
-            android:hint="Until"
+            android:hint="Trukmė"
             android:id="@+id/duration"
             android:inputType="textPersonName"
             android:layout_width="240dp"
@@ -68,7 +68,7 @@
             android:layout_marginStart="76dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/date_time_input"/>
     <EditText
-            android:hint="Name"
+            android:hint="Vardas"
             android:id="@+id/name"
             android:inputType="textPersonName"
             android:layout_width="240dp"
@@ -81,7 +81,7 @@
             android:layout_marginStart="76dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/duration"/>
     <EditText
-            android:hint="Last Name"
+            android:hint="Pavardė"
             android:id="@+id/last_name"
             android:inputType="textPersonName"
             android:layout_width="240dp"
@@ -94,8 +94,8 @@
             android:layout_marginStart="76dp"
             app:layout_constraintTop_toBottomOf="@+id/name" android:layout_marginTop="8dp"/>
     <EditText
-            android:hint="Restouran"
-            android:id="@+id/restouran"
+            android:hint="Restoranas"
+            android:id="@+id/restaurant"
             android:inputType="textPersonName"
             android:layout_width="240dp"
             android:layout_height="60dp"
@@ -112,6 +112,6 @@
             android:layout_height="wrap_content" android:id="@+id/btn_reservate"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="136dp" tools:ignore="MissingConstraints"
-            android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/restouran"/>
+            android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/restaurant"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

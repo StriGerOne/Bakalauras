@@ -15,7 +15,7 @@
           app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
   />
   <TextView
-          android:text="Registration"
+          android:text="Registracija"
           android:id="@+id/Register"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
           app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
           app:layout_constraintTop_toTopOf="@+id/imageView" android:layout_marginTop="160dp"/>
   <EditText
-          android:hint="First Name"
+          android:hint="Vardas"
           android:id="@+id/FName"
           android:inputType="textPersonName"
           android:layout_width="240dp"
@@ -41,7 +41,7 @@
           android:layout_marginStart="76dp" android:layout_marginTop="8dp"
           app:layout_constraintTop_toBottomOf="@+id/Register"/>
   <EditText
-          android:hint="Last Name"
+          android:hint="Pavardė"
           android:id="@+id/LName"
           android:inputType="textPersonName"
           android:layout_width="240dp"
@@ -54,7 +54,7 @@
           app:layout_constraintTop_toBottomOf="@+id/FName" app:layout_constraintStart_toStartOf="parent"
           android:layout_marginStart="76dp"/>
   <EditText
-          android:hint="Username"
+          android:hint="Vartotojo vardas"
           android:id="@+id/UserName"
           android:inputType="textPersonName"
           android:layout_width="240dp"
@@ -67,7 +67,7 @@
           app:layout_constraintTop_toBottomOf="@+id/LName" app:layout_constraintStart_toStartOf="parent"
           android:layout_marginStart="76dp"/>
   <EditText
-          android:hint="Password"
+          android:hint="Slaptažodis"
           android:id="@+id/Password"
           android:inputType="textPassword"
           android:layout_width="240dp"
@@ -81,7 +81,7 @@
           app:layout_constraintTop_toBottomOf="@+id/UserName"/>
 
   <EditText
-          android:hint="Phone"
+          android:hint="Telefono numeris"
           android:id="@+id/Phone"
           android:inputType="phone"
           android:layout_width="240dp"
@@ -94,7 +94,7 @@
           app:layout_constraintTop_toBottomOf="@+id/Password" app:layout_constraintStart_toStartOf="parent"
           android:layout_marginStart="76dp"/>
   <EditText
-          android:hint="Email"
+          android:hint="El. paštas"
           android:id="@+id/Email"
           android:inputType="textEmailAddress"
           android:layout_width="240dp"
@@ -108,11 +108,11 @@
           android:layout_marginStart="76dp"/>
 
   <Button
-          android:text="Register"
+          android:text="Registruotis"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content" android:id="@+id/btn_register"
-          android:layout_marginTop="25dp"
+          android:layout_marginTop="28dp"
           app:layout_constraintTop_toBottomOf="@+id/Email" app:layout_constraintStart_toStartOf="parent"
-          android:layout_marginStart="140dp"/>
+          android:layout_marginStart="120dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

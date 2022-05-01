@@ -13,6 +13,6 @@ public interface ReservationRepository extends MongoRepository<Reservation, Long
     List<Reservation> findByPeopleAmount(int peopleAmount);
     List<Reservation> findByReservationTime(LocalDateTime reservationTime);
     List<Reservation> findByReservationTimeBetween(LocalDateTime reservationTime, LocalDateTime reservationTime2);
-    List<Reservation> findByReservationTimeBetweenAndRestouranId(LocalDateTime reservationTime, LocalDateTime reservationTime2, long id);
+    List<Reservation> findByReservationTimeBetweenAndRestaurantId(LocalDateTime reservationTime, LocalDateTime reservationTime2, long id);
 
 }

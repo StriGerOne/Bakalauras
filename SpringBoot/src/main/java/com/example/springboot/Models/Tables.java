@@ -2,48 +2,48 @@ package com.example.springboot.Models;
 
 public class Tables {
 
-    private Long restouranId;
-    private int seatamount;
-    private Long tableid;
-    private int tableseats;
+    private Long restaurantId;
+    private int seatAmount;
+    private Long tableId;
+    private int tableSeats;
 
-    public Tables(Long restouranId, int seatamount, Long tableid, int tableseats) {
-        this.restouranId = restouranId;
-        this.seatamount = seatamount;
-        this.tableid = tableid;
-        this.tableseats = tableseats;
+    public Tables(Long restaurantId, int seatAmount, Long tableId, int tableSeats) {
+        this.restaurantId = restaurantId;
+        this.seatAmount = seatAmount;
+        this.tableId = tableId;
+        this.tableSeats = tableSeats;
     }
 
-    public Long getRestouranId() {
-        return restouranId;
+    public Long getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestouranId(Long restouranId) {
-        this.restouranId = restouranId;
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
-    public int getSeatamount() {
-        return seatamount;
+    public int getSeatAmount() {
+        return seatAmount;
     }
 
-    public void setSeatamount(int seatamount) {
-        this.seatamount = seatamount;
+    public void setSeatAmount(int seatAmount) {
+        this.seatAmount = seatAmount;
     }
 
-    public Long getTableid() {
-        return tableid;
+    public Long getTableId() {
+        return tableId;
     }
 
-    public void setTableid(Long tableid) {
-        this.tableid = tableid;
+    public void setTableId(Long tableId) {
+        this.tableId = tableId;
     }
 
-    public int getTableseats() {
-        return tableseats;
+    public int getTableSeats() {
+        return tableSeats;
     }
 
-    public void setTableseats(int tableseats) {
-        this.tableseats = tableseats;
+    public void setTableSeats(int tableSeats) {
+        this.tableSeats = tableSeats;
     }
 }
 

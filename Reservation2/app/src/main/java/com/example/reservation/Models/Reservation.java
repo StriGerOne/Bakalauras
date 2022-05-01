@@ -6,7 +6,7 @@ import java.time.LocalTime;
 public class Reservation {
 
     private Long id;
-    private Long restouranId;
+    private Long restaurantId;
     private Long userId;
     private LocalDateTime today;
     private int peopleAmount;
@@ -16,9 +16,9 @@ public class Reservation {
 
 
 
-    public Reservation(Long id, Long restouranId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, int  freeSpace) {
+    public Reservation(Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, int  freeSpace) {
         this.id = id;
-        this.restouranId = restouranId;
+        this.restaurantId = restaurantId;
         this.userId = userId;
         this.today = today;
         this.peopleAmount = peopleAmount;
@@ -35,12 +35,12 @@ public class Reservation {
         this.id = id;
     }
 
-    public Long getRestouranId() {
-        return restouranId;
+    public Long getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestouranId(Long restouranId) {
-        this.restouranId = restouranId;
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public Long getUserId() {

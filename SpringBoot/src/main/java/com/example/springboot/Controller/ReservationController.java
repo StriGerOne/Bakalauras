@@ -2,9 +2,9 @@ package com.example.springboot.Controller;
 
 import com.example.springboot.AutoID.SequenceGeneratorService;
 import com.example.springboot.Models.Reservation;
-import com.example.springboot.Models.Restourant;
+import com.example.springboot.Models.Restaurant;
 import com.example.springboot.Repositories.ReservationRepository;
-import com.example.springboot.Repositories.RestourantRepository;
+import com.example.springboot.Repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +24,7 @@ public class ReservationController {
     private ReservationRepository reservationRepository;
 
     @Autowired
-    private RestourantRepository restourantRepository;
+    private RestaurantRepository restaurantRepository;
 
     @Autowired
     private SequenceGeneratorService service;
@@ -32,7 +32,7 @@ public class ReservationController {
 
     @PostMapping("/newReservation")
     public String saveReservation(@RequestBody Reservation reservation) {
-      //  if (!checkReservationAvailability(reservation.getReservationTime().toString(), reservation.getDuration().toString(), reservation.getRestouranId(), reservation.getPeopleAmount())) {
+      //  if (!checkReservationAvailability(reservation.getReservationTime().toString(), reservation.getDuration().toString(), reservation.getRestaurantId(), reservation.getPeopleAmount())) {
             reservation.setId((long) service.getSequenceNumber(SEQUENCE_NAME));
             reservationRepository.save(reservation);
             return "New reservation made";
@@ -76,14 +76,14 @@ public class ReservationController {
     public @ResponseBody
     boolean checkReservationAvailability(@RequestParam(name = "startDate") String start, @RequestParam(name = "duration") String end, @RequestParam(name = "restId") long id, @RequestParam(name = "peopleNum") int numberOfPpl) {
         LocalDateTime endDate = LocalDateTime.parse(start, formatter).plusHours(LocalTime.parse(end).getHour());
-        List<Reservation> reservationList = reservationRepository.findByReservationTimeBetweenAndRestouranId(LocalDateTime.parse(start, formatter), endDate, id);
+        List<Reservation> reservationList = reservationRepository.findByReservationTimeBetweenAndRestaurantId(LocalDateTime.parse(start, formatter), endDate, id);
         int occupiedSeats = reservationList.stream()
                 //.filter(x -> x.getReservationTime().plusHours(x.getDuration().getHour()).isAfter(endDate))
                 .map(Reservation::getPeopleAmount).mapToInt(Integer::intValue).sum();
         System.out.println(occupiedSeats);
-        Optional<Restourant> currentRest = restourantRepository.findById(id);
+        Optional<Restaurant> currentRest = restaurantRepository.findById(id);
         int allSeats = currentRest.stream()
-                .map(Restourant::getNumberOfSeats).mapToInt(Integer::intValue).sum();
+                .map(Restaurant::getNumberOfSeats).mapToInt(Integer::intValue).sum();
         System.out.println(allSeats);
 
         return allSeats - occupiedSeats > numberOfPpl;

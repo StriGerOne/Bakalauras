@@ -10,7 +10,7 @@
 
 
     <TextView
-            android:text="Login"
+            android:text="Prisijungimas"
             android:id="@+id/Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             app:layout_constraintHorizontal_bias="0.0"/>
 
     <EditText
-            android:hint="Username"
+            android:hint="Vartotojo vardas"
             android:id="@+id/login_name"
             android:inputType="textPersonName"
             android:layout_width="240dp"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toBottomOf="@+id/Login"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="76dp"/>
     <EditText
-            android:hint="Password"
+            android:hint="Slaptažodis"
             android:inputType="textPassword"
             android:id="@+id/login_password"
             android:layout_width="240dp"
@@ -50,19 +50,19 @@
             app:layout_constraintTop_toBottomOf="@+id/login_name" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="76dp"/>
     <Button
-            android:text="Login In"
-            android:layout_width="120dp"
+            android:text="Prisijungti"
+            android:layout_width="145dp"
             android:layout_height="50dp" android:id="@+id/login_button"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="136dp" android:layout_marginTop="40dp"
+            android:layout_marginStart="124dp" android:layout_marginTop="44dp"
             app:layout_constraintTop_toBottomOf="@+id/login_password"/>
     <Button
-            android:text="Register"
-            android:layout_width="120dp"
+            android:text="Registruotis"
+            android:layout_width="145dp"
             android:layout_height="50dp" android:id="@+id/login_reg_button"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/login_button" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="136dp"/>
+            android:layout_marginStart="124dp"/>
     <ImageView
             android:layout_width="153dp"
             android:layout_height="130dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView"
