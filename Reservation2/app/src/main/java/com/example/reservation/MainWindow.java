@@ -55,6 +55,7 @@ public class MainWindow extends AppCompatActivity {
                             Intent intent = new Intent(MainWindow.this, ReservationForm.class);
                             intent.putExtra("UserId", currentUserId);
                             intent.putExtra("RestaurantId", restaurantListFromJson.get(i).getId());
+                            intent.putExtra("RestaurantName", restaurantListFromJson.get(i).getRestaurantName());
                             intent.putExtra("UserName", currentUserName);
                             intent.putExtra("UserSurname", currentUserSurname);
                             if (currentUserId != null) {

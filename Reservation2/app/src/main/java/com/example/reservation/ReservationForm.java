@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +42,7 @@ public class ReservationForm extends AppCompatActivity {
         final String currentUserId = getIntent().getStringExtra("UserId");
         final String currentUserName = getIntent().getStringExtra("UserName");
         final String currentUserSurname = getIntent().getStringExtra("UserSurname");
+        final String currentRestaurant = getIntent().getStringExtra("RestaurantName");
         final Long restaurantId = getIntent().getLongExtra("RestaurantId", 0);
 
         EditText peopleAmountText = findViewById(R.id.amount);
@@ -54,9 +56,16 @@ public class ReservationForm extends AppCompatActivity {
 
         // EditText Name = findViewById(R.id.name); //kodel kintamieji is didziosios raides?? Kaip planuojate nuo klases atskirti?
         EditText firstNameField = findViewById(R.id.name);
+        firstNameField.setEnabled(false);
         firstNameField.setText(currentUserName);
+
         EditText lastNameField = findViewById(R.id.last_name);
+        lastNameField.setEnabled(false);
         lastNameField.setText(currentUserSurname);
+
+        EditText restaurantField = findViewById(R.id.restaurant);
+        restaurantField.setEnabled(false);
+        restaurantField.setText(currentRestaurant);
 
         Button Reservation = findViewById(R.id.btn_reservate);
         Reservation.setOnClickListener(v -> {
@@ -64,12 +73,6 @@ public class ReservationForm extends AppCompatActivity {
             String peopleAmount = peopleAmountText.getText().toString();
             String dateTimeIn = dateTimeInField.getText().toString();
             String duration = durationField.getText().toString();
-
-            /** I db turetu ikristi UserID bei RestaurantID,
-             * formoje turetu atvaizduoti Name, Las_name, Restaurant**/
-//            String name = Name.setText(fname);
-//            String last_name = Last_name.getText().toString();
-//            String restaurant = Restaurant.getText().toString();
 
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
