@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Reservation;
+import com.example.reservation.Models.Restaurant;
 import com.example.reservation.utils.CustomListAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.RESERVATIONLIST;
+import static com.example.reservation.Constants.*;
 
 public class UserReservations extends AppCompatActivity {
 
@@ -41,7 +42,6 @@ public class UserReservations extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ListView reservList = findViewById(R.id.reservationList);
 
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
@@ -51,6 +51,7 @@ public class UserReservations extends AppCompatActivity {
             try {
                 String response = RESTController.sendGet(url);
                 handler.post(() -> {
+
                     if (!response.equals("") && !response.equals("Error")) {
                         Gson builder = new GsonBuilder().create();
                         Type ReservationListType = new TypeToken<List<Reservation>>() {
@@ -58,20 +59,20 @@ public class UserReservations extends AppCompatActivity {
                         final List<Reservation> reservationListFromJson = builder.fromJson(response, ReservationListType);
                         /** Spausdina visą info esančią restourant klasėje **/
                         List<String> reservationList = new ArrayList<>();
-                        reservationListFromJson.forEach(r->reservationList.add(r.getPeopleAmount() + " " + r.getDuration()));
+                        reservationListFromJson.forEach(r->reservationList.add(r.getPeopleAmount() + " " + r.getReservationTime()));
 
-
+                        ListView test = findViewById(R.id.reservationList);
 
                         ArrayAdapter<Reservation> arrayAdapter = new ArrayAdapter<>(UserReservations.this, android.R.layout.simple_list_item_1, reservationListFromJson);
-                        reservList.setAdapter(arrayAdapter);
+                        test.setAdapter(arrayAdapter);
                     }
+
                 });
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
         });
-
-
-
     }
 }
