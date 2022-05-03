@@ -6,8 +6,9 @@ public class Constants {
      public static final String REGISTER = ADRESS + "addUser";
      public static final String RESTLIST = ADRESS + "allRestaurant";
      public static final String RESERVATE = ADRESS + "newReservation";
-     public static final String USERINFO = ADRESS + "Usersby/{id}";
-     public static final String RESTAURANTINFO = ADRESS + "getRestaurantby/{id}";
+     public static final String RESERVATIONLIST = ADRESS + "allReservations";
+     public static final String EDITUSER = ADRESS + "updateuser/{id}";
+
 
 
 }

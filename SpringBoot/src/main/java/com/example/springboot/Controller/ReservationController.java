@@ -56,7 +56,7 @@ public class ReservationController {
         reservationRepository.deleteById(id);
         return "Reservation with id " + id + " deleted";
     }
-
+/*
     @GetMapping("/get/{peopleAmount}")
     public List<Reservation> findBypeopleAmount(@PathVariable int peopleAmount) {
         return reservationRepository.findByPeopleAmount(peopleAmount);
@@ -70,6 +70,11 @@ public class ReservationController {
     @GetMapping("/get2")
     public List<Reservation> findByReservationTimeBetween(@RequestParam(name = "startDate") String start, @RequestParam(name = "endDate") String end) {
         return reservationRepository.findByReservationTimeBetween(LocalDateTime.parse(start, formatter), LocalDateTime.parse(end, formatter));
+    }
+*/
+    @GetMapping("/getReservationByUserID/{id}")
+    public List<Reservation> findByUserId(@PathVariable Long id) {
+    return reservationRepository.findByUserId(id);
     }
 
     @GetMapping("/checkReservationAvailability")

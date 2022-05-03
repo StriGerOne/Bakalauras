@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
@@ -23,13 +24,16 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        ImageButton backButton = findViewById(R.id.back);
+        backButton.setOnClickListener(view -> startActivity(new Intent(Register.this, Login.class)));
+
         EditText FirstName = findViewById(R.id.FName);
         EditText LastName = findViewById(R.id.LName);
         EditText UserName = findViewById(R.id.UserName);
         EditText Password = findViewById(R.id.Password);
         EditText Phone = findViewById(R.id.Phone);
         EditText Email = findViewById(R.id.Email);
-        Button Registration = findViewById(R.id.btn_register);
+        Button Registration = findViewById(R.id.registerBtn);
 
         Registration.setOnClickListener(v -> {
 

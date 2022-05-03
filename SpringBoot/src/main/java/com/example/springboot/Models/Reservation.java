@@ -1,6 +1,7 @@
 package com.example.springboot.Models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
@@ -19,8 +20,9 @@ public class Reservation {
     private LocalDateTime reservationTime;
     @JsonFormat(pattern="HH:mm")
     private LocalTime duration;
+    private String status;
 
-    public Reservation (Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration) {
+    public Reservation (Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String status) {
         this.id = id;
         this.restaurantId = restaurantId;
         this.userId = userId;
@@ -28,6 +30,7 @@ public class Reservation {
         this.peopleAmount = peopleAmount;
         this.reservationTime = reservationTime;
         this.duration = duration;
+        this.status = "Approved";
     }
 
     public Long getId() {
@@ -84,5 +87,13 @@ public class Reservation {
 
     public void setDuration(LocalTime duration) {
         this.duration = duration;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = "Approved";
     }
 }

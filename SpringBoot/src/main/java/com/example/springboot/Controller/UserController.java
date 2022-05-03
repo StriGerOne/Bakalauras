@@ -54,4 +54,24 @@ public class UserController {
         userRepo.deleteById(id);
         return "User" + id + " deleted";
     }
+
+    @PutMapping("/updateuser/{id}")
+    User updateUser(@RequestBody User newUser, @PathVariable Long id) {
+
+        return userRepo.findById(id)
+                .map(user -> {
+                    user.setFname(newUser.getFname());
+                    user.setLname(newUser.getLname());
+                    user.setUsername(newUser.getUsername());
+                    user.setPassword(newUser.getPassword());
+                    user.setPhone(newUser.getPhone());
+                    user.setEmail(newUser.getEmail());
+                    return userRepo.save(user);
+                })
+                .orElseGet(() -> {
+                    newUser.setId(id);
+                    return userRepo.save(newUser);
+                });
+    }
 }
+

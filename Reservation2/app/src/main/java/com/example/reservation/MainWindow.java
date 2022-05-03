@@ -31,8 +31,15 @@ public class MainWindow extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton loginUserBoard = findViewById(R.id.login_userboard);//ne clean, cammelCasePrasau
-        loginUserBoard.setOnClickListener(view -> startActivity(new Intent(MainWindow.this, Login.class)));
+        ImageButton loginUserBoard = findViewById(R.id.userBoardBtn);
+        loginUserBoard.setOnClickListener((adapterView) -> {
+                    Intent intent = new Intent(MainWindow.this, UserInfo.class);
+                    intent.putExtra("UserId", currentUserId);
+                    if (currentUserId != null) {
+                        startActivity(intent);
+                    } else
+                        startActivity(new Intent(MainWindow.this, Login.class));
+                });
 
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
@@ -43,12 +50,11 @@ public class MainWindow extends AppCompatActivity {
                 String response = RESTController.sendGet(url);
                 handler.post(() -> {
                     if (!response.equals("") && !response.equals("Error")) {
-                        Toast.makeText(MainWindow.this.getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                         Gson builder = new GsonBuilder().create();
                         Type restaurantListType = new TypeToken<List<Restaurant>>() {
                         }.getType();
                         final List<Restaurant> restaurantListFromJson = builder.fromJson(response, restaurantListType);
-                        ListView restaurantList = findViewById(R.id.restlist);
+                        ListView restaurantList = findViewById(R.id.restaurantList);
                         adapter = new CustomListAdapter(this, restaurantListFromJson);
                         restaurantList.setAdapter(adapter);
                         restaurantList.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -61,7 +67,7 @@ public class MainWindow extends AppCompatActivity {
                             if (currentUserId != null) {
                                 startActivity(intent);
                             } else
-                                Toast.makeText(getApplicationContext(), "You need to login first", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Pirmiausiai turite prisijungti", Toast.LENGTH_SHORT).show();
                         });
                     }
                 });

@@ -83,4 +83,16 @@ public class Reservation {
         this.duration = duration;
     }
 
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", restaurantId=" + restaurantId +
+                ", userId=" + userId +
+                ", today=" + today +
+                ", peopleAmount=" + peopleAmount +
+                ", reservationTime=" + reservationTime +
+                ", duration=" + duration +
+                '}';
+    }
 }
