@@ -28,14 +28,26 @@ public class MainWindow extends AppCompatActivity {
         final String currentUserId = getIntent().getStringExtra("UserId");
         final String currentUserName = getIntent().getStringExtra("UserName");
         final String currentUserSurname = getIntent().getStringExtra("UserSurname");
+        final String currentUserUsername = getIntent().getStringExtra("UserUsername");
+        final String currentUserPassword = getIntent().getStringExtra("UserPassword");
+        final String currentUserPhone = getIntent().getStringExtra("UserPhone");
+        final String currentUserEmail = getIntent().getStringExtra("UserEmail");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ImageButton loginUserBoard = findViewById(R.id.userBoardBtn);
         loginUserBoard.setOnClickListener((adapterView) -> {
                     Intent intent = new Intent(MainWindow.this, UserInfo.class);
-                    intent.putExtra("UserId", currentUserId);
-                    if (currentUserId != null) {
+            intent.putExtra("UserId", currentUserId);
+            intent.putExtra("UserName", currentUserName);
+            intent.putExtra("UserSurname", currentUserSurname);
+            intent.putExtra("UserUsername", currentUserUsername);
+            intent.putExtra("UserPassword", currentUserPassword);
+            intent.putExtra("UserPhone", currentUserPhone);
+            intent.putExtra("UserEmail", currentUserEmail);
+
+            if (currentUserId != null) {
                         startActivity(intent);
                     } else
                         startActivity(new Intent(MainWindow.this, Login.class));
@@ -58,12 +70,19 @@ public class MainWindow extends AppCompatActivity {
                         adapter = new CustomListAdapter(this, restaurantListFromJson);
                         restaurantList.setAdapter(adapter);
                         restaurantList.setOnItemClickListener((adapterView, view, i, l) -> {
-                            Intent intent = new Intent(MainWindow.this, ReservationForm.class);
+                            Intent intent = new Intent(MainWindow.this, RestaurantDetails.class);
                             intent.putExtra("UserId", currentUserId);
-                            intent.putExtra("RestaurantId", restaurantListFromJson.get(i).getId());
-                            intent.putExtra("RestaurantName", restaurantListFromJson.get(i).getRestaurantName());
                             intent.putExtra("UserName", currentUserName);
                             intent.putExtra("UserSurname", currentUserSurname);
+
+                            intent.putExtra("RestaurantId", restaurantListFromJson.get(i).getId());
+                            intent.putExtra("RestaurantName", restaurantListFromJson.get(i).getRestaurantName());
+                            intent.putExtra("RestaurantAddress", restaurantListFromJson.get(i).getAddress());
+                            intent.putExtra("RestaurantPhone", restaurantListFromJson.get(i).getPhone());
+                            intent.putExtra("RestaurantEmail", restaurantListFromJson.get(i).getEmail());
+                            intent.putExtra("RestaurantSummary", restaurantListFromJson.get(i).getSummary());
+
+                            System.out.println(currentUserUsername);
                             if (currentUserId != null) {
                                 startActivity(intent);
                             } else

@@ -69,6 +69,10 @@ public class Login extends AppCompatActivity {
                             intent.putExtra("UserId", user.getId());
                             intent.putExtra("UserName", user.getFname());
                             intent.putExtra("UserSurname", user.getLname());
+                            intent.putExtra("UserUsername", user.getUsername());
+                            intent.putExtra("UserPassword", user.getPassword());
+                            intent.putExtra("UserPhone", user.getPhone());
+                            intent.putExtra("UserEmail", user.getEmail());
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "Neteisingas vartotojo vardas arba slaptažodis", Toast.LENGTH_SHORT).show();

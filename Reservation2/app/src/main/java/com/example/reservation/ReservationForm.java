@@ -80,16 +80,6 @@ public class ReservationForm extends AppCompatActivity {
             String dateTimeIn = dateTimeInField.getText().toString();
             String duration = durationField.getText().toString();
 
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
-            Properties dataToSend = new Properties();
-            dataToSend.setProperty("peopleAmount", peopleAmount);
-            dataToSend.setProperty("reservationTime", LocalDateTime.parse(dateTimeIn, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
-            dataToSend.setProperty("duration", duration);
-            dataToSend.setProperty("restaurantId", String.valueOf(restaurantId));
-            dataToSend.setProperty("userId", currentUserId);
-
-            System.out.println(gsonBuilder.create().toJson(dataToSend, Properties.class));
 
             if (peopleAmount.isEmpty()) {
                 peopleAmountText.setError("People amount is required");
@@ -101,12 +91,24 @@ public class ReservationForm extends AppCompatActivity {
                 dateTimeInField.requestFocus();
                 return;
             }
+
             if (duration.isEmpty()) {
                 durationField.setError("End time is required");
                 durationField.requestFocus();
                 return;
             }
 
+
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
+            Properties dataToSend = new Properties();
+            dataToSend.setProperty("peopleAmount", peopleAmount);
+            dataToSend.setProperty("reservationTime", LocalDateTime.parse(dateTimeIn, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
+            dataToSend.setProperty("duration", duration);
+            dataToSend.setProperty("restaurantId", String.valueOf(restaurantId));
+            dataToSend.setProperty("userId", currentUserId);
+
+            System.out.println(gsonBuilder.create().toJson(dataToSend, Properties.class));
 
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());

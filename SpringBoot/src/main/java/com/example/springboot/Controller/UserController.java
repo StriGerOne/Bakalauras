@@ -55,7 +55,7 @@ public class UserController {
         return "User" + id + " deleted";
     }
 
-    @PutMapping("/updateuser/{id}")
+    @PutMapping("/updateuser")
     User updateUser(@RequestBody User newUser, @PathVariable Long id) {
 
         return userRepo.findById(id)
@@ -69,8 +69,8 @@ public class UserController {
                     return userRepo.save(user);
                 })
                 .orElseGet(() -> {
-                    newUser.setId(id);
-                    return userRepo.save(newUser);
+                    System.out.println("Kažkas blogai");
+                    return null;
                 });
     }
 }

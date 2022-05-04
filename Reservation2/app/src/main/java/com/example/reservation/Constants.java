@@ -9,7 +9,7 @@ public class Constants {
      public static final String RESERVATIONLIST = ADRESS + "allReservations";
 
      public static final String APPROVEDRESERVLIST = ADRESS + "reservationByUserIDAAndStatus";
-     public static final String EDITUSER = ADRESS + "updateuser/{id}";
+     public static final String EDITUSER = ADRESS + "updateuser";
 
 
 

@@ -15,6 +15,12 @@ public class UserInfo extends AppCompatActivity {
         setContentView(R.layout.activity_user_info);
 
         final String currentUserId = getIntent().getStringExtra("UserId");
+        final String currentUserName = getIntent().getStringExtra("UserName");
+        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
+        final String currentUserUsername = getIntent().getStringExtra("UserUsername");
+        final String currentUserPassword = getIntent().getStringExtra("UserPassword");
+        final String currentUserPhone = getIntent().getStringExtra("UserPhone");
+        final String currentUserEmail = getIntent().getStringExtra("UserEmail");
 
         ImageButton backButton = findViewById(R.id.back);
         Button logOff = findViewById(R.id.logOutBtn);
@@ -24,6 +30,8 @@ public class UserInfo extends AppCompatActivity {
         backButton.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(UserInfo.this, MainWindow.class);
             intent.putExtra("UserId", currentUserId);
+            intent.putExtra("UserName", currentUserName);
+            intent.putExtra("UserSurname", currentUserSurname);
             startActivity(intent);
         });
 
@@ -36,6 +44,12 @@ public class UserInfo extends AppCompatActivity {
         editUser.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(UserInfo.this, UserEdit.class);
             intent.putExtra("UserId", currentUserId);
+            intent.putExtra("UserName", currentUserName);
+            intent.putExtra("UserSurname", currentUserSurname);
+            intent.putExtra("UserUsername", currentUserUsername);
+            intent.putExtra("UserPassword", currentUserPassword);
+            intent.putExtra("UserPhone", currentUserPhone);
+            intent.putExtra("UserEmail", currentUserEmail);
             startActivity(intent);
         });
 
