@@ -69,7 +69,7 @@ public class UserReservations extends AppCompatActivity {
                         List<String> reservationList = new ArrayList<>();
                         reservationListFromJson.forEach(r->reservationList.add(r.getPeopleAmount() + " " + r.getReservationTime()));
 
-                        ListView test = findViewById(R.id.reservationList);
+                        ListView test = findViewById(R.id.activeReservationList);
 
                         ArrayAdapter<Reservation> arrayAdapter = new ArrayAdapter<>(UserReservations.this, android.R.layout.simple_list_item_1, reservationListFromJson);
                         test.setAdapter(arrayAdapter);

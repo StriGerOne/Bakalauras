@@ -56,26 +56,15 @@ public class ReservationController {
         reservationRepository.deleteById(id);
         return "Reservation with id " + id + " deleted";
     }
-/*
-    @GetMapping("/get/{peopleAmount}")
-    public List<Reservation> findBypeopleAmount(@PathVariable int peopleAmount) {
-        return reservationRepository.findByPeopleAmount(peopleAmount);
+
+
+    @GetMapping("/getActiveReservation")
+    public List<Reservation> findByUserIdAndReservationTimeAfterAndStatus(@RequestParam Long id) {
+        String status = "Approved";
+        return reservationRepository.findByUserIdAndReservationTimeAfterAndStatus(id, status);
     }
 
-    @GetMapping("/get1/{reservationTime}")
-    public List<Reservation> findByReservationTime(@PathVariable String reservationTime) {
-        return reservationRepository.findByReservationTime(LocalDateTime.parse(reservationTime, formatter));
-    }
 
-    @GetMapping("/get2")
-    public List<Reservation> findByReservationTimeBetween(@RequestParam(name = "startDate") String start, @RequestParam(name = "endDate") String end) {
-        return reservationRepository.findByReservationTimeBetween(LocalDateTime.parse(start, formatter), LocalDateTime.parse(end, formatter));
-    }
-*/
-    @GetMapping("/getReservationByUserID/{id}")
-    public List<Reservation> findByUserId(@PathVariable Long id) {
-    return reservationRepository.findByUserId(id);
-    }
 
     @GetMapping("/checkReservationAvailability")
     public @ResponseBody

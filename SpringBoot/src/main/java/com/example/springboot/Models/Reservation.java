@@ -1,13 +1,13 @@
 package com.example.springboot.Models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Reservation {
+
 
     @Id
     private Long id;

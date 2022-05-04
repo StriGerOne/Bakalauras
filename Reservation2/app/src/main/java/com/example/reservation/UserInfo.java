@@ -15,8 +15,6 @@ public class UserInfo extends AppCompatActivity {
         setContentView(R.layout.activity_user_info);
 
         final String currentUserId = getIntent().getStringExtra("UserId");
-        final String currentUserName = getIntent().getStringExtra("UserName");
-        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
 
         ImageButton backButton = findViewById(R.id.back);
         Button logOff = findViewById(R.id.logOutBtn);
