@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Serializer.DataTimeSerializer;
-import com.example.reservation.utils.LocalDateTimeGsonSerializer;
+import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
 import com.google.gson.GsonBuilder;
 
 import java.text.SimpleDateFormat;

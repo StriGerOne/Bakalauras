@@ -11,8 +11,9 @@ public class Restaurant {
     private String email;
     private String jobTime;
     private String category;
-    private String imageUrl;
     private int numberOfSeats;
+    private String imageUrl;
+
 
     public Restaurant(Long id, String restaurantName, String summary, String address, String phone, String email, String jobTime, String category, int numberOfSeats) {
         this.id = id;

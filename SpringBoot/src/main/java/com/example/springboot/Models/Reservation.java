@@ -16,17 +16,16 @@ public class Reservation {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime today = LocalDateTime.now();
     private int peopleAmount;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime reservationTime;
     @JsonFormat(pattern="HH:mm")
     private LocalTime duration;
     private String status;
 
-    public Reservation (Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String status) {
+    public Reservation (Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration) {
         this.id = id;
         this.restaurantId = restaurantId;
         this.userId = userId;
-        this.today = today;
         this.peopleAmount = peopleAmount;
         this.reservationTime = reservationTime;
         this.duration = duration;

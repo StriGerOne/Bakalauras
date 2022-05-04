@@ -15,7 +15,17 @@ public class Reservation {
     private String status;
 
 
-    public Reservation(Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, int  freeSpace) {
+    public Reservation(Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration) {
+        this.id = id;
+        this.restaurantId = restaurantId;
+        this.userId = userId;
+        this.peopleAmount = peopleAmount;
+        this.reservationTime = reservationTime;
+        this.duration = duration;
+        this.status = "Approved";
+    }
+
+    public Reservation(Long id, Long restaurantId, Long userId, LocalDateTime today, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String status) {
         this.id = id;
         this.restaurantId = restaurantId;
         this.userId = userId;
@@ -23,8 +33,7 @@ public class Reservation {
         this.peopleAmount = peopleAmount;
         this.reservationTime = reservationTime;
         this.duration = duration;
-        this.status = "Approved";
-
+        this.status = status;
     }
 
     public Long getId() {
@@ -94,11 +103,14 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservation{" +
-                ", Data=" + today +
-                ", Žmonių kiekis=" + peopleAmount +
-                ", Data ir laiaks=" + reservationTime +
-                ", Trukmė=" + duration +
-                ", Statusas=" + duration +
+                "id=" + id +
+                ", restaurantId=" + restaurantId +
+                ", userId=" + userId +
+                ", today=" + today +
+                ", peopleAmount=" + peopleAmount +
+                ", reservationTime=" + reservationTime +
+                ", duration=" + duration +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

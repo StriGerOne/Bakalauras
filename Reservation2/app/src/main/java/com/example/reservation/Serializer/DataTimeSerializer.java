@@ -1,29 +1,33 @@
 package com.example.reservation.Serializer;
 
 import android.os.Build;
+import androidx.annotation.RequiresApi;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class DataTimeSerializer implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {
-
+@RequiresApi(api = Build.VERSION_CODES.O)
+public class DataTimeSerializer implements JsonSerializer<LocalTime>, JsonDeserializer<LocalTime> {
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public LocalDateTime deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public LocalTime deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+
         String ldtString = jsonElement.getAsString();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return LocalDateTime.parse(ldtString, DateTimeFormatter.ISO_DATE);
+            return LocalTime.parse(ldtString, DateTimeFormatter.ISO_TIME);
         }
         return null;
     }
 
     @Override
-    public JsonElement serialize(LocalDateTime localDateTime, Type type, JsonSerializationContext jsonSerializationContext) {
+    public JsonElement serialize(LocalTime localDateTime, Type type, JsonSerializationContext jsonSerializationContext) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return new JsonPrimitive(localDateTime.format(DateTimeFormatter.ISO_DATE));
+            return new JsonPrimitive(localDateTime.format(DateTimeFormatter.ISO_TIME));
         }
         return null;
     }

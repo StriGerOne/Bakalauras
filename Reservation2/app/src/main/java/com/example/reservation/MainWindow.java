@@ -72,7 +72,7 @@ public class MainWindow extends AppCompatActivity {
                     }
                 });
             } catch (IOException e) {
-                throw new RuntimeException(e);
+               e.printStackTrace();
             }
         });
     }

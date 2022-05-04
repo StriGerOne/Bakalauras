@@ -1,21 +1,25 @@
 package com.example.reservation;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.*;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Reservation;
-import com.example.reservation.Models.Restaurant;
+import com.example.reservation.Serializer.DataTimeSerializer;
+import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
 import com.example.reservation.utils.CustomListAdapter;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -27,6 +31,7 @@ public class UserReservations extends AppCompatActivity {
 
     private CustomListAdapter adapt;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +58,13 @@ public class UserReservations extends AppCompatActivity {
                 handler.post(() -> {
 
                     if (!response.equals("") && !response.equals("Error")) {
-                        Gson builder = new GsonBuilder().create();
-                        Type ReservationListType = new TypeToken<List<Reservation>>() {
+
+                        GsonBuilder builder = new GsonBuilder();
+                        builder.registerTypeAdapter(LocalTime.class, new DataTimeSerializer());
+                        builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
+                        Type reservationListType = new TypeToken<List<Reservation>>() {
                         }.getType();
-                        final List<Reservation> reservationListFromJson = builder.fromJson(response, ReservationListType);
+                        final List<Reservation> reservationListFromJson = builder.create().fromJson(response, reservationListType);
                         /** Spausdina visą info esančią restourant klasėje **/
                         List<String> reservationList = new ArrayList<>();
                         reservationListFromJson.forEach(r->reservationList.add(r.getPeopleAmount() + " " + r.getReservationTime()));
