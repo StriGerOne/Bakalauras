@@ -16,6 +16,9 @@
             android:theme="@style/Theme.Reservation"
             android:usesCleartextTraffic="true">
         <activity
+                android:name=".RestaurantRating"
+                android:exported="true"/>
+        <activity
                 android:name=".RestaurantDetails"
                 android:exported="true"/>
         <activity

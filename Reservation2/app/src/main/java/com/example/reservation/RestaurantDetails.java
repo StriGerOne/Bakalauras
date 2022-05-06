@@ -43,6 +43,9 @@ public class RestaurantDetails extends AppCompatActivity {
         TextView restSummary = findViewById(R.id.restSummaryField);
         restSummary.setText(currentRestaurantSummary);
 
+        Button rate = findViewById(R.id.rate);
+        rate.setOnClickListener(view -> startActivity(new Intent(RestaurantDetails.this, RestaurantRating.class)));
+
         Button reservate = findViewById(R.id.reservateB);
         reservate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, ReservationForm.class);
