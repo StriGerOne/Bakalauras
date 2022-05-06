@@ -70,7 +70,7 @@ public class RestaurantDetails extends AppCompatActivity {
             startActivity(intent);
         });
         
-        Button reservate = findViewById(R.id.reservateB);
+        Button reservate = findViewById(R.id.reservateBtn);
         reservate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, ReservationForm.class);
             intent.putExtra("UserId", currentUserId);

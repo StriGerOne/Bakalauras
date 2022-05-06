@@ -30,27 +30,27 @@ public class Login extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener(view -> startActivity(new Intent(Login.this, MainWindow.class)));
 
-        EditText LoginUser = findViewById(R.id.username);
-        EditText LoginPass = findViewById(R.id.password);
-        Button LoginButton = findViewById(R.id.loginBtn);
-        Button RegisterButton = findViewById(R.id.registerBtn);
+        EditText loginUserField = findViewById(R.id.username);
+        EditText loginPassField = findViewById(R.id.password);
+        Button loginButton = findViewById(R.id.loginBtn);
+        Button registerButton = findViewById(R.id.registerBtn);
 
-        RegisterButton.setOnClickListener(v -> startActivity(new Intent(Login.this, Register.class)));
+        registerButton.setOnClickListener(v -> startActivity(new Intent(Login.this, Register.class)));
 
-        LoginButton.setOnClickListener(v -> {
-            String username = LoginUser.getText().toString();
-            String password = LoginPass.getText().toString();
+        loginButton.setOnClickListener(v -> {
+            String username = loginUserField.getText().toString();
+            String password = loginPassField.getText().toString();
 
             String json = "{\"login\":\"" + username + "\", \"psw\":\"" + password + "\"}";
 
             if (username.isEmpty()) {
-                LoginUser.setError("Įveskite vartotojo vardą");
-                LoginUser.requestFocus();
+                loginUserField.setError("Įveskite vartotojo vardą");
+                loginUserField.requestFocus();
                 return;
             }
             if (password.isEmpty()) {
-                LoginPass.setError("Įveskite slaptažodį");
-                LoginPass.requestFocus();
+                loginPassField.setError("Įveskite slaptažodį");
+                loginPassField.requestFocus();
                 return;
             }
 

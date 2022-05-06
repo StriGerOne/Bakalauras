@@ -49,10 +49,10 @@
             app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:text="Summary"
-            android:layout_width="367dp"
-            android:layout_height="172dp" android:id="@+id/restSummaryField"
-            android:layout_marginTop="9dp"
-            app:layout_constraintTop_toBottomOf="@+id/restEmailField" android:layout_marginEnd="10dp"
+            android:layout_width="373dp"
+            android:layout_height="120dp" android:id="@+id/restSummaryField"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/restEmailField" android:layout_marginEnd="12dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:text="Tel"
@@ -71,26 +71,26 @@
     <Button
             android:text="Rezervuoti"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/reservateB"
-            android:layout_marginTop="196dp"
-            app:layout_constraintTop_toBottomOf="@+id/restSummaryField" android:layout_marginEnd="144dp"
+            android:layout_height="wrap_content" android:id="@+id/reservateBtn"
+            android:layout_marginTop="152dp"
+            app:layout_constraintTop_toBottomOf="@+id/restSummaryField" android:layout_marginEnd="132dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:text="Rating"
-            android:layout_width="164dp"
-            android:layout_height="40dp" android:id="@+id/textView3"
-            android:layout_marginTop="32dp"
+            android:layout_width="168dp"
+            android:layout_height="40dp" android:id="@+id/restRating"
+            android:layout_marginTop="4dp"
             app:layout_constraintTop_toBottomOf="@+id/restSummaryField" app:layout_constraintEnd_toStartOf="@+id/rate"/>
     <Button
             android:text="Įvertinti restoraną"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/rate"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/restSummaryField"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/restSummaryField" android:layout_marginEnd="12dp"/>
     <ListView
-            android:layout_width="391dp"
-            android:layout_height="118dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" android:layout_marginEnd="1dp"
-            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/ratesList"/>
+            android:layout_width="382dp"
+            android:layout_height="92dp"
+            app:layout_constraintTop_toBottomOf="@+id/restRating" android:layout_marginEnd="1dp"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/ratesList" android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

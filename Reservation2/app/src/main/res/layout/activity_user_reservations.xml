@@ -23,7 +23,7 @@
 
     <TextView
             android:text="Jūsų rezervacijos"
-            android:id="@+id/Login"
+            android:id="@+id/formName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
