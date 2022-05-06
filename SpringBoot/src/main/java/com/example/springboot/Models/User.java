@@ -20,7 +20,7 @@ public class User {
     @Field(name = "lastName")
     private String lname;
     @Indexed(unique = true)             // Unikalus
-    private String username;            // User name gali ir nereikėti, jungti galima per El.paštą.
+    private String username;
     private String password;
     private String phone;
     @Indexed(unique = true)

@@ -45,7 +45,7 @@ public class ReservationForm extends AppCompatActivity {
 
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener((adapterView) -> {
-        Intent intent = new Intent(ReservationForm.this, MainWindow.class);
+        Intent intent = new Intent(ReservationForm.this, RestaurantDetails.class);
         intent.putExtra("UserId", currentUserId);
         startActivity(intent);
         });

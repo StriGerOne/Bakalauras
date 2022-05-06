@@ -63,10 +63,7 @@ public class RestaurantDetails extends AppCompatActivity {
         rate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, RestaurantRating.class);
             intent.putExtra("UserId", currentUserId);
-            intent.putExtra("UserName", currentUserName);
-            intent.putExtra("UserSurname", currentUserSurname);
             intent.putExtra("RestaurantId", currentRestaurantId);
-            intent.putExtra("RestaurantName", currentRestaurantName);
             startActivity(intent);
         });
         
@@ -74,7 +71,10 @@ public class RestaurantDetails extends AppCompatActivity {
         reservate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, ReservationForm.class);
             intent.putExtra("UserId", currentUserId);
+            intent.putExtra("UserName", currentUserName);
+            intent.putExtra("UserSurname", currentUserSurname);
             intent.putExtra("RestaurantId", currentRestaurantId);
+            intent.putExtra("RestaurantName", currentRestaurantName);
             startActivity(intent);
         });
 
