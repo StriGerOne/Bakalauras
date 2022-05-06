@@ -1,4 +1,4 @@
-package com.example.springboot.Models;
+package com.example.reservation.Models;
 
 public class Rating {
     private Long id;

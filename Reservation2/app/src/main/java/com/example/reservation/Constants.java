@@ -10,6 +10,10 @@ public class Constants {
 
      public static final String APPROVEDRESERVLIST = ADRESS + "reservationByUserIDAAndStatus";
      public static final String EDITUSER = ADRESS + "updateuser";
+     public static final String RATE = ADRESS + "rateRestaurant";
+     public static final String RATELIST = ADRESS + "allRates";
+
+
 
 
 

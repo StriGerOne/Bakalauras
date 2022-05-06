@@ -2,17 +2,18 @@ package com.example.reservation;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ListView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Reservation;
 import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
-import com.example.reservation.utils.CustomListAdapter;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
@@ -25,11 +26,10 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.*;
+import static com.example.reservation.Constants.RESERVATIONLIST;
 
 public class UserReservations extends AppCompatActivity {
 
-    private CustomListAdapter adapt;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
