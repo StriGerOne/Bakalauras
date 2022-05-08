@@ -55,7 +55,7 @@ public class UserController {
         return "User" + id + " deleted";
     }
 
-    @PutMapping("/updateuser")
+    @PutMapping("/updateuser/{id}")
     User updateUser(@RequestBody User newUser, @PathVariable Long id) {
 
         return userRepo.findById(id)

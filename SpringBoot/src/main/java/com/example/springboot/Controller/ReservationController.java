@@ -5,6 +5,7 @@ import com.example.springboot.Models.Reservation;
 import com.example.springboot.Models.Restaurant;
 import com.example.springboot.Repositories.ReservationRepository;
 import com.example.springboot.Repositories.RestaurantRepository;
+import com.example.springboot.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,8 @@ public class ReservationController {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private SequenceGeneratorService service;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -57,11 +60,22 @@ public class ReservationController {
         return "Reservation with id " + id + " deleted";
     }
 
+    @PutMapping("/cancelReservation/{id}")
+    Reservation cancelReservation(@PathVariable Long id) {
+        return reservationRepository.findById(id)
+                .map(reservation -> {
+                    reservation.setStatus("Canceled");
+                    return reservationRepository.save(reservation);
+                })
+                .orElseGet(() -> {
+                    System.out.println("Kažkas blogai");
+                    return null;
+                });
+    }
 
-    @GetMapping("/getActiveReservation")
-    public List<Reservation> findByUserIdAndReservationTimeAfterAndStatus(@RequestParam Long id) {
-        String status = "Approved";
-        return reservationRepository.findByUserIdAndReservationTimeAfterAndStatus(id, status);
+   @GetMapping("/getReservationsByUser")
+    public List<Reservation> findByUserId(@RequestParam(name = "UserId") long id){
+        return reservationRepository.findByUserId(id);
     }
 
 

@@ -1,6 +1,8 @@
 package com.example.reservation;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.User;
+import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.Gson;
 
 import java.util.concurrent.Executor;
@@ -22,10 +25,14 @@ import static com.example.reservation.Constants.USERAUTH;
 
 public class Login extends AppCompatActivity {
 
+    private SharedPreferenceProvider sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sharedPreferences = SharedPreferenceProvider.getInstance();
+
 
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener(view -> startActivity(new Intent(Login.this, MainWindow.class)));
@@ -66,13 +73,21 @@ public class Login extends AppCompatActivity {
                             Intent intent = new Intent(Login.this, MainWindow.class);
                             Gson gson = new Gson();
                             User user = gson.fromJson(response, User.class);
-                            intent.putExtra("UserId", user.getId());
-                            intent.putExtra("UserName", user.getFname());
-                            intent.putExtra("UserSurname", user.getLname());
-                            intent.putExtra("UserUsername", user.getUsername());
-                            intent.putExtra("UserPassword", user.getPassword());
-                            intent.putExtra("UserPhone", user.getPhone());
-                            intent.putExtra("UserEmail", user.getEmail());
+                            sharedPreferences.saveValue("UserId",user.getId());
+                            sharedPreferences.saveValue("UserName",user.getFname());
+                            sharedPreferences.saveValue("UserSurname",user.getLname());
+                            sharedPreferences.saveValue("UserUsername",user.getUsername());
+                            sharedPreferences.saveValue("UserPassword",user.getPassword());
+                            sharedPreferences.saveValue("UserPhone",user.getPhone());
+                            sharedPreferences.saveValue("UserEmail",user.getEmail());
+
+//                            intent.putExtra("UserId", user.getId());
+//                            intent.putExtra("UserName", user.getFname());
+//                            intent.putExtra("UserSurname", user.getLname());
+//                            intent.putExtra("UserUsername", user.getUsername());
+//                            intent.putExtra("UserPassword", user.getPassword());
+//                            intent.putExtra("UserPhone", user.getPhone());
+//                            intent.putExtra("UserEmail", user.getEmail());
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "Neteisingas vartotojo vardas arba slaptažodis", Toast.LENGTH_SHORT).show();

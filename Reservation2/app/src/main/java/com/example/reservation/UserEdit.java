@@ -1,6 +1,7 @@
 package com.example.reservation;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Patterns;
@@ -8,6 +9,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
+import com.example.reservation.utils.SharedPreferenceProvider;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -22,18 +24,24 @@ public class UserEdit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_edit);
 
-        final String currentUserId = getIntent().getStringExtra("UserId");
-        final String currentUserName = getIntent().getStringExtra("UserName");
-        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
-        final String currentUserUsername = getIntent().getStringExtra("UserUsername");
-        final String currentUserPassword = getIntent().getStringExtra("UserPassword");
-        final String currentUserPhone = getIntent().getStringExtra("UserPhone");
-        final String currentUserEmail = getIntent().getStringExtra("UserEmail");
+//        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
+        final String currentUserName = SharedPreferenceProvider.getInstance().getUserName();
+        final String currentUserSurname = SharedPreferenceProvider.getInstance().getUserSurname();
+        final String currentUserUsername = SharedPreferenceProvider.getInstance().getUserUsername();
+        final String currentUserPassword = SharedPreferenceProvider.getInstance().getUserPassword();
+        final String currentUserPhone = SharedPreferenceProvider.getInstance().getUserPhone();
+        final String currentUserEmail = SharedPreferenceProvider.getInstance().getUserEmail();
 
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(UserEdit.this, UserInfo.class);
-            intent.putExtra("UserId", currentUserId);
+//            intent.putExtra("UserId", currentUserId);
+//            intent.putExtra("UserName", currentUserName);
+//            intent.putExtra("UserSurname", currentUserSurname);
+//            intent.putExtra("UserUsername", currentUserUsername);
+//            intent.putExtra("UserPassword", currentUserPassword);
+//            intent.putExtra("UserPhone", currentUserPhone);
+//            intent.putExtra("UserEmail", currentUserEmail);
             startActivity(intent);
         });
 
@@ -52,21 +60,6 @@ public class UserEdit extends AppCompatActivity {
 
         Button change = findViewById(R.id.changeBtn);
 
-//        change.setOnClickListener((adapterView) -> {
-//            System.out.println(currentUserUsername);
-//            Intent intent = new Intent(UserEdit.this, MainWindow.class);
-//            intent.putExtra("UserId", currentUserId);
-//            intent.putExtra("UserName", currentUserId);
-//            intent.putExtra("UserSurname", currentUserSurname);
-//            intent.putExtra("UserUsername", currentUserUsername);
-//            intent.putExtra("UserPassword", currentUserPassword);
-//            intent.putExtra("UserPhone", currentUserPhone);
-//            intent.putExtra("UserEmail", currentUserEmail);
-//            startActivity(intent);
-//        });
-
-
-
         change.setOnClickListener(v -> {
 
             String firstname = editName.getText().toString();
@@ -79,48 +72,6 @@ public class UserEdit extends AppCompatActivity {
             String json = "{\"fname\":\"" + firstname + "\", \"lname\":\"" + lastname + "\", \"username\":\"" + username
                     + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
 
-
-//            if (firstname.isEmpty()) {
-//                FirstName.setError("First name is required");
-//                FirstName.requestFocus();
-//                return;
-//            }
-//            if (lastname.isEmpty()) {
-//                LastName.setError("Last name is required");
-//                LastName.requestFocus();
-//                return;
-//            }
-//            if (username.isEmpty()) {
-//                UserName.setError("Username is required");
-//                UserName.requestFocus();
-//                return;
-//            }
-//            if (password.isEmpty()) {
-//                Password.setError("Password is required");
-//                Password.requestFocus();
-//                return;
-//            }
-//            if (password.length() < 6) {
-//                Password.setError("Min password length should be 6 characters!");
-//                Password.requestFocus();
-//                return;
-//            }
-//            if (phone.isEmpty()) {
-//                Phone.setError("Phone number is required");
-//                Phone.requestFocus();
-//                return;
-//            }
-//            if (email.isEmpty()) {
-//                Email.setError("Email number is required");
-//                Email.requestFocus();
-//                return;
-//            }
-//
-//            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//                Email.setError("Please provide valid email");
-//                Email.requestFocus();
-//                return;
-//            }
 
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());

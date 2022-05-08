@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Rating;
+import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -21,7 +22,6 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.RATELIST;
 
 public class RestaurantDetails extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -30,9 +30,12 @@ public class RestaurantDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restauran_details);
 
-        final String currentUserId = getIntent().getStringExtra("UserId");
-        final String currentUserName = getIntent().getStringExtra("UserName");
-        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
+//        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
+//        final String currentUserName = SharedPreferenceProvider.getInstance().getUserName();
+//        final String currentUserSurname = SharedPreferenceProvider.getInstance().getUserSurname();
+//        final String currentUserId = getIntent().getStringExtra("UserId");
+//        final String currentUserName = getIntent().getStringExtra("UserName");
+//        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
 
         final Long currentRestaurantId = getIntent().getLongExtra("RestaurantId", 0);
         final String currentRestaurantName = getIntent().getStringExtra("RestaurantName");
@@ -43,9 +46,7 @@ public class RestaurantDetails extends AppCompatActivity {
 
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener((adapterView) -> {
-            Intent intent = new Intent(RestaurantDetails.this, MainWindow.class);
-            intent.putExtra("UserId", currentUserId);
-            startActivity(intent);
+            finish();
         });
 
         TextView restName = findViewById(R.id.restNameField);
@@ -62,7 +63,7 @@ public class RestaurantDetails extends AppCompatActivity {
         Button rate = findViewById(R.id.rate);
         rate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, RestaurantRating.class);
-            intent.putExtra("UserId", currentUserId);
+        //    intent.putExtra("UserId", currentUserId);
             intent.putExtra("RestaurantId", currentRestaurantId);
             startActivity(intent);
         });
@@ -70,9 +71,9 @@ public class RestaurantDetails extends AppCompatActivity {
         Button reservate = findViewById(R.id.reservateBtn);
         reservate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, ReservationForm.class);
-            intent.putExtra("UserId", currentUserId);
-            intent.putExtra("UserName", currentUserName);
-            intent.putExtra("UserSurname", currentUserSurname);
+//            intent.putExtra("UserId", currentUserId);
+//            intent.putExtra("UserName", currentUserName);
+//            intent.putExtra("UserSurname", currentUserSurname);
             intent.putExtra("RestaurantId", currentRestaurantId);
             intent.putExtra("RestaurantName", currentRestaurantName);
             startActivity(intent);
@@ -82,7 +83,7 @@ public class RestaurantDetails extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
 
         executor.execute(() -> {
-            String url = RATELIST;
+            String url = Constants.getRateByRestaurant(currentRestaurantId);
             try {
                 String response = RESTController.sendGet(url);
                 handler.post(() -> {
@@ -101,7 +102,7 @@ public class RestaurantDetails extends AppCompatActivity {
                         ArrayAdapter<Rating> arrayAdapter = new ArrayAdapter<>(RestaurantDetails.this, android.R.layout.simple_list_item_1, ratingListFromJson);
                         rateList.setAdapter(arrayAdapter);
                     }
-
+                    System.out.println(currentRestaurantId);
                 });
 
             } catch (IOException e) {

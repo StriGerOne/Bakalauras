@@ -31,4 +31,13 @@ public class RestaurantRating {
     public List<Rating> getRating() {
         return ratingRepository.findAll();
     }
+
+    @GetMapping("/getRateByRestaurant")
+    public List<Rating> findByRestaurantId(@RequestParam(name = "RestaurantId") long id) {
+        return ratingRepository.findByRestaurantId(id);
+    }
+
+
 }
+
+

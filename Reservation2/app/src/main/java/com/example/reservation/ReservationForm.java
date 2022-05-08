@@ -15,6 +15,7 @@ import android.text.InputType;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
+import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.GsonBuilder;
 
 import java.text.SimpleDateFormat;
@@ -35,20 +36,16 @@ public class ReservationForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_form);
 
-        //code duplication, not optimal
-        final String currentUserId = getIntent().getStringExtra("UserId");
-        final String currentUserName = getIntent().getStringExtra("UserName");
-        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
+
+        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
+        final String currentUserName =SharedPreferenceProvider.getInstance().getUserName();
+        final String currentUserSurname = SharedPreferenceProvider.getInstance().getUserSurname();
         final String currentRestaurant = getIntent().getStringExtra("RestaurantName");
         final Long restaurantId = getIntent().getLongExtra("RestaurantId", 0);
 
 
         ImageButton backButton = findViewById(R.id.back);
-        backButton.setOnClickListener((adapterView) -> {
-        Intent intent = new Intent(ReservationForm.this, RestaurantDetails.class);
-        intent.putExtra("UserId", currentUserId);
-        startActivity(intent);
-        });
+        backButton.setOnClickListener((adapterView) -> finish());
 
 
         EditText peopleAmountText = findViewById(R.id.amount);

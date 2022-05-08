@@ -7,11 +7,12 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
+import com.example.reservation.utils.SharedPreferenceProvider;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.RATE;
+import static com.example.reservation.Constants.NEWRATE;
 
 public class RestaurantRating extends AppCompatActivity {
 
@@ -20,16 +21,13 @@ public class RestaurantRating extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_rating);
 
-        final String currentUserId = getIntent().getStringExtra("UserId");
+        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
         final Long currentRestaurantId = getIntent().getLongExtra("RestaurantId", 0);
 
 
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener((adapterView) -> {
-            Intent intent = new Intent(RestaurantRating.this, RestaurantDetails.class);
-            intent.putExtra("UserId", currentUserId);
-            intent.putExtra("RestaurantId", currentRestaurantId);
-            startActivity(intent);
+        finish();
         });
 
 
@@ -53,14 +51,14 @@ public class RestaurantRating extends AppCompatActivity {
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
-            String url = RATE;
+            String url = NEWRATE;
             try {
                 String response = RESTController.sendPost(url, json);
                 handler.post(() -> {
                     if (!response.equals("Error") && !response.equals("")) {
                         Toast.makeText(getApplicationContext(), "Register Successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RestaurantRating.this, RestaurantDetails.class);
-                        intent.putExtra("UserId", currentUserId);
+//                        intent.putExtra("UserId", currentUserId);
                         intent.putExtra("Comment", comment);
                         intent.putExtra("Rating", rating);
                         intent.putExtra("RestaurantId", currentRestaurantId);

@@ -14,6 +14,7 @@ import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Reservation;
 import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
+import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
@@ -26,8 +27,6 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.RESERVATIONLIST;
-
 public class UserReservations extends AppCompatActivity {
 
 
@@ -37,14 +36,12 @@ public class UserReservations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_reservations);
 
-        final String currentUserId = getIntent().getStringExtra("UserId");
+        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
 
         ImageButton backButton = findViewById(R.id.back);
 
         backButton.setOnClickListener((adapterView) -> {
-            Intent intent = new Intent(UserReservations.this, UserInfo.class);
-            intent.putExtra("UserId", currentUserId);
-            startActivity(intent);
+            finish();
         });
 
 
@@ -52,7 +49,7 @@ public class UserReservations extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
 
         executor.execute(() -> {
-            String url = RESERVATIONLIST;
+            String url = Constants.getReservationsByUser(Long.valueOf(currentUserId));
             try {
                 String response = RESTController.sendGet(url);
                 handler.post(() -> {
@@ -68,10 +65,27 @@ public class UserReservations extends AppCompatActivity {
                         /** Spausdina visą info esančią restourant klasėje **/
                         List<String> reservationList = new ArrayList<>();
                         reservationListFromJson.forEach(r->reservationList.add(r.getPeopleAmount() + " " + r.getReservationTime()));
+                        List<Reservation> approvedReservations = new ArrayList<>();
+
+                        List<Reservation> canceledReservations = new ArrayList<>();
+
+                        for (Reservation reservation : reservationListFromJson) {
+                            String status = reservation.getStatus();
+                            if (status.equals("Approved")){
+                                approvedReservations.add(reservation);
+                            }
+                            if (status.equals("Canceled")){
+                                canceledReservations.add(reservation);
+                            }
+                        }
+
+                        List<Reservation> fullList = new ArrayList<>();
+                        fullList.addAll(approvedReservations);
+                        fullList.addAll(canceledReservations);
 
                         ListView test = findViewById(R.id.activeReservationList);
 
-                        ArrayAdapter<Reservation> arrayAdapter = new ArrayAdapter<>(UserReservations.this, android.R.layout.simple_list_item_1, reservationListFromJson);
+                        ArrayAdapter<Reservation> arrayAdapter = new ArrayAdapter<>(UserReservations.this, android.R.layout.simple_list_item_1, fullList);
                         test.setAdapter(arrayAdapter);
                     }
 

@@ -92,7 +92,8 @@ public class Reservation {
         return status;
     }
 
-    public void setStatus(String status) {
+    public String setStatus(String status) {
         this.status = "Approved";
+        return status;
     }
 }

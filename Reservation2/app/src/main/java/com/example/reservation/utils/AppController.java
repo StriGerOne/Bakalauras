@@ -1,6 +1,7 @@
 package com.example.reservation.utils;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,6 +21,7 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        SharedPreferenceProvider.init(this);
     }
 
     public static synchronized AppController getInstance() {

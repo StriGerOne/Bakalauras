@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Restaurant;
 import com.example.reservation.utils.CustomListAdapter;
+import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -25,27 +26,15 @@ public class MainWindow extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String currentUserId = getIntent().getStringExtra("UserId");
-        final String currentUserName = getIntent().getStringExtra("UserName");
-        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
-        final String currentUserUsername = getIntent().getStringExtra("UserUsername");
-        final String currentUserPassword = getIntent().getStringExtra("UserPassword");
-        final String currentUserPhone = getIntent().getStringExtra("UserPhone");
-        final String currentUserEmail = getIntent().getStringExtra("UserEmail");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
+
         ImageButton loginUserBoard = findViewById(R.id.userBoardBtn);
         loginUserBoard.setOnClickListener((adapterView) -> {
                     Intent intent = new Intent(MainWindow.this, UserInfo.class);
-            intent.putExtra("UserId", currentUserId);
-            intent.putExtra("UserName", currentUserName);
-            intent.putExtra("UserSurname", currentUserSurname);
-            intent.putExtra("UserUsername", currentUserUsername);
-            intent.putExtra("UserPassword", currentUserPassword);
-            intent.putExtra("UserPhone", currentUserPhone);
-            intent.putExtra("UserEmail", currentUserEmail);
 
             if (currentUserId != null) {
                         startActivity(intent);
@@ -71,9 +60,6 @@ public class MainWindow extends AppCompatActivity {
                         restaurantList.setAdapter(adapter);
                         restaurantList.setOnItemClickListener((adapterView, view, i, l) -> {
                             Intent intent = new Intent(MainWindow.this, RestaurantDetails.class);
-                            intent.putExtra("UserId", currentUserId);
-                            intent.putExtra("UserName", currentUserName);
-                            intent.putExtra("UserSurname", currentUserSurname);
 
                             intent.putExtra("RestaurantId", restaurantListFromJson.get(i).getId());
                             intent.putExtra("RestaurantName", restaurantListFromJson.get(i).getRestaurantName());
@@ -82,7 +68,6 @@ public class MainWindow extends AppCompatActivity {
                             intent.putExtra("RestaurantEmail", restaurantListFromJson.get(i).getEmail());
                             intent.putExtra("RestaurantSummary", restaurantListFromJson.get(i).getSummary());
 
-                            System.out.println(currentUserUsername);
                             if (currentUserId != null) {
                                 startActivity(intent);
                             } else
