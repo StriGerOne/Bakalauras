@@ -26,10 +26,7 @@ public class RestaurantRating extends AppCompatActivity {
 
 
         ImageButton backButton = findViewById(R.id.back);
-        backButton.setOnClickListener((adapterView) -> {
-        finish();
-        });
-
+        backButton.setOnClickListener((adapterView) -> finish());
 
         RatingBar restRatingBar = findViewById(R.id.restRating);
         EditText restCommentField = findViewById(R.id.restCommentField);
@@ -37,16 +34,24 @@ public class RestaurantRating extends AppCompatActivity {
 
         ratingConfirm.setOnClickListener(view -> {
 
-
             Float rating = restRatingBar.getRating();
             String comment = restCommentField.getText().toString();
 
 
-            Toast.makeText(getApplicationContext(),rating+ "Stars", Toast.LENGTH_SHORT).show();
-
             String json = "{\"rating\":\"" + rating + "\", \"comment\":\"" + comment + "\", \"userId\":\"" + currentUserId
                     + "\", \"restaurantId\":\"" + currentRestaurantId +"\"}";
 
+            if (comment.isEmpty()) {
+                restCommentField.setError("Parašykite savo nuomonę");
+                restCommentField.requestFocus();
+                return;
+            }
+            if (comment.length() < 30 )
+                restCommentField.setError("Komentras turi būti bent iš 30 simbolių");
+            restCommentField.requestFocus();
+
+            if(rating < 1.0f)
+                restRatingBar.setRating(1.0f);
 
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
@@ -56,15 +61,14 @@ public class RestaurantRating extends AppCompatActivity {
                 String response = RESTController.sendPost(url, json);
                 handler.post(() -> {
                     if (!response.equals("Error") && !response.equals("")) {
-                        Toast.makeText(getApplicationContext(), "Register Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Įvertinimas įrašytas", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RestaurantRating.this, RestaurantDetails.class);
-//                        intent.putExtra("UserId", currentUserId);
                         intent.putExtra("Comment", comment);
                         intent.putExtra("Rating", rating);
                         intent.putExtra("RestaurantId", currentRestaurantId);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Incorrect information", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();
                         System.out.println(json);
                     }
                 });

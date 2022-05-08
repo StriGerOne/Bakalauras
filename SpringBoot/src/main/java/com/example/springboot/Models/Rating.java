@@ -1,11 +1,17 @@
 package com.example.springboot.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDateTime;
+
 public class Rating {
     private Long id;
     private Long restaurantId;
     private Long userId;
     private float rating;
     private String comment;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime rateTime = LocalDateTime.now();
 
     public Rating(Long id, Long restaurantId, Long userId, float rating, String comment) {
         this.id = id;
@@ -51,8 +57,17 @@ public class Rating {
         return comment;
     }
 
+    public LocalDateTime getRateTime() {
+        return rateTime;
+    }
+
+    public void setRateTime(LocalDateTime rateTime) {
+        this.rateTime = rateTime;
+    }
+
     public void setComment(String comment) {
         this.comment = comment;
+
     }
 
     @Override

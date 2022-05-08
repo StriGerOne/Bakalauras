@@ -37,6 +37,13 @@ public class RestaurantRating {
         return ratingRepository.findByRestaurantId(id);
     }
 
+    @GetMapping("/getRateByUser")
+    public List<Rating> findByUserId(@RequestParam(name = "UserId") long id) {
+        return ratingRepository.findByUserId(id);
+    }
+
+
+
 
 }
 

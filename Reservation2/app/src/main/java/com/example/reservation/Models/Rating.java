@@ -1,11 +1,14 @@
 package com.example.reservation.Models;
 
+import java.time.LocalDateTime;
+
 public class Rating {
     private Long id;
     private Long restaurantId;
     private Long userId;
     private float rating;
     private String comment;
+    private LocalDateTime rateTime;
 
     public Rating(Long id, Long restaurantId, Long userId, float rating, String comment) {
         this.id = id;
@@ -55,6 +58,14 @@ public class Rating {
         this.comment = comment;
     }
 
+    public LocalDateTime getRateTime() {
+        return rateTime;
+    }
+
+    public void setRateTime(LocalDateTime rateTime) {
+        this.rateTime = rateTime;
+    }
+
     @Override
     public String toString() {
         return "Rating{" +
@@ -63,6 +74,7 @@ public class Rating {
                 ", userId=" + userId +
                 ", rating=" + rating +
                 ", comment='" + comment + '\'' +
+                ", rateTime=" + rateTime +
                 '}';
     }
 }

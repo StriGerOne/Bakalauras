@@ -42,8 +42,8 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
     />
     <ListView
-            android:layout_width="391dp"
-            android:layout_height="243dp"
+            android:layout_width="395dp"
+            android:layout_height="561dp"
             android:id="@+id/userRateList" android:layout_marginEnd="1dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="1dp" app:layout_constraintTop_toBottomOf="@+id/formName"/>
 

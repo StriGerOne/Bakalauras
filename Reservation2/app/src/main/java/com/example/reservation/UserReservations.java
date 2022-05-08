@@ -1,6 +1,5 @@
 package com.example.reservation;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -39,10 +38,7 @@ public class UserReservations extends AppCompatActivity {
         final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
 
         ImageButton backButton = findViewById(R.id.back);
-
-        backButton.setOnClickListener((adapterView) -> {
-            finish();
-        });
+        backButton.setOnClickListener((adapterView) -> finish());
 
 
         Executor executor = Executors.newSingleThreadExecutor();

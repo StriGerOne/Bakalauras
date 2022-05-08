@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface RatingRepository extends MongoRepository<Rating, Long> {
     List<Rating> findByRestaurantId(Long id);
+    List<Rating> findByUserId(Long id);
 
 }

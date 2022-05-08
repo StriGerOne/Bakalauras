@@ -40,6 +40,7 @@ public class ReservationForm extends AppCompatActivity {
         final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
         final String currentUserName =SharedPreferenceProvider.getInstance().getUserName();
         final String currentUserSurname = SharedPreferenceProvider.getInstance().getUserSurname();
+
         final String currentRestaurant = getIntent().getStringExtra("RestaurantName");
         final Long restaurantId = getIntent().getLongExtra("RestaurantId", 0);
 
@@ -79,18 +80,18 @@ public class ReservationForm extends AppCompatActivity {
 
 
             if (peopleAmount.isEmpty()) {
-                peopleAmountText.setError("People amount is required");
+                peopleAmountText.setError("Įveskite žmonių kiekį");
                 peopleAmountText.requestFocus();
                 return;
             }
             if (dateTimeIn.isEmpty()) {
-                dateTimeInField.setError("Starting Date and time is required");
+                dateTimeInField.setError("Pasirinkite pradžios datą ir laiką");
                 dateTimeInField.requestFocus();
                 return;
             }
 
             if (duration.isEmpty()) {
-                durationField.setError("End time is required");
+                durationField.setError("Pasirinkite numatomą trukmę");
                 durationField.requestFocus();
                 return;
             }
@@ -117,7 +118,6 @@ public class ReservationForm extends AppCompatActivity {
                         if (!response.equals("Error") && !response.equals("")) {
                             Toast.makeText(getApplicationContext(), "Rezervacija atlikta sėkmingai", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ReservationForm.this, MainWindow.class);
-                            intent.putExtra("UserId", currentUserId);
                             startActivity(intent);
 
                         } else {

@@ -11,9 +11,12 @@ public class Constants {
      public static String getReservationsByUser(Long id){
           return ADRESS + "getReservationsByUser" + "?UserId=" + id;
      }
-     public static final String RATELIST = ADRESS + "allRates";
-     public static final String EDITUSER = ADRESS + "updateuser/{id}";
-
+     public static String getRateByUser(Long id) {
+          return ADRESS + "getRateByUser" + "?UserId=" + id;
+     }
+     public static String updateUserInfo(Long id) {
+          return ADRESS + "updateuser" + "?UserId=" + id;
+     }
      public static String getRateByRestaurant(Long id){
           return ADRESS + "getRateByRestaurant" + "?RestaurantId=" + id;
      }

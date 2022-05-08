@@ -10,13 +10,17 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Rating;
-import com.example.reservation.utils.SharedPreferenceProvider;
+import com.example.reservation.Serializer.DataTimeSerializer;
+import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -30,13 +34,6 @@ public class RestaurantDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restauran_details);
 
-//        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
-//        final String currentUserName = SharedPreferenceProvider.getInstance().getUserName();
-//        final String currentUserSurname = SharedPreferenceProvider.getInstance().getUserSurname();
-//        final String currentUserId = getIntent().getStringExtra("UserId");
-//        final String currentUserName = getIntent().getStringExtra("UserName");
-//        final String currentUserSurname = getIntent().getStringExtra("UserSurname");
-
         final Long currentRestaurantId = getIntent().getLongExtra("RestaurantId", 0);
         final String currentRestaurantName = getIntent().getStringExtra("RestaurantName");
         final String currentRestaurantAddress = getIntent().getStringExtra("RestaurantAddress");
@@ -45,9 +42,7 @@ public class RestaurantDetails extends AppCompatActivity {
         final String currentRestaurantSummary = getIntent().getStringExtra("RestaurantSummary");
 
         ImageButton backButton = findViewById(R.id.back);
-        backButton.setOnClickListener((adapterView) -> {
-            finish();
-        });
+        backButton.setOnClickListener((adapterView) -> finish());
 
         TextView restName = findViewById(R.id.restNameField);
         restName.setText(currentRestaurantName);
@@ -63,7 +58,6 @@ public class RestaurantDetails extends AppCompatActivity {
         Button rate = findViewById(R.id.rate);
         rate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, RestaurantRating.class);
-        //    intent.putExtra("UserId", currentUserId);
             intent.putExtra("RestaurantId", currentRestaurantId);
             startActivity(intent);
         });
@@ -71,9 +65,6 @@ public class RestaurantDetails extends AppCompatActivity {
         Button reservate = findViewById(R.id.reservateBtn);
         reservate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, ReservationForm.class);
-//            intent.putExtra("UserId", currentUserId);
-//            intent.putExtra("UserName", currentUserName);
-//            intent.putExtra("UserSurname", currentUserSurname);
             intent.putExtra("RestaurantId", currentRestaurantId);
             intent.putExtra("RestaurantName", currentRestaurantName);
             startActivity(intent);
@@ -89,10 +80,13 @@ public class RestaurantDetails extends AppCompatActivity {
                 handler.post(() -> {
 
                     if (!response.equals("") && !response.equals("Error")) {
-                        Gson builder = new GsonBuilder().create();
+
+                        GsonBuilder builder = new GsonBuilder();
+                        builder.registerTypeAdapter(LocalTime.class, new DataTimeSerializer());
+                        builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
                         Type ratingListType = new TypeToken<List<Rating>>() {
                         }.getType();
-                        final List<Rating> ratingListFromJson = builder.fromJson(response, ratingListType);
+                        final List<Rating> ratingListFromJson = builder.create().fromJson(response, ratingListType);
                         /** Spausdina visą info esančią restourant klasėje **/
                         List<String> ratingList = new ArrayList<>();
                         ratingListFromJson.forEach(r->ratingList.add(r.getRating() + " " + r.getComment()));
@@ -102,7 +96,6 @@ public class RestaurantDetails extends AppCompatActivity {
                         ArrayAdapter<Rating> arrayAdapter = new ArrayAdapter<>(RestaurantDetails.this, android.R.layout.simple_list_item_1, ratingListFromJson);
                         rateList.setAdapter(arrayAdapter);
                     }
-                    System.out.println(currentRestaurantId);
                 });
 
             } catch (IOException e) {
@@ -110,7 +103,5 @@ public class RestaurantDetails extends AppCompatActivity {
             }
 
         });
-
-
     }
 }

@@ -1,10 +1,8 @@
 package com.example.reservation;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Patterns;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,9 +12,6 @@ import com.example.reservation.utils.SharedPreferenceProvider;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.EDITUSER;
-import static com.example.reservation.Constants.REGISTER;
-
 public class UserEdit extends AppCompatActivity {
 
     @Override
@@ -24,7 +19,7 @@ public class UserEdit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_edit);
 
-//        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
+        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
         final String currentUserName = SharedPreferenceProvider.getInstance().getUserName();
         final String currentUserSurname = SharedPreferenceProvider.getInstance().getUserSurname();
         final String currentUserUsername = SharedPreferenceProvider.getInstance().getUserUsername();
@@ -34,15 +29,7 @@ public class UserEdit extends AppCompatActivity {
 
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener((adapterView) -> {
-            Intent intent = new Intent(UserEdit.this, UserInfo.class);
-//            intent.putExtra("UserId", currentUserId);
-//            intent.putExtra("UserName", currentUserName);
-//            intent.putExtra("UserSurname", currentUserSurname);
-//            intent.putExtra("UserUsername", currentUserUsername);
-//            intent.putExtra("UserPassword", currentUserPassword);
-//            intent.putExtra("UserPhone", currentUserPhone);
-//            intent.putExtra("UserEmail", currentUserEmail);
-            startActivity(intent);
+        finish();
         });
 
         EditText editName = findViewById(R.id.editFName);
@@ -76,7 +63,7 @@ public class UserEdit extends AppCompatActivity {
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
             executor.execute(() -> {
-                String url = EDITUSER;
+                String url = Constants.updateUserInfo(Long.valueOf(currentUserId));
                 try {
                     String response = RESTController.sendPut(url, json);
                     handler.post(() -> {
@@ -95,9 +82,5 @@ public class UserEdit extends AppCompatActivity {
             });
 
         });
-
-
-
-
     }
 }
