@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.reservation.Models.Rating;
 import com.example.reservation.Models.Restaurant;
 import com.example.reservation.R;
 
@@ -18,24 +19,24 @@ import java.util.List;
 import static com.example.reservation.Constants.ADRESS;
 
 public class CustomListAdapter extends BaseAdapter {
-    private Activity activity;
-    private LayoutInflater inflater;
-    private List<Restaurant> restaurantList;
-    ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+    protected Activity activity;
+    protected LayoutInflater inflater;
+    protected List listElement;
 
-    public CustomListAdapter(Activity activity, List<Restaurant> restaurantList) {
+
+    public CustomListAdapter(Activity activity, List listElement) {
         this.activity = activity;
-        this.restaurantList = restaurantList;
+        this.listElement = listElement;
     }
 
     @Override
     public int getCount() {
-        return restaurantList.size();
+        return listElement.size();
     }
 
     @Override
     public Object getItem(int location) {
-        return restaurantList.get(location);
+        return listElement.get(location);
     }
 
     @Override
@@ -52,19 +53,6 @@ public class CustomListAdapter extends BaseAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
             convertView = inflater.inflate(R.layout.list_row, null);
-
-        if (imageLoader == null)
-            imageLoader = AppController.getInstance().getImageLoader();
-        NetworkImageView thumbNail = convertView
-                .findViewById(R.id.thumbnail);
-        TextView title = convertView.findViewById(R.id.title);
-        TextView phoneNum = convertView.findViewById(R.id.phoneNum);
-        TextView address = convertView.findViewById(R.id.address);
-        Restaurant m = restaurantList.get(position);
-        thumbNail.setImageUrl(ADRESS + "images/" + m.getImageUrl(), imageLoader);
-        title.setText(m.getRestaurantName());
-        phoneNum.setText("Telefono numeris: " + m.getPhone());
-        address.setText(String.valueOf(m.getAddress()));
 
         return convertView;
     }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Restaurant;
 import com.example.reservation.utils.CustomListAdapter;
+import com.example.reservation.utils.RestaurantAdapter;
 import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,7 +23,7 @@ import java.util.concurrent.Executors;
 import static com.example.reservation.Constants.RESTLIST;
 
 public class MainWindow extends AppCompatActivity {
-    private CustomListAdapter adapter;
+    private RestaurantAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class MainWindow extends AppCompatActivity {
                         }.getType();
                         final List<Restaurant> restaurantListFromJson = builder.fromJson(response, restaurantListType);
                         ListView restaurantList = findViewById(R.id.restaurantList);
-                        adapter = new CustomListAdapter(this, restaurantListFromJson);
+                        adapter = new RestaurantAdapter(this, restaurantListFromJson);
                         restaurantList.setAdapter(adapter);
                         restaurantList.setOnItemClickListener((adapterView, view, i, l) -> {
                             Intent intent = new Intent(MainWindow.this, RestaurantDetails.class);
