@@ -5,6 +5,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class RESTController {
 
@@ -66,22 +67,14 @@ public class RESTController {
             return "Error";
         }
     }
-    private static void setConnectionParameters(HttpURLConnection httpURLConnection, String type) throws ProtocolException {
-        httpURLConnection.setRequestMethod(type);
-        httpURLConnection.setReadTimeout(20000);
-        httpURLConnection.setConnectTimeout(20000);
-        httpURLConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-        httpURLConnection.setRequestProperty("Accept", "application/json");
-        httpURLConnection.setDoInput(true);
-        httpURLConnection.setDoOutput(true);
-    }
+
     public static String sendPut(String p_url, String postDataParameters) throws Exception {
         URL url = new URL(p_url);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        setConnectionParams(connection, "PUT");
+        setConnectionParameters(connection, "PUT");
 
         OutputStream out = connection.getOutputStream();
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, StandardCharsets.UTF_8));
         writer.write(postDataParameters);
         writer.flush();
         writer.close();
@@ -102,6 +95,13 @@ public class RESTController {
         return null;
     }
 
-    private static void setConnectionParams(HttpURLConnection connection, String put) {
+    private static void setConnectionParameters(HttpURLConnection httpURLConnection, String type) throws ProtocolException {
+        httpURLConnection.setRequestMethod(type);
+        httpURLConnection.setReadTimeout(20000);
+        httpURLConnection.setConnectTimeout(20000);
+        httpURLConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        httpURLConnection.setRequestProperty("Accept", "application/json");
+        httpURLConnection.setDoInput(true);
+        httpURLConnection.setDoOutput(true);
     }
 }

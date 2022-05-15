@@ -12,6 +12,8 @@ import com.example.reservation.utils.SharedPreferenceProvider;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import static com.example.reservation.Constants.updateUserInfo;
+
 public class UserEdit extends AppCompatActivity {
 
     @Override
@@ -29,7 +31,7 @@ public class UserEdit extends AppCompatActivity {
 
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener((adapterView) -> {
-        finish();
+            finish();
         });
 
         EditText editName = findViewById(R.id.editFName);
@@ -63,9 +65,8 @@ public class UserEdit extends AppCompatActivity {
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
             executor.execute(() -> {
-                String url = Constants.updateUserInfo(Long.valueOf(currentUserId));
                 try {
-                    String response = RESTController.sendPut(url, json);
+                    String response = RESTController.sendPut(updateUserInfo(Long.valueOf(currentUserId)), json);
                     handler.post(() -> {
                         if (!response.equals("Error") && !response.equals("")) {
                             Toast.makeText(getApplicationContext(), "Register Successful", Toast.LENGTH_SHORT).show();

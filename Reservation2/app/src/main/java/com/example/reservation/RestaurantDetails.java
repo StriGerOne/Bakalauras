@@ -12,6 +12,7 @@ import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Rating;
 import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
+import com.example.reservation.utils.RatingAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -28,6 +29,7 @@ import java.util.concurrent.Executors;
 
 
 public class RestaurantDetails extends AppCompatActivity {
+    private RatingAdapter adapter;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,7 @@ public class RestaurantDetails extends AppCompatActivity {
             intent.putExtra("RestaurantId", currentRestaurantId);
             startActivity(intent);
         });
-        
+
         Button reservate = findViewById(R.id.reservateBtn);
         reservate.setOnClickListener((adapterView) -> {
             Intent intent = new Intent(RestaurantDetails.this, ReservationForm.class);
@@ -88,13 +90,10 @@ public class RestaurantDetails extends AppCompatActivity {
                         }.getType();
                         final List<Rating> ratingListFromJson = builder.create().fromJson(response, ratingListType);
                         /** Spausdina visą info esančią restourant klasėje **/
-                        List<String> ratingList = new ArrayList<>();
-                        ratingListFromJson.forEach(r->ratingList.add(r.getRating() + " " + r.getComment()));
-
-                        ListView rateList = findViewById(R.id.ratesList);
-
-                        ArrayAdapter<Rating> arrayAdapter = new ArrayAdapter<>(RestaurantDetails.this, android.R.layout.simple_list_item_1, ratingListFromJson);
-                        rateList.setAdapter(arrayAdapter);
+                        /** Spausdina visą info esančią restourant klasėje **/
+                        ListView ratingList = findViewById(R.id.ratesList);
+                        adapter = new RatingAdapter(this, ratingListFromJson);
+                        ratingList.setAdapter(adapter);
                     }
                 });
 
