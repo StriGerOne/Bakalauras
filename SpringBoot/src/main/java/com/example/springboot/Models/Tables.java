@@ -1,19 +1,27 @@
 package com.example.springboot.Models;
 
-public class Tables {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+public class Tables {
+    @Id
+    @Field(name = "tableId")
+    private String tableId;
     private Long restaurantId;
     private int seatAmount;
-    private Long tableId;
-    private int tableSeats;
-
-    public Tables(Long restaurantId, int seatAmount, Long tableId, int tableSeats) {
+    public Tables(String tableId, Long restaurantId, int seatAmount) {
+        this.tableId = tableId;
         this.restaurantId = restaurantId;
         this.seatAmount = seatAmount;
-        this.tableId = tableId;
-        this.tableSeats = tableSeats;
     }
 
+    public String getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(String tableId) {
+        this.tableId = tableId;
+    }
     public Long getRestaurantId() {
         return restaurantId;
     }
@@ -30,21 +38,8 @@ public class Tables {
         this.seatAmount = seatAmount;
     }
 
-    public Long getTableId() {
-        return tableId;
-    }
 
-    public void setTableId(Long tableId) {
-        this.tableId = tableId;
-    }
 
-    public int getTableSeats() {
-        return tableSeats;
-    }
-
-    public void setTableSeats(int tableSeats) {
-        this.tableSeats = tableSeats;
-    }
 }
 
 

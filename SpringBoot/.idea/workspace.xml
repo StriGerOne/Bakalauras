@@ -5,25 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="544b9ac8-c746-487a-bc80-685da0fdc596" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Models/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Models/Rating.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/seatSelect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/drawable/schema.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_seat_select.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/RestaurantTableController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Repositories/RestaurantTableRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/ReservationForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/ReservationForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/RestaurantDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/RestaurantDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/RestaurantRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/RestaurantRating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserEdit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserRatings.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserRatings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserReservations.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserReservations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restaurant_rating.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restaurant_rating.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_user_ratings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_user_ratings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_user_reservations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_user_reservations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restauran_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restauran_details.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/RestaurantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/RestaurantRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/RestaurantRating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/Rating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/Tables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Models/Tables.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Repositories/RatingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Repositories/RatingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/springboot/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/springboot/Controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springboot/Repositories/RestaurantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springboot/Repositories/RestaurantRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -219,6 +214,13 @@
       <workItem from="1652009597796" duration="13803000" />
       <workItem from="1652036777728" duration="1475000" />
       <workItem from="1652039613043" duration="3211000" />
+      <workItem from="1652113423944" duration="2964000" />
+      <workItem from="1652293306539" duration="11000" />
+      <workItem from="1652293503607" duration="3437000" />
+      <workItem from="1652302747701" duration="224000" />
+      <workItem from="1652304455105" duration="781000" />
+      <workItem from="1652369906367" duration="3592000" />
+      <workItem from="1652481456196" duration="4733000" />
     </task>
     <servers />
   </component>

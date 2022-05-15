@@ -16,6 +16,9 @@
             android:theme="@style/Theme.Reservation"
             android:usesCleartextTraffic="true">
         <activity
+                android:name=".SelectSeat"
+                android:exported="true"/>
+        <activity
                 android:name=".UserRatings"
                 android:exported="true"/>
         <activity

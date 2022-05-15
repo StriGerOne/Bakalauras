@@ -36,7 +36,6 @@ public class ReservationForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_form);
 
-
         final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
         final String currentUserName =SharedPreferenceProvider.getInstance().getUserName();
         final String currentUserSurname = SharedPreferenceProvider.getInstance().getUserSurname();
@@ -48,6 +47,11 @@ public class ReservationForm extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener((adapterView) -> finish());
 
+        Button seatSelect = findViewById(R.id.selectSeat);
+        seatSelect.setOnClickListener((adapterView) -> {
+                    Intent intent = new Intent(ReservationForm.this, SelectSeat.class);
+                    startActivity(intent);
+                });
 
         EditText peopleAmountText = findViewById(R.id.amount);
 
@@ -77,7 +81,6 @@ public class ReservationForm extends AppCompatActivity {
             String peopleAmount = peopleAmountText.getText().toString();
             String dateTimeIn = dateTimeInField.getText().toString();
             String duration = durationField.getText().toString();
-
 
             if (peopleAmount.isEmpty()) {
                 peopleAmountText.setError("Įveskite žmonių kiekį");
