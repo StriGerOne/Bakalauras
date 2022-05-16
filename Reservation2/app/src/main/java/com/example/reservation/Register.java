@@ -25,7 +25,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         ImageButton backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(view -> startActivity(new Intent(Register.this, Login.class)));
+        backButton.setOnClickListener((adapterView) -> finish());
 
         EditText firstNameField = findViewById(R.id.fName);
         EditText lastNameField = findViewById(R.id.lName);

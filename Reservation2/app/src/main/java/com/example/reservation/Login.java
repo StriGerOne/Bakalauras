@@ -1,8 +1,6 @@
 package com.example.reservation;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -35,7 +33,7 @@ public class Login extends AppCompatActivity {
 
 
         ImageButton backButton = findViewById(R.id.back);
-        backButton.setOnClickListener(view -> startActivity(new Intent(Login.this, MainWindow.class)));
+        backButton.setOnClickListener((adapterView) -> finish());
 
         EditText loginUserField = findViewById(R.id.username);
         EditText loginPassField = findViewById(R.id.password);

@@ -13,16 +13,13 @@ import com.example.reservation.Models.Rating;
 import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
 import com.example.reservation.utils.RatingAdapter;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -89,8 +86,6 @@ public class RestaurantDetails extends AppCompatActivity {
                         Type ratingListType = new TypeToken<List<Rating>>() {
                         }.getType();
                         final List<Rating> ratingListFromJson = builder.create().fromJson(response, ratingListType);
-                        /** Spausdina visą info esančią restourant klasėje **/
-                        /** Spausdina visą info esančią restourant klasėje **/
                         ListView ratingList = findViewById(R.id.ratesList);
                         adapter = new RatingAdapter(this, ratingListFromJson);
                         ratingList.setAdapter(adapter);

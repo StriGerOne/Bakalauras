@@ -24,4 +24,9 @@ private RestaurantTableRepository restaurantTablesRepository;
         return restaurantTablesRepository.findByRestaurantId(id);
     }
 
+    @GetMapping("/allTables")
+    public List<Tables> getTables() {
+        return restaurantTablesRepository.findAll();
+    }
+
 }

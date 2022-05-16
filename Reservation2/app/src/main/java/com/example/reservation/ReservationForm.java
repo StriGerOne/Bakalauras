@@ -50,6 +50,8 @@ public class ReservationForm extends AppCompatActivity {
         Button seatSelect = findViewById(R.id.selectSeat);
         seatSelect.setOnClickListener((adapterView) -> {
                     Intent intent = new Intent(ReservationForm.this, SelectSeat.class);
+                    intent.putExtra("RestaurantId", restaurantId);
+                    System.out.println(restaurantId);
                     startActivity(intent);
                 });
 

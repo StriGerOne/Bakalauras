@@ -30,9 +30,7 @@ public class UserEdit extends AppCompatActivity {
         final String currentUserEmail = SharedPreferenceProvider.getInstance().getUserEmail();
 
         ImageButton backButton = findViewById(R.id.back);
-        backButton.setOnClickListener((adapterView) -> {
-            finish();
-        });
+        backButton.setOnClickListener((adapterView) -> finish());
 
         EditText editName = findViewById(R.id.editFName);
         editName.setText(currentUserName);
