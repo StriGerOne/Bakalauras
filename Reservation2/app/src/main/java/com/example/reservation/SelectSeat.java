@@ -14,23 +14,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Tables;
+import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
 import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.TABLES;
-import static com.example.reservation.Constants.getTablesByRestaurant;
+import static com.example.reservation.Constants.*;
 
 public class SelectSeat extends AppCompatActivity {
 
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,11 @@ public class SelectSeat extends AppCompatActivity {
 
 
         final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
-        final Long currentRestaurantId = getIntent().getLongExtra("RestaurantId", 0);
+
+        final Long restaurantId = getIntent().getLongExtra("RestaurantId", 0);
+        final String currentPeopleAmount = getIntent().getStringExtra("peopleAmount");
+        final String currentreservationTime = getIntent().getStringExtra("reservationTime");
+        final String currentDuration = getIntent().getStringExtra("duration");
 
 
         Executor executor = Executors.newSingleThreadExecutor();
@@ -59,9 +66,9 @@ public class SelectSeat extends AppCompatActivity {
                         Type tableListType = new TypeToken<List<Tables>>() {
                         }.getType();
                         final List<Tables> tableListFromJson = builder.create().fromJson(response, tableListType);
-                        /** Spausdina visą info esančią restourant klasėje **/
+
                         List<String> tableList = new ArrayList<>();
-                        tableListFromJson.forEach(r->tableList.add(String.valueOf(r.getSeatAmount())));
+                        tableListFromJson.forEach(r -> tableList.add(String.valueOf(r.getSeatAmount())));
 
                         ListView tablesList = findViewById(R.id.seatList);
 
@@ -69,10 +76,48 @@ public class SelectSeat extends AppCompatActivity {
                         tablesList.setAdapter(arrayAdapter);
 
                         tablesList.setOnItemClickListener((adapterView, view, i, l) -> {
-
-                            String id = tableListFromJson.get(i).getTableId();
                             Button confirm = findViewById(R.id.selectBtn);
-                            confirm.setOnClickListener(v -> System.out.println(id));
+                            confirm.setOnClickListener(v -> {
+
+                                String id = tableListFromJson.get(i).getTableId();
+
+                                GsonBuilder gsonBuilder = new GsonBuilder();
+                                gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
+                                Properties dataToSend = new Properties();
+                                dataToSend.setProperty("peopleAmount", currentPeopleAmount);
+                                dataToSend.setProperty("reservationTime", LocalDateTime.parse(currentreservationTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
+                                dataToSend.setProperty("duration", currentDuration);
+                                dataToSend.setProperty("restaurantId", String.valueOf(restaurantId));
+                                dataToSend.setProperty("userId", currentUserId);
+                                dataToSend.setProperty("selectedSeat", id);
+
+                                System.out.println(currentPeopleAmount);
+                                System.out.println(currentreservationTime);
+                                System.out.println(currentDuration);
+                                System.out.println(restaurantId);
+                                System.out.println(currentUserId);
+                                System.out.println(id);
+
+                                String url2 = RESERVATE;
+                                try {
+                                    String response2 = RESTController.sendPost(url2, gsonBuilder.create().toJson(dataToSend, Properties.class));
+                                    handler.post(() -> {
+                                        if (!response2.equals("Error") && !response2.equals("")) {
+                                            Toast.makeText(getApplicationContext(), "Rezervacija atlikta sėkmingai", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(SelectSeat.this, MainWindow.class);
+                                            startActivity(intent);
+
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();
+                                            System.out.println(dataToSend);
+                                        }
+                                    });
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            });
                         });
                     }
                 });

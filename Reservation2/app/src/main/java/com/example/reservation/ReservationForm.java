@@ -101,39 +101,48 @@ public class ReservationForm extends AppCompatActivity {
                 return;
             }
 
+                Intent intent = new Intent(ReservationForm.this, SelectSeat.class);
+                intent.putExtra("RestaurantId", restaurantId);
+                intent.putExtra("peopleAmount", peopleAmount);
+                intent.putExtra("reservationTime", dateTimeIn);
+                intent.putExtra("duration", duration);
 
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
-            Properties dataToSend = new Properties();
-            dataToSend.setProperty("peopleAmount", peopleAmount);
-            dataToSend.setProperty("reservationTime", LocalDateTime.parse(dateTimeIn, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
-            dataToSend.setProperty("duration", duration);
-            dataToSend.setProperty("restaurantId", String.valueOf(restaurantId));
-            dataToSend.setProperty("userId", currentUserId);
 
-            System.out.println(gsonBuilder.create().toJson(dataToSend, Properties.class));
+                startActivity(intent);
 
-            Executor executor = Executors.newSingleThreadExecutor();
-            Handler handler = new Handler(Looper.getMainLooper());
-            executor.execute(() -> {
-                String url = RESERVATE;
-                try {
-                    String response = RESTController.sendPost(url, gsonBuilder.create().toJson(dataToSend, Properties.class));
-                    handler.post(() -> {
-                        if (!response.equals("Error") && !response.equals("")) {
-                            Toast.makeText(getApplicationContext(), "Rezervacija atlikta sėkmingai", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ReservationForm.this, MainWindow.class);
-                            startActivity(intent);
 
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();
-                            System.out.println(dataToSend);
-                        }
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
+//            GsonBuilder gsonBuilder = new GsonBuilder();
+//            gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
+//            Properties dataToSend = new Properties();
+//            dataToSend.setProperty("peopleAmount", peopleAmount);
+//            dataToSend.setProperty("reservationTime", LocalDateTime.parse(dateTimeIn, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
+//            dataToSend.setProperty("duration", duration);
+//            dataToSend.setProperty("restaurantId", String.valueOf(restaurantId));
+//            dataToSend.setProperty("userId", currentUserId);
+//
+//            System.out.println(gsonBuilder.create().toJson(dataToSend, Properties.class));
+//
+//            Executor executor = Executors.newSingleThreadExecutor();
+//            Handler handler = new Handler(Looper.getMainLooper());
+//            executor.execute(() -> {
+//                String url = RESERVATE;
+//                try {
+//                    String response = RESTController.sendPost(url, gsonBuilder.create().toJson(dataToSend, Properties.class));
+//                    handler.post(() -> {
+//                        if (!response.equals("Error") && !response.equals("")) {
+//                            Toast.makeText(getApplicationContext(), "Rezervacija atlikta sėkmingai", Toast.LENGTH_SHORT).show();
+//                            Intent intent = new Intent(ReservationForm.this, MainWindow.class);
+//                            startActivity(intent);
+//
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();
+//                            System.out.println(dataToSend);
+//                        }
+//                    });
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            });
 
         });
 

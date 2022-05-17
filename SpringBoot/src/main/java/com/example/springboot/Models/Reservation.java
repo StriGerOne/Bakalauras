@@ -21,9 +21,9 @@ public class Reservation {
     @JsonFormat(pattern="HH:mm")
     private LocalTime duration;
     private String status;
-    private Long selectedSeat;
+    private String selectedSeat;
 
-    public Reservation (Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration) {
+    public Reservation (Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String selectedSeat) {
         this.id = id;
         this.restaurantId = restaurantId;
         this.userId = userId;
@@ -31,6 +31,7 @@ public class Reservation {
         this.reservationTime = reservationTime;
         this.duration = duration;
         this.status = "Approved";
+        this.selectedSeat = selectedSeat;
     }
 
     public Long getId() {
@@ -96,5 +97,13 @@ public class Reservation {
     public String setStatus(String status) {
         this.status = "Approved";
         return status;
+    }
+
+    public String getSelectedSeat() {
+        return selectedSeat;
+    }
+
+    public void setSelectedSeat(String selectedSeat) {
+        this.selectedSeat = selectedSeat;
     }
 }
