@@ -38,10 +38,6 @@ public class Tables {
 
     @Override
     public String toString() {
-        return "Tables{" +
-                "tableId='" + tableId + '\'' +
-                ", restaurantId=" + restaurantId +
-                ", seatAmount=" + seatAmount +
-                '}';
+        return  seatAmount + "-vietis staliukas - " + tableId;
     }
 }

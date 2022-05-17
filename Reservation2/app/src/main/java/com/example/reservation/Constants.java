@@ -23,6 +23,7 @@ public class Constants {
      public static String getTablesByRestaurant(Long id){
           return ADRESS + "getTablesByRestaurant" + "?RestaurantId=" + id;
      }
+     public static final String TABLES = ADRESS + "allTables";
 
 
 
