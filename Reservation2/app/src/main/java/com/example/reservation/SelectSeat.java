@@ -40,7 +40,6 @@ public class SelectSeat extends AppCompatActivity {
         setContentView(R.layout.activity_select_seat);
 
 
-
         final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
 
         final Long restaurantId = getIntent().getLongExtra("RestaurantId", 0);
@@ -54,7 +53,7 @@ public class SelectSeat extends AppCompatActivity {
 
         executor.execute(() -> {
 
-           // String url = Constants.getTablesByRestaurant(currentRestaurantId);
+            // String url = Constants.getTablesByRestaurant(currentRestaurantId);
             String url = TABLES;
             try {
                 String response = RESTController.sendGet(url);
@@ -98,25 +97,26 @@ public class SelectSeat extends AppCompatActivity {
                                 System.out.println(currentUserId);
                                 System.out.println(id);
 
-                                String url2 = RESERVATE;
-                                try {
-                                    String response2 = RESTController.sendPost(url2, gsonBuilder.create().toJson(dataToSend, Properties.class));
-                                    handler.post(() -> {
-                                        if (!response2.equals("Error") && !response2.equals("")) {
-                                            Toast.makeText(getApplicationContext(), "Rezervacija atlikta sėkmingai", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(SelectSeat.this, MainWindow.class);
-                                            startActivity(intent);
+                                Executor executorForReservation = Executors.newSingleThreadExecutor();
+                                Handler handlerForReservation = new Handler(Looper.getMainLooper());
+                                executorForReservation.execute(() -> {
+                                    try {
+                                        String response2 = RESTController.sendPost(RESERVATE, gsonBuilder.create().toJson(dataToSend, Properties.class));
+                                        handlerForReservation.post(() -> {
+                                            if (!response2.equals("Error") && !response2.equals("")) {
+                                                Toast.makeText(getApplicationContext(), "Rezervacija atlikta sėkmingai", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(SelectSeat.this, MainWindow.class);
+                                                startActivity(intent);
 
-                                        } else {
-                                            Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();
-                                            System.out.println(dataToSend);
-                                        }
-                                    });
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-
+                                            } else {
+                                                Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();
+                                                System.out.println(dataToSend);
+                                            }
+                                        });
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                });
                             });
                         });
                     }
