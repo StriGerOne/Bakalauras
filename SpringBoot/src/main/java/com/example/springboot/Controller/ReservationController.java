@@ -108,7 +108,11 @@ public class ReservationController {
         LocalDateTime endDate = LocalDateTime.parse(start, formatter).plusHours(LocalTime.parse(end).getHour());
         List<Reservation> reservationList = reservationRepository.findByReservationTimeBetweenAndRestaurantId(LocalDateTime.parse(start, formatter), endDate, id);
         List<Tables> tablesList = restaurantTableRepository.findAllByRestaurantId(id);
-        //tablesList.removeIf(tables -> reservationList )
+        //tablesList.removeIf(tables -> tables.getTableId().contains(reservationList))
+        tablesList.removeIf(tables -> tables.getSeatAmount() < numberOfPpl);
+        for (Reservation r : reservationList) {
+            tablesList.removeIf(tables -> tables.getTableId().equals(r.getSelectedSeat()));
+        }
         //va cia truksta jums staliuku id. Mintis - traukiat rezervacijas pagal restorano id ir intervala laiko
         //tada kiekviena rezervacija turi tureti staliuko id
         //tada gaunat visu staliuku restorane sarasa ir is to saraso isimat uzimtus
