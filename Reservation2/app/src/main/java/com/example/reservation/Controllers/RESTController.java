@@ -39,12 +39,10 @@ public class RESTController {
         URL url = new URL(urlPost);
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
         System.out.println(postDataParams);
-        //Reikia papildomu connectiono nustatymu, jie bus bendri su Put metodu
         setConnectionParameters(httpURLConnection, "POST");
         outputStream = httpURLConnection.getOutputStream();
         bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
         bufferedWriter.write(postDataParams);
-        //? bufferedWriter.flush();
         bufferedWriter.close();
         outputStream.close();
 

@@ -20,10 +20,7 @@ public class Constants {
      public static String getRateByRestaurant(Long id){
           return ADRESS + "getRateByRestaurant" + "?RestaurantId=" + id;
      }
-     public static String getTablesByRestaurant(Long id){
-          return ADRESS + "getTablesByRestaurant" + "?RestaurantId=" + id;
-     }
-     public static final String TABLES = ADRESS + "allTables";
+     public static final String TABLES = ADRESS + "checkReservationAvailabilityTables";
 
 
 

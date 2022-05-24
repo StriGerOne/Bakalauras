@@ -8,7 +8,6 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Restaurant;
-import com.example.reservation.utils.CustomListAdapter;
 import com.example.reservation.utils.RestaurantAdapter;
 import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.Gson;

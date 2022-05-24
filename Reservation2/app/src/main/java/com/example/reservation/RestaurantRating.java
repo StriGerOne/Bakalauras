@@ -46,12 +46,15 @@ public class RestaurantRating extends AppCompatActivity {
                 restCommentField.requestFocus();
                 return;
             }
-            if (comment.length() < 30 )
+            if (comment.length() < 30 ) {
                 restCommentField.setError("Komentras turi būti bent iš 30 simbolių");
-            restCommentField.requestFocus();
+                restCommentField.requestFocus();
+                return;
+            }
 
-            if(rating < 1.0f)
+            if(rating < 1.0f){
                 restRatingBar.setRating(1.0f);
+                return; }
 
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());

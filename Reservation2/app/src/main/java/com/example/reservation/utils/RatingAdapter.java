@@ -13,6 +13,7 @@ import java.util.List;
 
 public class RatingAdapter extends CustomListAdapter {
 
+    
     public RatingAdapter(Activity activity, List<Rating> listElement) {
         super(activity, listElement);
     }

@@ -7,7 +7,6 @@ import com.example.springboot.Models.Tables;
 import com.example.springboot.Repositories.ReservationRepository;
 import com.example.springboot.Repositories.RestaurantRepository;
 import com.example.springboot.Repositories.RestaurantTableRepository;
-import com.example.springboot.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +28,6 @@ public class ReservationController {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    @Autowired
-    private UserRepository userRepository;
     @Autowired
     private SequenceGeneratorService service;
 
@@ -90,33 +87,25 @@ public class ReservationController {
         LocalDateTime endDate = LocalDateTime.parse(start, formatter).plusHours(LocalTime.parse(end).getHour());
         List<Reservation> reservationList = reservationRepository.findByReservationTimeBetweenAndRestaurantId(LocalDateTime.parse(start, formatter), endDate, id);
         int occupiedSeats = reservationList.stream()
-                //.filter(x -> x.getReservationTime().plusHours(x.getDuration().getHour()).isAfter(endDate))
                 .map(Reservation::getPeopleAmount).mapToInt(Integer::intValue).sum();
         System.out.println(occupiedSeats);
         Optional<Restaurant> currentRest = restaurantRepository.findById(id);
         int allSeats = currentRest.stream()
                 .map(Restaurant::getNumberOfSeats).mapToInt(Integer::intValue).sum();
         System.out.println(allSeats);
-
-        //Cia siaip viska logiskai skaiciuoja, kiek dabar laisvu vietu in total
         return allSeats - occupiedSeats > numberOfPpl;
     }
 
     @GetMapping("/checkReservationAvailabilityTables")
     public @ResponseBody
-    List<Tables> checkReservationAvailabilityTables(@RequestParam(name = "startDate") String start, @RequestParam(name = "duration") String end, @RequestParam(name = "restId") long id, @RequestParam(name = "peopleNum") int numberOfPpl) {
+    List<Tables> checkReservationAvailabilityTables(@RequestParam(name = "reservationTime") String start, @RequestParam(name = "duration") String end, @RequestParam(name = "restaurantId") long id, @RequestParam(name = "peopleAmount") int numberOfPpl) {
         LocalDateTime endDate = LocalDateTime.parse(start, formatter).plusHours(LocalTime.parse(end).getHour());
         List<Reservation> reservationList = reservationRepository.findByReservationTimeBetweenAndRestaurantId(LocalDateTime.parse(start, formatter), endDate, id);
         List<Tables> tablesList = restaurantTableRepository.findAllByRestaurantId(id);
-        //tablesList.removeIf(tables -> tables.getTableId().contains(reservationList))
         tablesList.removeIf(tables -> tables.getSeatAmount() < numberOfPpl);
         for (Reservation r : reservationList) {
             tablesList.removeIf(tables -> tables.getTableId().equals(r.getSelectedSeat()));
         }
-        //va cia truksta jums staliuku id. Mintis - traukiat rezervacijas pagal restorano id ir intervala laiko
-        //tada kiekviena rezervacija turi tureti staliuko id
-        //tada gaunat visu staliuku restorane sarasa ir is to saraso isimat uzimtus
-        //grazina tik laisvus staliukus
         return tablesList;
     }
 

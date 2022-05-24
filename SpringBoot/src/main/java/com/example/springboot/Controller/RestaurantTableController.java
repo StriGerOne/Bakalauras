@@ -19,10 +19,6 @@ private RestaurantTableRepository restaurantTablesRepository;
         restaurantTablesRepository.save(tables);
         return "Restaurant Rated";
     }
-    @GetMapping("/getTablesByRestaurant/{id}")
-    public List<Tables> findByRestaurantId(@PathVariable Long id) {
-        return restaurantTablesRepository.findByRestaurantId(id);
-    }
 
     @GetMapping("/allTables")
     public List<Tables> getTables() {

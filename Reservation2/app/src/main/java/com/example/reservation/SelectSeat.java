@@ -4,11 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.*;
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,7 +49,6 @@ public class SelectSeat extends AppCompatActivity {
 
         executor.execute(() -> {
 
-            // String url = Constants.getTablesByRestaurant(currentRestaurantId);
             String url = TABLES;
             try {
                 String response = RESTController.sendGet(url);

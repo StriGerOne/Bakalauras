@@ -10,11 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends MongoRepository<Reservation, Long> {
-/*    List<Reservation> findByPeopleAmount(int peopleAmount);
-    List<Reservation> findByReservationTime(LocalDateTime reservationTime);
-    List<Reservation> findByReservationTimeBetween(LocalDateTime reservationTime, LocalDateTime reservationTime2);*/
     List<Reservation> findByReservationTimeBetweenAndRestaurantId(LocalDateTime reservationTime, LocalDateTime reservationTime2, long id);
-//    List <Reservation> findByUserIdAndReservationTimeAfterAndStatus (Long id, LocalDateTime localDateTime, String status);
-List <Reservation> findByUserId(Long id);
-
+    List <Reservation> findByUserId(Long id);
 }

@@ -15,11 +15,11 @@ public class User {
 
     @Id
     private Long id;
-    @Field(name = "firstName")          // Pavadinimas duomenų bazėje
+    @Field(name = "firstName")
     private String fname;
     @Field(name = "lastName")
     private String lname;
-    @Indexed(unique = true)             // Unikalus
+    @Indexed(unique = true)
     private String username;
     private String password;
     private String phone;

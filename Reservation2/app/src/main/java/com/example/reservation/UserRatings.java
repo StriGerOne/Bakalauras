@@ -56,7 +56,6 @@ public class UserRatings extends AppCompatActivity {
                         Type ratingListType = new TypeToken<List<Rating>>() {
                         }.getType();
                         final List<Rating> ratingListFromJson = builder.create().fromJson(response, ratingListType);
-                        /** Spausdina visą info esančią restourant klasėje **/
                         List<String> ratingList = new ArrayList<>();
                         ratingListFromJson.forEach(r->ratingList.add(r.getRating() + " " + r.getComment()));
 

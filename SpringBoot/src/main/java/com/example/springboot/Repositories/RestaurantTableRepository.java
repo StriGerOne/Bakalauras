@@ -7,9 +7,4 @@ import java.util.List;
 
 public interface RestaurantTableRepository extends MongoRepository<Tables, String> {
     List<Tables> findAllByRestaurantId(Long id);
-
-   // List<Tables> findByReservationTimeBetweenAndRestaurantId(LocalDateTime reservationTime, LocalDateTime reservationTime2, long id);
-
-/** Reikia surasti laisvus stalus pagal ID + REZERVACIJOS LAIKA **/
-    //Čia taip tiesiai nepaeis
 }

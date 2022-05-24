@@ -58,7 +58,6 @@ public class UserReservations extends AppCompatActivity {
                         Type reservationListType = new TypeToken<List<Reservation>>() {
                         }.getType();
                         final List<Reservation> reservationListFromJson = builder.create().fromJson(response, reservationListType);
-                        /** Spausdina visą info esančią restourant klasėje **/
                         List<String> reservationList = new ArrayList<>();
                         reservationListFromJson.forEach(r->reservationList.add(r.getPeopleAmount() + " " + r.getReservationTime()));
                         List<Reservation> approvedReservations = new ArrayList<>();

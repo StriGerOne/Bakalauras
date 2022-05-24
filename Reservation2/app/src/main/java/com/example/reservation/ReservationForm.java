@@ -2,8 +2,6 @@ package com.example.reservation;
 
 import android.content.Intent;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.*;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,21 +10,13 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.InputType;
-import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Serializer.DataTimeSerializer;
-import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
 import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.GsonBuilder;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Properties;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
-import static com.example.reservation.Constants.RESERVATE;
 
 public class ReservationForm extends AppCompatActivity {
 
@@ -36,7 +26,6 @@ public class ReservationForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_form);
 
-        final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
         final String currentUserName =SharedPreferenceProvider.getInstance().getUserName();
         final String currentUserSurname = SharedPreferenceProvider.getInstance().getUserSurname();
 
@@ -47,13 +36,6 @@ public class ReservationForm extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.back);
         backButton.setOnClickListener((adapterView) -> finish());
 
-        Button seatSelect = findViewById(R.id.selectSeat);
-        seatSelect.setOnClickListener((adapterView) -> {
-                    Intent intent = new Intent(ReservationForm.this, SelectSeat.class);
-                    intent.putExtra("RestaurantId", restaurantId);
-                    System.out.println(restaurantId);
-                    startActivity(intent);
-                });
 
         EditText peopleAmountText = findViewById(R.id.amount);
 
@@ -109,43 +91,7 @@ public class ReservationForm extends AppCompatActivity {
 
 
                 startActivity(intent);
-
-
-//            GsonBuilder gsonBuilder = new GsonBuilder();
-//            gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
-//            Properties dataToSend = new Properties();
-//            dataToSend.setProperty("peopleAmount", peopleAmount);
-//            dataToSend.setProperty("reservationTime", LocalDateTime.parse(dateTimeIn, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
-//            dataToSend.setProperty("duration", duration);
-//            dataToSend.setProperty("restaurantId", String.valueOf(restaurantId));
-//            dataToSend.setProperty("userId", currentUserId);
-//
-//            System.out.println(gsonBuilder.create().toJson(dataToSend, Properties.class));
-//
-//            Executor executor = Executors.newSingleThreadExecutor();
-//            Handler handler = new Handler(Looper.getMainLooper());
-//            executor.execute(() -> {
-//                String url = RESERVATE;
-//                try {
-//                    String response = RESTController.sendPost(url, gsonBuilder.create().toJson(dataToSend, Properties.class));
-//                    handler.post(() -> {
-//                        if (!response.equals("Error") && !response.equals("")) {
-//                            Toast.makeText(getApplicationContext(), "Rezervacija atlikta sėkmingai", Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(ReservationForm.this, MainWindow.class);
-//                            startActivity(intent);
-//
-//                        } else {
-//                            Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();
-//                            System.out.println(dataToSend);
-//                        }
-//                    });
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            });
-
         });
-
     }
 
     private void showDateTimeDialog(final EditText date_time_in) {
