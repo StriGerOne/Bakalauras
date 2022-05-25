@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class ReservationForm extends AppCompatActivity {
@@ -67,10 +68,18 @@ public class ReservationForm extends AppCompatActivity {
             String duration = durationField.getText().toString();
 
             if (peopleAmount.isEmpty()) {
-                peopleAmountText.setError("Įveskite žmonių kiekį");
+                peopleAmountText.setError("Neįveskas žmonių skaičius");
                 peopleAmountText.requestFocus();
                 return;
             }
+
+               Integer ppl = Integer.parseInt(peopleAmount);
+                if (ppl < 1) {
+                   peopleAmountText.setError("Žmonių skaičius negali būti mažesnis už 1");
+                   peopleAmountText.requestFocus();
+                    return;
+                }
+
             if (dateTimeIn.isEmpty()) {
                 dateTimeInField.setError("Pasirinkite pradžios datą ir laiką");
                 dateTimeInField.requestFocus();

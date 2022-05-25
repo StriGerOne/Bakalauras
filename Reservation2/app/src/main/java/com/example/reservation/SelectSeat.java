@@ -43,13 +43,16 @@ public class SelectSeat extends AppCompatActivity {
         final String currentreservationTime = getIntent().getStringExtra("reservationTime");
         final String currentDuration = getIntent().getStringExtra("duration");
 
+        ImageButton backButton = findViewById(R.id.back);
+        backButton.setOnClickListener((adapterView) -> finish());
 
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
         executor.execute(() -> {
 
-            String url = TABLES;
+            String url = Constants.getFreeTables(String.valueOf(currentreservationTime), String.valueOf(currentDuration),
+                    Long.valueOf(restaurantId), Integer.valueOf(currentPeopleAmount));
             try {
                 String response = RESTController.sendGet(url);
                 handler.post(() -> {
@@ -84,13 +87,6 @@ public class SelectSeat extends AppCompatActivity {
                                 dataToSend.setProperty("restaurantId", String.valueOf(restaurantId));
                                 dataToSend.setProperty("userId", currentUserId);
                                 dataToSend.setProperty("selectedSeat", id);
-
-                                System.out.println(currentPeopleAmount);
-                                System.out.println(currentreservationTime);
-                                System.out.println(currentDuration);
-                                System.out.println(restaurantId);
-                                System.out.println(currentUserId);
-                                System.out.println(id);
 
                                 Executor executorForReservation = Executors.newSingleThreadExecutor();
                                 Handler handlerForReservation = new Handler(Looper.getMainLooper());
