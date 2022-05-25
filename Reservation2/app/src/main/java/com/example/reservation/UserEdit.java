@@ -7,11 +7,14 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
+import com.example.reservation.Models.User;
 import com.example.reservation.utils.SharedPreferenceProvider;
+import com.google.gson.Gson;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import static com.example.reservation.Constants.USERAUTH;
 import static com.example.reservation.Constants.updateUserInfo;
 
 public class UserEdit extends AppCompatActivity {
@@ -46,7 +49,6 @@ public class UserEdit extends AppCompatActivity {
         editEmail.setText(currentUserEmail);
 
         Button change = findViewById(R.id.changeBtn);
-
         change.setOnClickListener(v -> {
 
             String firstname = editName.getText().toString();
@@ -59,6 +61,7 @@ public class UserEdit extends AppCompatActivity {
             String json = "{\"fname\":\"" + firstname + "\", \"lname\":\"" + lastname + "\", \"username\":\"" + username
                     + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
 
+            SharedPreferenceProvider sharedPreferences = SharedPreferenceProvider.getInstance();
 
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
@@ -67,11 +70,19 @@ public class UserEdit extends AppCompatActivity {
                     String response = RESTController.sendPut(updateUserInfo(Long.valueOf(currentUserId)), json);
                     handler.post(() -> {
                         if (!response.equals("Error") && !response.equals("")) {
-                            Toast.makeText(getApplicationContext(), "Register Successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(UserEdit.this, UserInfo.class);
-                            startActivity(intent);
+                            Toast.makeText(getApplicationContext(), "Informacija atnaujinta", Toast.LENGTH_SHORT).show();
+                            Gson gson = new Gson();
+                            User user = gson.fromJson(response, User.class);
+                            sharedPreferences.saveValue("UserId",user.getId());
+                            sharedPreferences.saveValue("UserName",user.getFname());
+                            sharedPreferences.saveValue("UserSurname",user.getLname());
+                            sharedPreferences.saveValue("UserUsername",user.getUsername());
+                            sharedPreferences.saveValue("UserPassword",user.getPassword());
+                            sharedPreferences.saveValue("UserPhone",user.getPhone());
+                            sharedPreferences.saveValue("UserEmail",user.getEmail());
+                            finish();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Incorrect information", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Bloga informacija", Toast.LENGTH_SHORT).show();
                             System.out.println(json);
                         }
                     });
@@ -79,7 +90,6 @@ public class UserEdit extends AppCompatActivity {
                     e.printStackTrace();
                 }
             });
-
         });
     }
 }

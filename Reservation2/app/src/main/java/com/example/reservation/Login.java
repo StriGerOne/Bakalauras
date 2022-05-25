@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -65,7 +66,7 @@ public class Login extends AppCompatActivity {
                 String url = USERAUTH;
                 try {
                     String response = RESTController.sendPost(url, json);
-                    handler.post(() -> {
+                                        handler.post(() -> {
                         if (!response.equals("Error") && !response.equals("")) {
                             Toast.makeText(getApplicationContext(), "Sėkmingai prisijungta", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Login.this, MainWindow.class);

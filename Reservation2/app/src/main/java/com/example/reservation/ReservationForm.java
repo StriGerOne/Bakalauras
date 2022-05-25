@@ -14,10 +14,13 @@ import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.GsonBuilder;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class ReservationForm extends AppCompatActivity {
 
@@ -86,6 +89,8 @@ public class ReservationForm extends AppCompatActivity {
                 return;
             }
 
+            Date today = new Date();
+
             if (duration.isEmpty()) {
                 durationField.setError("Pasirinkite numatomą trukmę");
                 durationField.requestFocus();
@@ -114,19 +119,28 @@ public class ReservationForm extends AppCompatActivity {
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 calendar.set(Calendar.MINUTE, minute);
 
-                GsonBuilder gson = new GsonBuilder();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    gson.registerTypeAdapter(LocalDateTime.class, new DataTimeSerializer());
+                Date time = calendar.getTime();
+                Date today = new Date();
+                if (today.after(time)) {
+                    Toast.makeText(getApplicationContext(), "Neteisingas laikas",Toast.LENGTH_LONG).show();
                 }
+                else {
+                    GsonBuilder gson = new GsonBuilder();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        gson.registerTypeAdapter(LocalDateTime.class, new DataTimeSerializer());
+                    }
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-                date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
+                    date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
+                }
             };
 
             new TimePickerDialog(ReservationForm.this, timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show();
         };
-        new DatePickerDialog(ReservationForm.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(ReservationForm.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+  datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+  datePickerDialog.show();
     }
 
     private void showTimeDialog(final EditText durationField) {

@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="544b9ac8-c746-487a-bc80-685da0fdc596" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Reservation2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/ReservationForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/ReservationForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/SelectSeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/SelectSeat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restauran_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_restauran_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_select_seat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/res/layout/activity_select_seat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Reservation2/app/src/main/java/com/example/reservation/UserEdit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +221,7 @@
       <workItem from="1653247364915" duration="160000" />
       <workItem from="1653317999480" duration="2851000" />
       <workItem from="1653417308947" duration="2550000" />
-      <workItem from="1653493960883" duration="3276000" />
+      <workItem from="1653493960883" duration="5243000" />
     </task>
     <servers />
   </component>
