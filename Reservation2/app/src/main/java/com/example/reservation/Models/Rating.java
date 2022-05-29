@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class Rating {
     private Long id;
     private Long restaurantId;
-
     private String restName;
     private Long userId;
     private String username;

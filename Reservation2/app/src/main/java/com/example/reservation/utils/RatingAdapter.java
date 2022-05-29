@@ -38,7 +38,7 @@ public class RatingAdapter extends CustomListAdapter {
         Rating r = (Rating) listElement.get(position);
 
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             String format = dateFormat.format(parser.parse(r.getRateTime().toString()));
             date.setText(format);
@@ -46,9 +46,9 @@ public class RatingAdapter extends CustomListAdapter {
             throw new RuntimeException(e);
         }
 
-        username.setText(r.getUsername());
+        username.setText("Vartotojas: " + r.getUsername());
         commentText.setText(r.getComment());
-        rate.setText(String.valueOf(r.getRating()));
+        rate.setText(String.valueOf("Įvertinimas: " + r.getRating()));
 
 
         return convertView;

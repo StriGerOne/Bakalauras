@@ -54,19 +54,6 @@ public class UserRatings extends AppCompatActivity {
 
                     if (!response.equals("") && !response.equals("Error")) {
 
-//                        GsonBuilder builder = new GsonBuilder();
-//                        builder.registerTypeAdapter(LocalTime.class, new DataTimeSerializer());
-//                        builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
-//                        Type ratingListType = new TypeToken<List<Rating>>() {
-//                        }.getType();
-//                        final List<Rating> ratingListFromJson = builder.create().fromJson(response, ratingListType);
-//                        List<String> ratingList = new ArrayList<>();
-//                        ratingListFromJson.forEach(r->ratingList.add(r.getRating() + " " + r.getComment()));
-//
-//                        ListView rateList = findViewById(R.id.userRateList);
-//
-//                        ArrayAdapter<Rating> arrayAdapter = new ArrayAdapter<>(UserRatings.this, android.R.layout.simple_list_item_1, ratingListFromJson);
-//                        rateList.setAdapter(arrayAdapter);
                         GsonBuilder builder = new GsonBuilder();
                         builder.registerTypeAdapter(LocalTime.class, new DataTimeSerializer());
                         builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());

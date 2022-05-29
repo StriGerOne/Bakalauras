@@ -31,7 +31,6 @@ public class RestListAdapter extends CustomListAdapter {
         TextView date = convertView.findViewById(R.id.rateDate);
 
         Rating r = (Rating) listElement.get(position);
-        //username.setText(r.getUserId());
         commentText.setText(r.getComment());
         rate.setText(String.valueOf(r.getRating()));
         date.setText(String.valueOf(r.getRateTime()));
