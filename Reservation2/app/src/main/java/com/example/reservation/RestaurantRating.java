@@ -30,6 +30,7 @@ public class RestaurantRating extends AppCompatActivity {
         final String currentRestaurantPhone = getIntent().getStringExtra("RestaurantPhone");
         final String currentRestaurantEmail = getIntent().getStringExtra("RestaurantEmail");
         final String currentRestaurantSummary = getIntent().getStringExtra("RestaurantSummary");
+        final String currentRestaurantImage = getIntent().getStringExtra("RestaurantImage");
 
 
         ImageButton backButton = findViewById(R.id.back);
@@ -81,6 +82,7 @@ public class RestaurantRating extends AppCompatActivity {
                         intent.putExtra("RestaurantPhone", currentRestaurantPhone);
                         intent.putExtra("RestaurantEmail", currentRestaurantEmail);
                         intent.putExtra("RestaurantSummary", currentRestaurantSummary);
+                        intent.putExtra("RestaurantImage", currentRestaurantImage);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();

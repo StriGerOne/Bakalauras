@@ -82,6 +82,7 @@ public class RestaurantDetails extends AppCompatActivity {
             intent.putExtra("RestaurantPhone", currentRestaurantPhone);
             intent.putExtra("RestaurantEmail", currentRestaurantEmail);
             intent.putExtra("RestaurantSummary", currentRestaurantSummary);
+            intent.putExtra("RestaurantImage", currentRestaurantImage);
             startActivity(intent);
         });
 
