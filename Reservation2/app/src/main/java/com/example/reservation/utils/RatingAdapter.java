@@ -40,7 +40,8 @@ public class RatingAdapter extends CustomListAdapter {
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            dateFormat.format(parser.parse(r.getRateTime().toString()));
+            String format = dateFormat.format(parser.parse(r.getRateTime().toString()));
+            date.setText(format);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -48,7 +49,7 @@ public class RatingAdapter extends CustomListAdapter {
         username.setText(r.getUsername());
         commentText.setText(r.getComment());
         rate.setText(String.valueOf(r.getRating()));
-        date.setText(String.valueOf(r.getRateTime()));
+
 
         return convertView;
     }

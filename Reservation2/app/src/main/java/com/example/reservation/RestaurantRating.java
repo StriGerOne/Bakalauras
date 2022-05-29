@@ -46,7 +46,7 @@ public class RestaurantRating extends AppCompatActivity {
 
 
             String json = "{\"rating\":\"" + rating + "\", \"comment\":\"" + comment + "\", \"userId\":\"" + currentUserId
-                    + "\", \"username\":\"" + currentUsername + "\", \"restaurantId\":\"" + currentRestaurantId +"\"}";
+                    + "\", \"username\":\"" + currentUsername + "\", \"restaurantId\":\"" + currentRestaurantId +"\", \"restName\":\"" + currentRestaurantName +"\"}";
 
             if (comment.isEmpty()) {
                 restCommentField.setError("Parašykite savo nuomonę");

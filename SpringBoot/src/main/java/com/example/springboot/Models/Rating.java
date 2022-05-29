@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 public class Rating {
     private Long id;
     private Long restaurantId;
+    private String restName;
     private Long userId;
     private String username;
     private float rating;
@@ -14,9 +15,10 @@ public class Rating {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime rateTime = LocalDateTime.now();
 
-    public Rating(Long id, Long restaurantId, Long userId, String username, float rating, String comment) {
+    public Rating(Long id, Long restaurantId, String restName, Long userId, String username, float rating, String comment) {
         this.id = id;
         this.restaurantId = restaurantId;
+        this.restName = restName;
         this.userId = userId;
         this.username = username;
         this.rating = rating;
@@ -37,6 +39,14 @@ public class Rating {
 
     public void setRestaurantId(Long restaurantId) {
         this.restaurantId = restaurantId;
+    }
+
+    public String getRestName() {
+        return restName;
+    }
+
+    public void setRestName(String restName) {
+        this.restName = restName;
     }
 
     public Long getUserId() {

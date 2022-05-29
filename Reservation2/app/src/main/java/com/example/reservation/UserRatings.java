@@ -13,7 +13,9 @@ import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Rating;
 import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
+import com.example.reservation.utils.RatingAdapter;
 import com.example.reservation.utils.SharedPreferenceProvider;
+import com.example.reservation.utils.UserRatingAdapter;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
@@ -27,6 +29,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class UserRatings extends AppCompatActivity {
+
+    private UserRatingAdapter adapter;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,19 +54,29 @@ public class UserRatings extends AppCompatActivity {
 
                     if (!response.equals("") && !response.equals("Error")) {
 
+//                        GsonBuilder builder = new GsonBuilder();
+//                        builder.registerTypeAdapter(LocalTime.class, new DataTimeSerializer());
+//                        builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
+//                        Type ratingListType = new TypeToken<List<Rating>>() {
+//                        }.getType();
+//                        final List<Rating> ratingListFromJson = builder.create().fromJson(response, ratingListType);
+//                        List<String> ratingList = new ArrayList<>();
+//                        ratingListFromJson.forEach(r->ratingList.add(r.getRating() + " " + r.getComment()));
+//
+//                        ListView rateList = findViewById(R.id.userRateList);
+//
+//                        ArrayAdapter<Rating> arrayAdapter = new ArrayAdapter<>(UserRatings.this, android.R.layout.simple_list_item_1, ratingListFromJson);
+//                        rateList.setAdapter(arrayAdapter);
                         GsonBuilder builder = new GsonBuilder();
                         builder.registerTypeAdapter(LocalTime.class, new DataTimeSerializer());
                         builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeGsonSerializer());
                         Type ratingListType = new TypeToken<List<Rating>>() {
                         }.getType();
                         final List<Rating> ratingListFromJson = builder.create().fromJson(response, ratingListType);
-                        List<String> ratingList = new ArrayList<>();
-                        ratingListFromJson.forEach(r->ratingList.add(r.getRating() + " " + r.getComment()));
+                        ListView ratingList = findViewById(R.id.userRateList);
+                        adapter = new UserRatingAdapter(this, ratingListFromJson);
+                        ratingList.setAdapter(adapter);
 
-                        ListView rateList = findViewById(R.id.userRateList);
-
-                        ArrayAdapter<Rating> arrayAdapter = new ArrayAdapter<>(UserRatings.this, android.R.layout.simple_list_item_1, ratingListFromJson);
-                        rateList.setAdapter(arrayAdapter);
                     }
                 });
 
