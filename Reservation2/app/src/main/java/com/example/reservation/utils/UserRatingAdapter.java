@@ -26,7 +26,7 @@ public class UserRatingAdapter extends CustomListAdapter {
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.list_row_3, null);
+            convertView = inflater.inflate(R.layout.list_row_4, null);
         TextView restaurantName = convertView.findViewById(R.id.restName);
         TextView commentText = convertView.findViewById(R.id.commentText);
         TextView rate = convertView.findViewById(R.id.rate);

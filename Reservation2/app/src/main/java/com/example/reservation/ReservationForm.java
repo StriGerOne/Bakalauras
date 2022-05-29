@@ -88,7 +88,6 @@ public class ReservationForm extends AppCompatActivity {
                 return;
             }
 
-            Date today = new Date();
 
             if (duration.isEmpty()) {
                 durationField.setError("Pasirinkite numatomą trukmę");
@@ -101,6 +100,7 @@ public class ReservationForm extends AppCompatActivity {
                 intent.putExtra("peopleAmount", peopleAmount);
                 intent.putExtra("reservationTime", dateTimeIn);
                 intent.putExtra("duration", duration);
+                intent.putExtra("RestaurantName", currentRestaurant);
 
 
                 startActivity(intent);

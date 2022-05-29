@@ -40,6 +40,7 @@ public class SelectSeat extends AppCompatActivity {
 
         final Long restaurantId = getIntent().getLongExtra("RestaurantId", 0);
         final String currentPeopleAmount = getIntent().getStringExtra("peopleAmount");
+        final String currentRestaurantName = getIntent().getStringExtra("RestaurantName");
         final String currentreservationTime = getIntent().getStringExtra("reservationTime");
         final String currentDuration = getIntent().getStringExtra("duration");
 
@@ -85,6 +86,7 @@ public class SelectSeat extends AppCompatActivity {
                                 dataToSend.setProperty("reservationTime", LocalDateTime.parse(currentreservationTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")).toString());
                                 dataToSend.setProperty("duration", currentDuration);
                                 dataToSend.setProperty("restaurantId", String.valueOf(restaurantId));
+                                dataToSend.setProperty("RestaurantName", currentRestaurantName);
                                 dataToSend.setProperty("userId", currentUserId);
                                 dataToSend.setProperty("selectedSeat", id);
 
@@ -97,6 +99,7 @@ public class SelectSeat extends AppCompatActivity {
                                             if (!response2.equals("Error") && !response2.equals("")) {
                                                 Toast.makeText(getApplicationContext(), "Rezervacija atlikta sėkmingai", Toast.LENGTH_SHORT).show();
                                                 Intent intent = new Intent(SelectSeat.this, MainWindow.class);
+                                                System.out.println(currentRestaurantName);
                                                 startActivity(intent);
 
                                             } else {

@@ -7,6 +7,7 @@ public class Reservation {
 
     private Long id;
     private Long restaurantId;
+    private String RestaurantName;
     private Long userId;
     private LocalDateTime today;
     private int peopleAmount;
@@ -25,9 +26,10 @@ public class Reservation {
         this.status = "Patvirtinta";
     }
 
-    public Reservation(Long id, Long restaurantId, Long userId, LocalDateTime today, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String status) {
+    public Reservation(Long id, Long restaurantId, String RestaurantName, Long userId, LocalDateTime today, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String status) {
         this.id = id;
         this.restaurantId = restaurantId;
+        this.RestaurantName = RestaurantName;
         this.userId = userId;
         this.today = today;
         this.peopleAmount = peopleAmount;
@@ -50,6 +52,14 @@ public class Reservation {
 
     public void setRestaurantId(Long restaurantId) {
         this.restaurantId = restaurantId;
+    }
+
+    public String getRestaurantName() {
+        return RestaurantName;
+    }
+
+    public void setRestaurantName(String restName) {
+        this.RestaurantName = restName;
     }
 
     public Long getUserId() {
