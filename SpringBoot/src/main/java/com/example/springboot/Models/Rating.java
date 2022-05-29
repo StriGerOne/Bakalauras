@@ -8,15 +8,17 @@ public class Rating {
     private Long id;
     private Long restaurantId;
     private Long userId;
+    private String username;
     private float rating;
     private String comment;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime rateTime = LocalDateTime.now();
 
-    public Rating(Long id, Long restaurantId, Long userId, float rating, String comment) {
+    public Rating(Long id, Long restaurantId, Long userId, String username, float rating, String comment) {
         this.id = id;
         this.restaurantId = restaurantId;
         this.userId = userId;
+        this.username = username;
         this.rating = rating;
         this.comment = comment;
     }
@@ -43,6 +45,14 @@ public class Rating {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public float getRating() {

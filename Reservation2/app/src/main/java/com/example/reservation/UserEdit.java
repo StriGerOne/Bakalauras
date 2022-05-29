@@ -3,6 +3,7 @@ package com.example.reservation;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Patterns;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,6 +61,60 @@ public class UserEdit extends AppCompatActivity {
 
             String json = "{\"fname\":\"" + firstname + "\", \"lname\":\"" + lastname + "\", \"username\":\"" + username
                     + "\", \"password\":\"" + password + "\", \"phone\":\"" + phone + "\", \"email\":\"" + email + "\"}";
+
+            if (firstname.isEmpty()) {
+                editName.setError("Vardo laukas yra privalomas");
+                editName.requestFocus();
+                return;
+            }
+            if (!firstname.matches("[a-zA-Z ]+")) {
+                editName.requestFocus();
+                editName.setError("Neteisingas vardo formatas");
+                return;
+            }
+            if (lastname.isEmpty()) {
+                editSurname.setError("Pavardės laukas yra privalomas");
+                editSurname.requestFocus();
+                return;
+            }
+            if (!firstname.matches("[a-zA-Z ]+")) {
+                editSurname.requestFocus();
+                editSurname.setError("Neteisingas pavardės formatas");
+                return;
+            }
+            if (username.isEmpty()) {
+                editUsername.setError("Vartotojo vardo laukas yra privalomas");
+                editUsername.requestFocus();
+                return;
+            }
+            if (password.isEmpty()) {
+                editPassword.setError("Slaptažodžio laukas yra privalomas");
+                editPassword.requestFocus();
+                return;
+            }
+            if (password.length() < 6) {
+                editPassword.setError("Slaptažodis turi būti bent iš 6 simbolių");
+                editPassword.requestFocus();
+                return;
+            }
+            if (phone.isEmpty()) {
+                editPhone.setError("Telefono numerio laukas yra privalomas");
+                editPhone.requestFocus();
+                return;
+            }
+            if (email.isEmpty()) {
+                editEmail.setError("El. pašto laukas yra privalomas");
+                editEmail.requestFocus();
+                return;
+            }
+
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                editEmail.setError("Netinkamas el.pašto formatas");
+                editEmail.requestFocus();
+                return;
+            }
+
+
 
             SharedPreferenceProvider sharedPreferences = SharedPreferenceProvider.getInstance();
 

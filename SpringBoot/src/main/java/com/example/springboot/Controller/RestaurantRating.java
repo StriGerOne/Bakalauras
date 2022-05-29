@@ -41,10 +41,6 @@ public class RestaurantRating {
     public List<Rating> findByUserId(@RequestParam(name = "UserId") long id) {
         return ratingRepository.findByUserId(id);
     }
-
-
-
-
 }
 
 

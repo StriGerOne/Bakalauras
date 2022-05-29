@@ -22,7 +22,14 @@ public class RestaurantRating extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_rating);
 
         final String currentUserId = SharedPreferenceProvider.getInstance().getUserId();
+        final String currentUsername = SharedPreferenceProvider.getInstance().getUserUsername();
+
         final Long currentRestaurantId = getIntent().getLongExtra("RestaurantId", 0);
+        final String currentRestaurantName = getIntent().getStringExtra("RestaurantName");
+        final String currentRestaurantAddress = getIntent().getStringExtra("RestaurantAddress");
+        final String currentRestaurantPhone = getIntent().getStringExtra("RestaurantPhone");
+        final String currentRestaurantEmail = getIntent().getStringExtra("RestaurantEmail");
+        final String currentRestaurantSummary = getIntent().getStringExtra("RestaurantSummary");
 
 
         ImageButton backButton = findViewById(R.id.back);
@@ -39,14 +46,14 @@ public class RestaurantRating extends AppCompatActivity {
 
 
             String json = "{\"rating\":\"" + rating + "\", \"comment\":\"" + comment + "\", \"userId\":\"" + currentUserId
-                    + "\", \"restaurantId\":\"" + currentRestaurantId +"\"}";
+                    + "\", \"username\":\"" + currentUsername + "\", \"restaurantId\":\"" + currentRestaurantId +"\"}";
 
             if (comment.isEmpty()) {
                 restCommentField.setError("Parašykite savo nuomonę");
                 restCommentField.requestFocus();
                 return;
             }
-            if (comment.length() < 30 ) {
+            if (comment.length() < 15 ) {
                 restCommentField.setError("Komentras turi būti bent iš 30 simbolių");
                 restCommentField.requestFocus();
                 return;
@@ -69,6 +76,11 @@ public class RestaurantRating extends AppCompatActivity {
                         intent.putExtra("Comment", comment);
                         intent.putExtra("Rating", rating);
                         intent.putExtra("RestaurantId", currentRestaurantId);
+                        intent.putExtra("RestaurantName", currentRestaurantName);
+                        intent.putExtra("RestaurantAddress", currentRestaurantAddress);
+                        intent.putExtra("RestaurantPhone", currentRestaurantPhone);
+                        intent.putExtra("RestaurantEmail", currentRestaurantEmail);
+                        intent.putExtra("RestaurantSummary", currentRestaurantSummary);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Neteisinga informacija", Toast.LENGTH_SHORT).show();

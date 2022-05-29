@@ -67,6 +67,7 @@ public class MainWindow extends AppCompatActivity {
                             intent.putExtra("RestaurantPhone", restaurantListFromJson.get(i).getPhone());
                             intent.putExtra("RestaurantEmail", restaurantListFromJson.get(i).getEmail());
                             intent.putExtra("RestaurantSummary", restaurantListFromJson.get(i).getSummary());
+                            intent.putExtra("RestaurantImage", restaurantListFromJson.get(i).getImageUrl());
 
                             if (currentUserId != null) {
                                 startActivity(intent);

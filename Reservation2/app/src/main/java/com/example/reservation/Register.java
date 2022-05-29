@@ -53,9 +53,19 @@ public class Register extends AppCompatActivity {
                 firstNameField.requestFocus();
                 return;
             }
+            if (!firstname.matches("[a-zA-Z ]+")) {
+                firstNameField.requestFocus();
+                firstNameField.setError("Neteisingas vardo formatas");
+                return;
+            }
             if (lastname.isEmpty()) {
                 lastNameField.setError("Pavardės laukas yra privalomas");
                 lastNameField.requestFocus();
+                return;
+            }
+            if (!firstname.matches("[a-zA-Z ]+")){
+                lastNameField.requestFocus();
+                lastNameField.setError("Neteisingas pavardės formatas");
                 return;
             }
             if (username.isEmpty()) {
