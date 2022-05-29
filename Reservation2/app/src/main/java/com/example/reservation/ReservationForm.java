@@ -1,26 +1,25 @@
 package com.example.reservation;
 
-import android.content.Intent;
-import android.os.Build;
-import android.widget.*;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.utils.SharedPreferenceProvider;
 import com.google.gson.GsonBuilder;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class ReservationForm extends AppCompatActivity {
 

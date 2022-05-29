@@ -1,19 +1,17 @@
 package com.example.reservation;
 
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.Rating;
 import com.example.reservation.Serializer.DataTimeSerializer;
 import com.example.reservation.Serializer.LocalDateTimeGsonSerializer;
-import com.example.reservation.utils.RatingAdapter;
 import com.example.reservation.utils.SharedPreferenceProvider;
 import com.example.reservation.utils.UserRatingAdapter;
 import com.google.gson.GsonBuilder;
@@ -23,7 +21,6 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

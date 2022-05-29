@@ -21,7 +21,7 @@ public class Reservation {
     @JsonFormat(pattern="HH:mm")
     private LocalTime duration;
     private String status;
-    private String selectedSeat; //cia reiktu id stalo saugoti, kad zinotumet, kurie uzimti
+    private String selectedSeat;
 
     public Reservation (Long id, Long restaurantId, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String selectedSeat) {
         this.id = id;

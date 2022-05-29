@@ -7,16 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import com.example.reservation.Models.Rating;
-import com.example.reservation.Models.Restaurant;
 import com.example.reservation.R;
 
 import java.util.List;
-
-import static com.example.reservation.Constants.ADRESS;
 
 public class CustomListAdapter extends BaseAdapter {
     protected Activity activity;

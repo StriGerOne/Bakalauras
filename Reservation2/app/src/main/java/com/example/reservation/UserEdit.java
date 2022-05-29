@@ -1,12 +1,14 @@
 package com.example.reservation;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Patterns;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.example.reservation.Controllers.RESTController;
 import com.example.reservation.Models.User;
 import com.example.reservation.utils.SharedPreferenceProvider;
@@ -15,7 +17,6 @@ import com.google.gson.Gson;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.reservation.Constants.USERAUTH;
 import static com.example.reservation.Constants.updateUserInfo;
 
 public class UserEdit extends AppCompatActivity {

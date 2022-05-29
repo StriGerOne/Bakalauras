@@ -45,7 +45,7 @@ public class UserRatingAdapter extends CustomListAdapter {
 
         restaurantName.setText("Restoranas: " + r.getRestName());
         commentText.setText(r.getComment());
-        rate.setText(String.valueOf("Įvertinimas: " + r.getRating()));
+        rate.setText("Įvertinimas: " + r.getRating());
 
         return convertView;
     }

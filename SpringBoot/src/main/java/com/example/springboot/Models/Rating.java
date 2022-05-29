@@ -12,7 +12,7 @@ public class Rating {
     private String username;
     private float rating;
     private String comment;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime rateTime = LocalDateTime.now();
 
     public Rating(Long id, Long restaurantId, String restName, Long userId, String username, float rating, String comment) {
@@ -88,16 +88,5 @@ public class Rating {
     public void setComment(String comment) {
         this.comment = comment;
 
-    }
-
-    @Override
-    public String toString() {
-        return "Rating{" +
-                "id=" + id +
-                ", restaurantId=" + restaurantId +
-                ", userId=" + userId +
-                ", rating=" + rating +
-                ", comment='" + comment + '\'' +
-                '}';
     }
 }

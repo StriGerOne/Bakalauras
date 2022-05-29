@@ -118,16 +118,4 @@ public class Restaurant {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-    @Override
-    public String toString() {
-        return "Restaurant" + "\n" +
-                "Restoranas='" + restaurantName + "\n" + '\'' +
-                "Adresas='" + address + "\n" + '\'' +
-                "Telefono numeris='"  + phone + "\n" + '\'' +
-                "El. paštas='"  + email + "\n" + '\'' +
-                "Darbo laikas='"  + jobTime + "\n" + '\'' +
-                "FreeSpace='"  + numberOfSeats + "\n" + '\'' +
-                "category='"  + category +"\n" + '\'';
-    }
 }

@@ -2,18 +2,15 @@ package com.example.reservation.utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.annotation.RequiresApi;
 import com.example.reservation.Models.Rating;
 import com.example.reservation.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class RatingAdapter extends CustomListAdapter {
@@ -48,7 +45,7 @@ public class RatingAdapter extends CustomListAdapter {
 
         username.setText("Vartotojas: " + r.getUsername());
         commentText.setText(r.getComment());
-        rate.setText(String.valueOf("Įvertinimas: " + r.getRating()));
+        rate.setText("Įvertinimas: " + r.getRating());
 
 
         return convertView;
