@@ -22,7 +22,7 @@ public class Reservation {
         this.peopleAmount = peopleAmount;
         this.reservationTime = reservationTime;
         this.duration = duration;
-        this.status = "Approved";
+        this.status = "Patvirtinta";
     }
 
     public Reservation(Long id, Long restaurantId, Long userId, LocalDateTime today, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String status) {
@@ -97,20 +97,17 @@ public class Reservation {
     }
 
     public void setStatus(String status) {
-        this.status = "Approved";
+        this.status = "Patvirtinta";
     }
 
     @Override
     public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", restaurantId=" + restaurantId +
-                ", userId=" + userId +
-                ", today=" + today +
-                ", peopleAmount=" + peopleAmount +
-                ", reservationTime=" + reservationTime +
-                ", duration=" + duration +
-                ", status='" + status + '\'' +
-                '}';
+
+        return "Jūsų rezervacijos:" + "\n" +
+                "Rezervacijos data: " + today + "\n" +
+                "Žmonių skaičius: " + peopleAmount + "\n"+
+                "Nuo: " + reservationTime + "\n"+
+                "Iki: " + duration + "\n"+
+                "Statusas: '" + status + '\'';
     }
 }

@@ -66,10 +66,10 @@ public class UserReservations extends AppCompatActivity {
 
                         for (Reservation reservation : reservationListFromJson) {
                             String status = reservation.getStatus();
-                            if (status.equals("Approved")){
+                            if (status.equals("Patvirtinta")){
                                 approvedReservations.add(reservation);
                             }
-                            if (status.equals("Canceled")){
+                            if (status.equals("Atšaukta")){
                                 canceledReservations.add(reservation);
                             }
                         }

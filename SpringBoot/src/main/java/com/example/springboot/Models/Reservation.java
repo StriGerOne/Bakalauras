@@ -30,7 +30,7 @@ public class Reservation {
         this.peopleAmount = peopleAmount;
         this.reservationTime = reservationTime;
         this.duration = duration;
-        this.status = "Approved";
+        this.status = "Patvirtinta";
         this.selectedSeat = selectedSeat;
     }
 
@@ -95,7 +95,7 @@ public class Reservation {
     }
 
     public String setStatus(String status) {
-        this.status = "Approved";
+        this.status = "Patvirtinta";
         return status;
     }
 
