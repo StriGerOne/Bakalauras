@@ -35,4 +35,9 @@ public class Tables {
     public void setSeatAmount(int seatAmount) {
         this.seatAmount = seatAmount;
     }
+
+    @Override
+    public String toString() {
+        return  seatAmount + "-vietis staliukas - " + tableId;
+    }
 }

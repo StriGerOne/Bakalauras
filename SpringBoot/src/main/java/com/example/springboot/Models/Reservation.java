@@ -12,7 +12,7 @@ public class Reservation {
     @Id
     private Long id;
     private Long restaurantId;
-    private  String RestaurantName;
+    private  String restaurantName;
     private Long userId;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime today = LocalDateTime.now();
@@ -24,10 +24,10 @@ public class Reservation {
     private String status;
     private String selectedSeat;
 
-    public Reservation (Long id, Long restaurantId, String RestaurantName, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String selectedSeat) {
+    public Reservation (Long id, Long restaurantId, String restaurantName, Long userId, int peopleAmount, LocalDateTime reservationTime, LocalTime duration, String selectedSeat) {
         this.id = id;
         this.restaurantId = restaurantId;
-        this.RestaurantName = RestaurantName;
+        this.restaurantName = restaurantName;
         this.userId = userId;
         this.peopleAmount = peopleAmount;
         this.reservationTime = reservationTime;
@@ -53,11 +53,11 @@ public class Reservation {
     }
 
     public String getRestaurantName() {
-        return RestaurantName;
+        return restaurantName;
     }
 
     public void setRestaurantName(String restName) {
-        this.RestaurantName = RestaurantName;
+        this.restaurantName = restaurantName;
     }
 
     public Long getUserId() {

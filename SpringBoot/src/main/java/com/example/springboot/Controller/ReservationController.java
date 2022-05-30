@@ -62,11 +62,11 @@ public class ReservationController {
         return "Reservation with id " + id + " deleted";
     }
 
-    @PutMapping("/cancelReservation/{id}")
-    Reservation cancelReservation(@PathVariable Long id) {
+    @PutMapping("/cancelReservation")
+    Reservation cancelReservation(@RequestBody Reservation newReservation, @RequestParam(name = "ReservationId") long id) {
         return reservationRepository.findById(id)
                 .map(reservation -> {
-                    reservation.setStatus("Canceled");
+                    reservation.setStatus(newReservation.getStatus());
                     return reservationRepository.save(reservation);
                 })
                 .orElseGet(() -> {
@@ -74,6 +74,7 @@ public class ReservationController {
                     return null;
                 });
     }
+
 
     @GetMapping("/getReservationsByUser")
     public List<Reservation> findByUserId(@RequestParam(name = "UserId") long id) {

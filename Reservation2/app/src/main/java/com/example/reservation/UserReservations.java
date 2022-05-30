@@ -65,10 +65,10 @@ public class UserReservations extends AppCompatActivity {
 
 
 //                        List<String> reservationList = new ArrayList<>();
-//                     //   reservationListFromJson.forEach(r->reservationList.add(r.getPeopleAmount() + " " + r.getReservationTime()));
+//                        reservationListFromJson.forEach(r->reservationList.add(r.getPeopleAmount() + " " + r.getReservationTime()));
 //                        List<Reservation> approvedReservations = new ArrayList<>();
 //
-//                        List<Reservation> canceledReservations = new ArrayList<>();
+//                       List<Reservation> canceledReservations = new ArrayList<>();
 //
 //                        for (Reservation reservation : reservationListFromJson) {
 //                            String status = reservation.getStatus();
@@ -76,18 +76,18 @@ public class UserReservations extends AppCompatActivity {
 //                                approvedReservations.add(reservation);
 //                            }
 //                            if (status.equals("Atšaukta")){
-//                                canceledReservations.add(reservation);
+//                               canceledReservations.add(reservation);
 //                            }
 //                        }
 //
 //                        List<Reservation> fullList = new ArrayList<>();
 //                        fullList.addAll(approvedReservations);
 //                        fullList.addAll(canceledReservations);
-
-               //         ListView test = findViewById(R.id.activeReservationList);
-
-             //           ArrayAdapter<Reservation> arrayAdapter = new ArrayAdapter<>(UserReservations.this, android.R.layout.simple_list_item_1, fullList);
-             //           test.setAdapter(arrayAdapter);
+//
+//                        ListView test = findViewById(R.id.activeReservationList);
+//
+//                        ArrayAdapter<Reservation> arrayAdapter = new ArrayAdapter<>(UserReservations.this, android.R.layout.simple_list_item_1, fullList);
+//                        test.setAdapter(arrayAdapter);
                     }
 
                 });
